@@ -1,0 +1,3 @@
+shop_menu_homepage:
+    path:     /
+    defaults: { _controller: ShopMenuBundle:Default:index }

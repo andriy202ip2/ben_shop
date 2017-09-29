@@ -1,0 +1,3 @@
+shop_menu:
+    resource: "@ShopMenuBundle/Resources/config/routing.yml"
+    prefix:   /
