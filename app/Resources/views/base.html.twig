@@ -1,13 +1,70 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="pl" lang="pl" dir="ltr" prefix="og: http://ogp.me/ns#">
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="Найкращі якісні амортизатори, спіральні пружини, керуючі озброєння та гальма" />
+        <meta name="keywords" content="Амортизатор, Стоссдамппер, Амортизатори, Амортиссір, Амортигудор, Амортидзор, Аммортизатор" />
+
+        <link type="text/css" rel="stylesheet" href="./css/ben.css" />
+
+        <title>{% block title %}Найкраща якість автозапчастин!{% endblock %}</title>
+
+        <script language="JavaScript" src="./js/qTip.js" type="text/JavaScript"></script>
+
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+</head>
+<body>
+
+    <div id="container">
+        <img src="./img/background.png" class="background">
+
+            <!--languages-->
+
+            <div style="height: 40px;"></div>
+
+            <!--logo-->
+
+            <a href=""><img src="./img/gh_logo.png" class="logo"></a>
+            <div class="slog">ваш постачальник рішень підвіски</div>
+
+            <!--menu-->
+
+            <ul id="nav">
+                <li><a href="http://gh-parts.eu/index.php"><div class="menu"><div class="menu-text">Про нас</div></div></a></li>
+                <li><a href="http://gh-parts.eu/products.php"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
+                <li><a href="http://gh-parts.eu/quality.php"><div class="menu"><div class="menu-text">якість</div></div></a></li>
+                <li><a href="http://gh-parts.eu/catalogue.php"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
+                <li><a href="http://gh-parts.eu/contact.php"><div class="menu"><div class="menu-text">Контакти</div></div></a></li>
+            </ul>
+
+            <div id="desc_out">
+                <!--description-->
+
+                <div id="desc_in">
+                    <div id="desc_in_left">
+
+                        <!-- left - main text-->
+
+                    {% block body %}{% endblock %}
+                    <!--INSERT MAIN TEXT-->
+
+                </div><!--end left-->
+
+
+
+            </div>
+        </div>
+</div>
+
+
+<div align="center" class="copyright">
+    <hr width="225px">
+        Copyright © 2017.
+</div>
+
+</body>
 </html>
