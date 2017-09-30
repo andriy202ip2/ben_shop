@@ -1,0 +1,47 @@
+<?php
+
+namespace Shop\MenuBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DataMenu
+ *
+ * @ORM\Table(name="data_menu")
+ * @ORM\Entity
+ */
+class DataMenu
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="model_menu_id", type="integer", nullable=false)
+     */
+    private $modelMenuId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="auto_menu_id", type="integer", nullable=false)
+     */
+    private $autoMenuId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=256, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+
