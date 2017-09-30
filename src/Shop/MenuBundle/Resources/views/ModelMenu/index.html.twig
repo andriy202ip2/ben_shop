@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modelmenus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modelMenu in modelMenus %}
+            <tr>
+                <td><a href="{{ path('modelmenu_show', { 'id': modelMenu.id }) }}">{{ modelMenu.name }}</a></td>
+                <td>{{ modelMenu.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('modelmenu_show', { 'id': modelMenu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('modelmenu_edit', { 'id': modelMenu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modelmenu_new') }}">Create a new modelMenu</a>
+        </li>
+    </ul>
+{% endblock %}

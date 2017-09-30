@@ -12,9 +12,11 @@ class DefaultController extends Controller
         //echo rand(1, 100000);
         echo $request->query->get('id', 0);
         
+        $em = $this->getDoctrine()->getManager();
+        $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')->findAll();
         
         return $this->render('ShopMenuBundle:Default:index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+            'modelMenus' => $modelMenus,
         ));
     }
     

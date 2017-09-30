@@ -1,12 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ url('shop_menu_homepage') }}qqq
-{{ app.request.getBaseURL() }}
-    qqq
-
-    <code>{{ base_dir }}/</code>
-
+    
     <img src="./img/str_fr.png" id="str_fr"><img src="./img/str_long.png" id="str_long"><div class="str_slog">Забезпечуючи ваших рішень підвіски</div>
 
     <center>
@@ -16,13 +11,12 @@
 
         <form method="POST">
             <select onchange="window.location.href = & quot; catalogue.php? & quot; + this.options[this.selectedIndex].text + & quot; & amp; m1 = & quot; + this.options[this.selectedIndex].value" class="cat">
-                <option value="">Вибрати</option>
-                <option value="4587" selected="">
-                    ALFA ROMEO
-                </option>    	
-                <option value="4980">
-                    VW
-                </option>
+                <option value="" selected="">Вибрати</option>
+                {% for modelMenu in modelMenus %}
+                    <option value="{{ modelMenu.id }}">
+                        {{ modelMenu.name }}
+                    </option>                                          
+                {% endfor %}
             </select>
 
             <select onchange="window.location.href = & quot; catalogue.php?ALFA - ROMEO - & quot; + this.options[this.selectedIndex].text + & quot; & amp; m1 = 4587 & amp; m2 = & quot; + this.options[this.selectedIndex].value" class="cat">
