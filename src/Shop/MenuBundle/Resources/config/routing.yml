@@ -1,3 +1,7 @@
 shop_menu_homepage:
     path:     /
     defaults: { _controller: ShopMenuBundle:Default:index }
+
+shop_menu_test:
+    path:     /test
+    defaults: { _controller: ShopMenuBundle:Default:test }
