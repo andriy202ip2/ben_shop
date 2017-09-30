@@ -36,5 +36,62 @@ class AutoMenu
     private $id;
 
 
-}
 
+    /**
+     * Set modelMenuId
+     *
+     * @param integer $modelMenuId
+     *
+     * @return AutoMenu
+     */
+    public function setModelMenuId($modelMenuId)
+    {
+        $this->modelMenuId = $modelMenuId;
+
+        return $this;
+    }
+
+    /**
+     * Get modelMenuId
+     *
+     * @return integer
+     */
+    public function getModelMenuId()
+    {
+        return $this->modelMenuId;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return AutoMenu
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

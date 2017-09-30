@@ -43,5 +43,86 @@ class DataMenu
     private $id;
 
 
-}
 
+    /**
+     * Set modelMenuId
+     *
+     * @param integer $modelMenuId
+     *
+     * @return DataMenu
+     */
+    public function setModelMenuId($modelMenuId)
+    {
+        $this->modelMenuId = $modelMenuId;
+
+        return $this;
+    }
+
+    /**
+     * Get modelMenuId
+     *
+     * @return integer
+     */
+    public function getModelMenuId()
+    {
+        return $this->modelMenuId;
+    }
+
+    /**
+     * Set autoMenuId
+     *
+     * @param integer $autoMenuId
+     *
+     * @return DataMenu
+     */
+    public function setAutoMenuId($autoMenuId)
+    {
+        $this->autoMenuId = $autoMenuId;
+
+        return $this;
+    }
+
+    /**
+     * Get autoMenuId
+     *
+     * @return integer
+     */
+    public function getAutoMenuId()
+    {
+        return $this->autoMenuId;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return DataMenu
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
