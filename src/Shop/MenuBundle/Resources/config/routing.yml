@@ -1,3 +1,7 @@
+shop_menu_test:
+    resource: "@ShopMenuBundle/Resources/config/routing/test.yml"
+    prefix:   /test
+
 shop_menu_homepage:
     path:     /
     defaults: { _controller: ShopMenuBundle:Default:index }
