@@ -15,7 +15,7 @@ class AutoMenuRepository extends EntityRepository {
         public function findByIdOrderedByName($id) {
                                        
         $query = $this->createQueryBuilder('a')
-            ->where('a.model_menu_id = :id')
+            ->where('a.modelMenuId = :id')
             ->setParameter('id', $id)
             ->orderBy('a.name', 'ASC')
             ->getQuery();

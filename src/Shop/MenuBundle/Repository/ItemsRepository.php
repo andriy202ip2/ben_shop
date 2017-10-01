@@ -13,5 +13,24 @@ use Doctrine\ORM\EntityRepository;
 class ItemsRepository extends EntityRepository {
 
     
+    public function findByIdOrderedById($model_id, $auto_id, $data_id, $side) {
+            
+        $sideId = $side ? " and i.sideId = :side" : ""; 
+                
+        $query = $this->createQueryBuilder('i')
+            ->where('i.modelMenuId = :model_id and i.autoMenuId = :auto_id and i.dataMenuId = :data_id'.$sideId)
+            ->setParameter('model_id', $model_id)
+            ->setParameter('auto_id', $auto_id)
+            ->setParameter('data_id', $data_id);
+        
+        if ($side) {
+            $query = $query->setParameter('side', $side);                
+        }
 
+        $query = $query->orderBy('i.id', 'ASC')
+                 ->getQuery();
+        return $query->getResult();
+        
+    }
+    
 }

@@ -10,32 +10,30 @@
 
         <form id="form_item" method="GET">
             <select name="mid" id="mid" class="cat">
-                <option value="0" selected="">Вибрати</option>
+                <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
                 {% for modelMenu in modelMenus %}
-                    <option value="{{ modelMenu.id }}">
+                    <option value="{{ modelMenu.id }}" {{ model_id == modelMenu.id  ? 'selected=""' : '' }}>
                         {{ modelMenu.name }}
                     </option>                                          
                 {% endfor %}
             </select>
-
+                        
             <select name="aid" id="aid" class="cat">
-                <option value="0">Вибрати</option>
-                <option value="4587" selected="">
-                    145
-                </option>
-                <option value="7669">
-                    SPIDER (939)
-                </option>
+                <option value="0" {{ auto_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                {% for auto in autoMenu %}
+                    <option value="{{ auto.id }}" {{ auto_id == auto.id  ? 'selected=""' : '' }}>
+                        {{ auto.name }}
+                    </option>                                          
+                {% endfor %}
             </select>
-
+            
             <select name="did" id="did" class="cat">
-                <option value="0">Вибрати</option>
-                <option value="4587" selected="">
-                    01.1994-01.1997
-                </option>
-                <option value="4588">
-                    01.1997-01.2001
-                </option>
+                <option value="0" {{ data_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                {% for data in dataMenu %}
+                    <option value="{{ data.id }}" {{ data_id == data.id  ? 'selected=""' : '' }}>
+                        {{ data.name }}
+                    </option>                                          
+                {% endfor %}
             </select>
             <br>
 
@@ -47,11 +45,11 @@
                         <td width="30"></td>
                         <td><img align="left" src="/img/shock_on.png"></td>
                     </tr>
-
+             
                     <tr><td style="font-size:11px">
-                            передня  <input type="checkbox" name="s1" id="s1" value="1" checked=""> 
+                            передня  <input type="checkbox" name="s1" id="s1" value="1" {{ s1  ? 'checked=""' : '' }}> 
                         </td><td style="font-size:11px">
-                            задня  <input type="checkbox" name="s2" id="s2" value="2" checked="">
+                            задня  <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>
                         </td><td></td>
                         <td>Амортизатор </td>
                     </tr>

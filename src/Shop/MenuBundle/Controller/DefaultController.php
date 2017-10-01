@@ -28,18 +28,18 @@ class DefaultController extends Controller
             $data_id = 0;
         }
         
-        $s1 = $request->query->getInt('s1', 1);
+        $s1 = $request->query->getInt('s1', 0);
         $s1 = $s1 >= 1 ? 1 : 0; 
         
-        $s2 = $request->query->getInt('s2', 2);
+        $s2 = $request->query->getInt('s2', 0);
         $s2 = $s2 >= 1 ? 2 : 0; 
                 
         $side = ($s1 + $s2) % 3;
         if (!$side) {
            $s1 = 1;
-           $s2 = 1;
+           $s2 = 2;
         }
-                
+                        
         $em = $this->getDoctrine()->getManager();
         $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
                          ->findAllOrderedByName();
@@ -50,18 +50,37 @@ class DefaultController extends Controller
             $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
                          ->findByIdOrderedByName($model_id);
         }
+           
+        $dataMenu = null;
+        if ($auto_id) {
+            $em = $this->getDoctrine()->getManager();
+            $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
+                         ->findByIdOrderedByName($model_id, $auto_id);
+        }
         
+        $ItemsArray = null;
+        if ($model_id && $auto_id && $data_id) {
+            
+            $em = $this->getDoctrine()->getManager();
+            $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
+                         ->findByIdOrderedById($model_id, $auto_id, $data_id, $side);
+        }
         
         return $this->render('ShopMenuBundle:Default:index.html.twig', array(
             'modelMenus' => $modelMenus,
+            'model_id' => $model_id,
+            
+            'autoMenu' => $autoMenu,
+            'auto_id' => $auto_id,
+            
+            'dataMenu' => $dataMenu,
+            'data_id' => $data_id,
+            
+            's1' => $s1,
+            's2' => $s2,
+            
+            'ItemsArray' => $ItemsArray,
         ));
     }
     
-    public function testAction()
-    {
-        echo "rand(1, 100000)";
-        return $this->render('ShopMenuBundle:Default:index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
-    }
 }
