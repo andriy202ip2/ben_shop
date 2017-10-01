@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * ModelMenu
  *
  * @ORM\Table(name="model_menu")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Shop\MenuBundle\Repository\ModelMenuRepository")
  */
-class ModelMenu
-{
+class ModelMenu {
+
     /**
      * @var string
      *
@@ -28,8 +28,6 @@ class ModelMenu
      */
     private $id;
 
-
-
     /**
      * Set name
      *
@@ -37,8 +35,7 @@ class ModelMenu
      *
      * @return ModelMenu
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -49,8 +46,7 @@ class ModelMenu
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -59,8 +55,10 @@ class ModelMenu
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+    
+
+
 }

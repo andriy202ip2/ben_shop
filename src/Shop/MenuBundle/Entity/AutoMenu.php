@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AutoMenu
  *
  * @ORM\Table(name="auto_menu")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Shop\MenuBundle\Repository\AutoMenuRepository")
  */
 class AutoMenu
 {

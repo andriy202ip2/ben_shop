@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Items
  *
  * @ORM\Table(name="items", indexes={@ORM\Index(name="model_menu_id", columns={"model_menu_id"}), @ORM\Index(name="auto_menu_id", columns={"auto_menu_id"}), @ORM\Index(name="data_menu_id", columns={"data_menu_id"}), @ORM\Index(name="side_id", columns={"side_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Shop\MenuBundle\Repository\ItemsRepository")
  */
 class Items
 {
