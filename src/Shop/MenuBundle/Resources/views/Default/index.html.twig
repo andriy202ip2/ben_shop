@@ -8,9 +8,8 @@
 
         <h1>Каталог продукції</h1>
 
-
-        <form method="POST">
-            <select onchange="window.location.href = & quot; catalogue.php? & quot; + this.options[this.selectedIndex].text + & quot; & amp; m1 = & quot; + this.options[this.selectedIndex].value" class="cat">
+        <form id="form_item" method="POST">
+            <select name="mid" class="cat">
                 <option value="" selected="">Вибрати</option>
                 {% for modelMenu in modelMenus %}
                     <option value="{{ modelMenu.id }}">
@@ -19,7 +18,7 @@
                 {% endfor %}
             </select>
 
-            <select onchange="window.location.href = & quot; catalogue.php?ALFA - ROMEO - & quot; + this.options[this.selectedIndex].text + & quot; & amp; m1 = 4587 & amp; m2 = & quot; + this.options[this.selectedIndex].value" class="cat">
+            <select name="aid" class="cat">
                 <option value="">Вибрати</option>
                 <option value="4587" selected="">
                     145
@@ -29,7 +28,7 @@
                 </option>
             </select>
 
-            <select onchange="window.location.href = & quot; catalogue.php?ALFA - ROMEO - 145 - & quot; + this.options[this.selectedIndex].text + & quot; & amp; m1 = 4587 & amp; m2 = 4587 & amp; m3 = & quot; + this.options[this.selectedIndex].value + & quot; & amp; s = 0 & quot;" class="cat">
+            <select name="did" class="cat">
                 <option value="">Вибрати</option>
                 <option value="4587" selected="">
                     01.1994-01.1997
@@ -45,9 +44,7 @@
                 <tbody><tr><td><img style="cursor:pointer;" src="./img/front_on.png" onclick="window.location.href = & quot; catalogue.php?ALFA - ROMEO - 145 - 01.1994 - 01.1997 & amp; m1 = 4587 & amp; m2 = 4587 & amp; m3 = 4587 & amp; t = 235 & amp; s = 2 & quot;"></td>
                         <td><img style="cursor:pointer; border-left: solid" src="./img/back_on.png" onclick="window.location.href = & quot; catalogue.php?ALFA - ROMEO - 145 - 01.1994 - 01.1997 & amp; m1 = 4587 & amp; m2 = 4587 & amp; m3 = 4587 & amp; t = 235 & amp; s = 1 & quot;"></td>
                         <td width="30"></td>
-                        <td><img style="cursor:pointer;" align="left" src="./img/shock_on.png" onclick="window.location.href = & quot; catalogue.php?ALFA - ROMEO - 145 - 01.1994 - 01.1997 & amp; m1 = 4587 & amp; m2 = 4587 & amp; m3 = 4587 & amp; s = 0 & amp; t = 25 & quot;"></td>
-
-
+                        <td><img align="left" src="./img/shock_on.png"></td>
                     </tr>
 
                     <tr><td style="font-size:11px">
@@ -55,7 +52,7 @@
                         </td><td style="font-size:11px">
                             задня  <input type="checkbox" name="s12" checked="" onchange="window.location.href = & quot; catalogue.php?ALFA - ROMEO - 145 - 01.1994 - 01.1997 & amp; m1 = 4587 & amp; m2 = 4587 & amp; m3 = 4587 & amp; t = 235 & amp; s = 1 & quot;">
                         </td><td></td>
-                        <td>Амортизатор  <input type="checkbox" name="t3" checked="" onchange="window.location.href = & quot; catalogue.php?ALFA - ROMEO - 145 - 01.1994 - 01.1997 & amp; m1 = 4587 & amp; m2 = 4587 & amp; m3 = 4587 & amp; s = 0 & amp; t = 25 & quot;"></td>
+                        <td>Амортизатор </td>
 
 
                     </tr></tbody></table>

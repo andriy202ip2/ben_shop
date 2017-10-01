@@ -14,8 +14,7 @@ class ModelMenuRepository extends EntityRepository
 {
     
     public function findAllOrderedByName() {
-        
-                               
+                                       
         $query = $this->createQueryBuilder('m')
             //->where('p.price > :price')
             //->setParameter('price', '19.99')
