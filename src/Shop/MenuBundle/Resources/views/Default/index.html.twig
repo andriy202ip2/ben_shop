@@ -85,11 +85,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="5">
-                        <div class="showApplication">Дисплей додаткових додатків</div>
-                        <div class="showApplication" style="display:none;">Приховати</div>
-                        <div style="display:none;" id="ItemInfo{{ Item.id}}">
-                            {{ Item.details | raw}}
+                    <td colspan="5" class="item_element">
+                        <div class="showApplication item_on">Дисплей додаткових додатків</div>
+                        <div class="showApplication item_off" style="display:none;">Приховати</div>
+                        <div style="display:none;" class="item_info">
+                            {{ Item.details | raw}} {{ Item.id }}
                         </div><hr></td>
                 </tr>
                     
@@ -126,6 +126,26 @@
             $( "#si2" ).click(function() {
                 $('#s2').prop('checked', !$('#s2').prop('checked'));
                 $( "#form_item" ).submit();
+            });
+
+
+            $(".item_element").each(function(){ 
+                
+               var obj =  $(this);
+               
+               obj.find(".item_on").click(function() {
+                  $(this).css("display", "none");
+                  obj.find(".item_off").css("display", "block");
+                  obj.find(".item_info").css("display", "block");
+        
+               });
+
+               obj.find(".item_off").click(function() {
+                  $(this).css("display", "none");
+                  obj.find(".item_on").css("display", "block");
+                  obj.find(".item_info").css("display", "none");        
+               });
+               
             });
 
         });
