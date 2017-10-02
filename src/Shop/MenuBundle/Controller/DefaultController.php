@@ -58,7 +58,7 @@ class DefaultController extends Controller
                          ->findByIdOrderedByName($model_id, $auto_id);
         }
         
-        $ItemsArray = null;
+        $ItemsArray = null;        
         if ($model_id && $auto_id && $data_id) {
             
             $em = $this->getDoctrine()->getManager();
