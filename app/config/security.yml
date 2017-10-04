@@ -1,9 +1,18 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
-
+    encoders:
+        Security\UserBundle\Entity\User:
+            algorithm: bcrypt
+            
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
+        our_db_provider:
+            entity:
+                class: SecurityUserBundle:User
+                property: username
+                # if you're using multiple entity managers
+                # manager_name: customer
         in_memory:
             memory: ~
 
@@ -13,6 +22,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        admin:
+            pattern: ^/(users)/
+            http_basic: ~
+            provider: our_db_provider
+           
+            
         main:
             anonymous: ~
             # activate different ways to authenticate

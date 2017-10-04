@@ -1,0 +1,3 @@
+security_user_homepage:
+    path:     /
+    defaults: { _controller: SecurityUserBundle:Default:index }
