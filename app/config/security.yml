@@ -63,5 +63,5 @@ security:
             #form_login: ~
 
     access_control:
-        - { path: ^/modelmenu, roles: ROLE_ADMIN }
-       # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admina, roles: ROLE_ADMIN }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

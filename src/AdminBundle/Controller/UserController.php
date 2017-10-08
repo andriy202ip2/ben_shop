@@ -1,6 +1,6 @@
 <?php
 
-namespace Security\UserBundle\Controller;
+namespace AdminBundle\Controller;
 
 use Security\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,7 +21,7 @@ class UserController extends Controller {
 
         $users = $em->getRepository('SecurityUserBundle:User')->findAll();
 
-        return $this->render('SecurityUserBundle:User:index.html.twig', array(
+        return $this->render('AdminBundle:User:index.html.twig', array(
                     'users' => $users,
         ));
     }
@@ -32,7 +32,7 @@ class UserController extends Controller {
      */
     public function newAction(Request $request) {
         $user = new User();
-        $form = $this->createForm('Security\UserBundle\Form\UserType', $user);
+        $form = $this->createForm('AdminBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -46,7 +46,7 @@ class UserController extends Controller {
             return $this->redirectToRoute('user_show', array('id' => $user->getId()));
         }
 
-        return $this->render('SecurityUserBundle:User:new.html.twig', array(
+        return $this->render('AdminBundle:User:new.html.twig', array(
                     'user' => $user,
                     'form' => $form->createView(),
         ));
@@ -59,7 +59,7 @@ class UserController extends Controller {
     public function showAction(User $user) {
         $deleteForm = $this->createDeleteForm($user);
 
-        return $this->render('SecurityUserBundle:User:show.html.twig', array(
+        return $this->render('AdminBundle:User:show.html.twig', array(
                     'user' => $user,
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -71,7 +71,7 @@ class UserController extends Controller {
      */
     public function editAction(Request $request, User $user) {
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('Security\UserBundle\Form\UserType', $user);
+        $editForm = $this->createForm('AdminBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -85,10 +85,10 @@ class UserController extends Controller {
             
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
+            return $this->redirectToRoute('user_index', array('id' => $user->getId()));
         }
 
-        return $this->render('SecurityUserBundle:User:edit.html.twig', array(
+        return $this->render('AdminBundle:User:edit.html.twig', array(
                     'user' => $user,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),

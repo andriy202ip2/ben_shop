@@ -1,0 +1,7 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+
+security_user_user:
+    resource: "@AdminBundle/Resources/config/routing/user.yml"
+    prefix:   /user
