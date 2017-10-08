@@ -6,33 +6,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Doctrine\ORM\EntityRepository;
 
-class UserRepository extends EntityRepository
+class UserRepository extends BaseUserRepository
 {
     public function supportsClass($class) {
         return $class === 'Security\UserBundle\Entity\User';
     }
     
-    public function loadUserByUsername($username)
-    {
-        $user = $this->createQueryBuilder('u')
-            ->where('u.username = :username OR u.email = :email')
-            ->setParameter('username', $username)
-            ->setParameter('email', $username)
-            ->getQuery()
-            ->getOneOrNullResult();
-        if (null === $user) {
-            $message = sprintf(
-                'Unable to find an active user identified by "%s".',
-                $username
-            );
-            throw new UsernameNotFoundException($message);
-        }
-
-        return $user;
-    }
-
-
-    public function refreshUser(UserInterface $user) {
-        return $this->loadUserByUsername($user->getUsername());
-    }
 }

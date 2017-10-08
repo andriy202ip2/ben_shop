@@ -10,20 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
  * User controller.
  *
  */
-class UserController extends Controller
-{
+class UserController extends Controller {
+
     /**
      * Lists all user entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository('SecurityUserBundle:User')->findAll();
 
         return $this->render('SecurityUserBundle:User:index.html.twig', array(
-            'users' => $users,
+                    'users' => $users,
         ));
     }
 
@@ -31,23 +30,15 @@ class UserController extends Controller
      * Creates a new user entity.
      *
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $user = new User();
         $form = $this->createForm('Security\UserBundle\Form\UserType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-                   
-            $encoderFactory = $this->get('security.encoder_factory');
-            $encoder = $encoderFactory->getEncoder($user);
-        
-            $salt = $user->getSalt(); // this should be different for every user
-            $password = $encoder->encodePassword($user->getPassword(), $salt);
-            $user->setPassword($password);   
-         
-            
+
+            $user = $this->setPasword($user);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -56,8 +47,8 @@ class UserController extends Controller
         }
 
         return $this->render('SecurityUserBundle:User:new.html.twig', array(
-            'user' => $user,
-            'form' => $form->createView(),
+                    'user' => $user,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -65,13 +56,12 @@ class UserController extends Controller
      * Finds and displays a user entity.
      *
      */
-    public function showAction(User $user)
-    {
+    public function showAction(User $user) {
         $deleteForm = $this->createDeleteForm($user);
 
         return $this->render('SecurityUserBundle:User:show.html.twig', array(
-            'user' => $user,
-            'delete_form' => $deleteForm->createView(),
+                    'user' => $user,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,22 +69,29 @@ class UserController extends Controller
      * Displays a form to edit an existing user entity.
      *
      */
-    public function editAction(Request $request, User $user)
-    {
+    public function editAction(Request $request, User $user) {
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('Security\UserBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+            $user = $this->setPasword($user);
+            
+            //$em = $this->getDoctrine()->getManager();
+            //$em->persist($user);
+            //$em->flush();
+
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }
 
         return $this->render('SecurityUserBundle:User:edit.html.twig', array(
-            'user' => $user,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'user' => $user,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -102,8 +99,7 @@ class UserController extends Controller
      * Deletes a user entity.
      *
      */
-    public function deleteAction(Request $request, User $user)
-    {
+    public function deleteAction(Request $request, User $user) {
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 
@@ -123,12 +119,24 @@ class UserController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(User $user)
-    {
+    private function createDeleteForm(User $user) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
+    private function setPasword($user) {
+
+        $encoderFactory = $this->get('security.encoder_factory');
+        $encoder = $encoderFactory->getEncoder($user);
+
+        $salt = $user->getSalt(); // this should be different for every user
+        $password = $encoder->encodePassword($user->getPassword(), $salt);
+        $user->setPassword($password);
+
+        return $user;
+    }
+
 }
