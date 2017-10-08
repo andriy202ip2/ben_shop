@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Automenus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Modelmenuid</th>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for autoMenu in autoMenus %}
+            <tr>
+                <td><a href="{{ path('automenu_show', { 'id': autoMenu.id }) }}">{{ autoMenu.modelMenuId }}</a></td>
+                <td>{{ autoMenu.name }}</td>
+                <td>{{ autoMenu.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('automenu_show', { 'id': autoMenu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('automenu_edit', { 'id': autoMenu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('automenu_new') }}">Create a new autoMenu</a>
+        </li>
+    </ul>
+{% endblock %}

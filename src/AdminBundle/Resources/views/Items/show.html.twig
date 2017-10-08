@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Item</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Modelmenuid</th>
+                <td>{{ item.modelMenuId }}</td>
+            </tr>
+            <tr>
+                <th>Automenuid</th>
+                <td>{{ item.autoMenuId }}</td>
+            </tr>
+            <tr>
+                <th>Datamenuid</th>
+                <td>{{ item.dataMenuId }}</td>
+            </tr>
+            <tr>
+                <th>Sideid</th>
+                <td>{% if item.sideId %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ item.details }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ item.name }}</td>
+            </tr>
+            <tr>
+                <th>Itemid</th>
+                <td>{{ item.itemId }}</td>
+            </tr>
+            <tr>
+                <th>Side</th>
+                <td>{{ item.side }}</td>
+            </tr>
+            <tr>
+                <th>Fit</th>
+                <td>{{ item.fit }}</td>
+            </tr>
+            <tr>
+                <th>Img</th>
+                <td>{{ item.img }}</td>
+            </tr>
+            <tr>
+                <th>Imgdata</th>
+                <td>{{ item.imgData }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ item.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('items_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('items_edit', { 'id': item.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

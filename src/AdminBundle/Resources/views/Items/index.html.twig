@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Items list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Modelmenuid</th>
+                <th>Automenuid</th>
+                <th>Datamenuid</th>
+                <th>Sideid</th>
+                <th>Details</th>
+                <th>Name</th>
+                <th>Itemid</th>
+                <th>Side</th>
+                <th>Fit</th>
+                <th>Img</th>
+                <th>Imgdata</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td><a href="{{ path('items_show', { 'id': item.id }) }}">{{ item.modelMenuId }}</a></td>
+                <td>{{ item.autoMenuId }}</td>
+                <td>{{ item.dataMenuId }}</td>
+                <td>{% if item.sideId %}Yes{% else %}No{% endif %}</td>
+                <td>{{ item.details }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.itemId }}</td>
+                <td>{{ item.side }}</td>
+                <td>{{ item.fit }}</td>
+                <td>{{ item.img }}</td>
+                <td>{{ item.imgData }}</td>
+                <td>{{ item.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('items_show', { 'id': item.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('items_edit', { 'id': item.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('items_new') }}">Create a new item</a>
+        </li>
+    </ul>
+{% endblock %}

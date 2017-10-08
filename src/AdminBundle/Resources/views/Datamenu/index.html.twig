@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Datamenus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Modelmenuid</th>
+                <th>Automenuid</th>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dataMenu in dataMenus %}
+            <tr>
+                <td><a href="{{ path('datamenu_show', { 'id': dataMenu.id }) }}">{{ dataMenu.modelMenuId }}</a></td>
+                <td>{{ dataMenu.autoMenuId }}</td>
+                <td>{{ dataMenu.name }}</td>
+                <td>{{ dataMenu.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('datamenu_show', { 'id': dataMenu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('datamenu_edit', { 'id': dataMenu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('datamenu_new') }}">Create a new dataMenu</a>
+        </li>
+    </ul>
+{% endblock %}
