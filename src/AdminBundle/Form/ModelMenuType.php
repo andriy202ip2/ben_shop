@@ -1,19 +1,19 @@
 <?php
 
-namespace Shop\MenuBundle\Form;
+namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TestType extends AbstractType
+class ModelMenuType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('deckription')->add('text');
+        $builder->add('name');
     }
     
     /**
@@ -22,7 +22,7 @@ class TestType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Shop\MenuBundle\Entity\Test'
+            'data_class' => 'Shop\MenuBundle\Entity\ModelMenu'
         ));
     }
 
@@ -31,7 +31,7 @@ class TestType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'shop_menubundle_test';
+        return 'shop_menubundle_modelmenu';
     }
 
 

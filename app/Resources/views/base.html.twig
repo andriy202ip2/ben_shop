@@ -13,9 +13,9 @@
         <script language="JavaScript" src="/js/qTip.js" type="text/JavaScript"></script>
         <script language="JavaScript" src="/js/jquery.min.js" type="text/JavaScript"></script>
         <script language="JavaScript" src="/js/jquery-ui.js" type="text/JavaScript"></script>
-        
+
     {% block stylesheets %}{% endblock %}
-    {% block javascripts %}{% endblock %}
+{% block javascripts %}{% endblock %}
 
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
@@ -37,11 +37,20 @@
             <!--menu-->
 
             <ul id="nav">
-                <li><a href="http://gh-parts.eu/index.php"><div class="menu"><div class="menu-text">Про нас</div></div></a></li>
-                <li><a href="http://gh-parts.eu/products.php"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
-                <li><a href="http://gh-parts.eu/quality.php"><div class="menu"><div class="menu-text">якість</div></div></a></li>
-                <li><a href="http://gh-parts.eu/catalogue.php"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
-                <li><a href="http://gh-parts.eu/contact.php"><div class="menu"><div class="menu-text">Контакти</div></div></a></li>
+                <li><a href="/"><div class="menu"><div class="menu-text">Про нас</div></div></a></li>
+                <li><a href="/"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
+                <li><a href="/"><div class="menu"><div class="menu-text">якість</div></div></a></li>
+                <li><a href="{{ path('shop_menu_homepage') }}"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
+                {% if app.user %}
+                    <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
+                {% else %}
+                    <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
+                {% endif %}
+                {% if app.user and app.user.role == 'ROLE_ADMIN' %}
+                    <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адінка</div></div></a></li>
+                {% endif %}
+                
+
             </ul>
 
             <div id="desc_out">
@@ -51,6 +60,7 @@
                     <div id="desc_in_left">
 
                         <!-- left - main text-->
+
 
                     {% block body %}{% endblock %}
                     <!--INSERT MAIN TEXT-->

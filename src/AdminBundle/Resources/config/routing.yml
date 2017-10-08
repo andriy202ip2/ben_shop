@@ -2,6 +2,10 @@ admin_homepage:
     path:     /
     defaults: { _controller: AdminBundle:Default:index }
 
-security_user_user:
+admin_user:
     resource: "@AdminBundle/Resources/config/routing/user.yml"
     prefix:   /user
+    
+admin_modelmenu:
+     resource: "@AdminBundle/Resources/config/routing/modelmenu.yml"
+     prefix:   /modelmenu

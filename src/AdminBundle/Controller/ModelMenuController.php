@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\MenuBundle\Controller;
+namespace AdminBundle\Controller;
 
 use Shop\MenuBundle\Entity\ModelMenu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -22,7 +22,7 @@ class ModelMenuController extends Controller
 
         $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')->findAll();
 
-        return $this->render('ShopMenuBundle:ModelMenu:index.html.twig', array(
+        return $this->render('AdminBundle:ModelMenu:index.html.twig', array(
             'modelMenus' => $modelMenus,
         ));
     }
@@ -34,7 +34,7 @@ class ModelMenuController extends Controller
     public function newAction(Request $request)
     {
         $modelMenu = new Modelmenu();
-        $form = $this->createForm('Shop\MenuBundle\Form\ModelMenuType', $modelMenu);
+        $form = $this->createForm('AdminBundle\Form\ModelMenuType', $modelMenu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,7 +45,7 @@ class ModelMenuController extends Controller
             return $this->redirectToRoute('modelmenu_show', array('id' => $modelMenu->getId()));
         }
 
-        return $this->render('ShopMenuBundle:ModelMenu:new.html.twig', array(
+        return $this->render('AdminBundle:ModelMenu:new.html.twig', array(
             'modelMenu' => $modelMenu,
             'form' => $form->createView(),
         ));
@@ -59,7 +59,7 @@ class ModelMenuController extends Controller
     {
         $deleteForm = $this->createDeleteForm($modelMenu);
 
-        return $this->render('ShopMenuBundle:ModelMenu:show.html.twig', array(
+        return $this->render('AdminBundle:ModelMenu:show.html.twig', array(
             'modelMenu' => $modelMenu,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -72,7 +72,7 @@ class ModelMenuController extends Controller
     public function editAction(Request $request, ModelMenu $modelMenu)
     {
         $deleteForm = $this->createDeleteForm($modelMenu);
-        $editForm = $this->createForm('Shop\MenuBundle\Form\ModelMenuType', $modelMenu);
+        $editForm = $this->createForm('AdminBundle\Form\ModelMenuType', $modelMenu);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -81,7 +81,7 @@ class ModelMenuController extends Controller
             return $this->redirectToRoute('modelmenu_edit', array('id' => $modelMenu->getId()));
         }
 
-        return $this->render('ShopMenuBundle:ModelMenu:edit.html.twig', array(
+        return $this->render('AdminBundle:ModelMenu:edit.html.twig', array(
             'modelMenu' => $modelMenu,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -135,6 +135,10 @@ abstract class BaseUser implements AdvancedUserInterface, \Serializable
     {
         $this->password = $password;
 
+        //if (!is_null($password)) {
+            //$this->password = $password;
+        //}
+        
         return $this;
     }
 
