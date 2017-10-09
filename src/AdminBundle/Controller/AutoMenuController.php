@@ -16,15 +16,44 @@ class AutoMenuController extends Controller
      * Lists all autoMenu entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         
+        $model_id = $request->query->getInt('mid', 0);
+        if ($model_id < 0) {
+           $model_id = 0;             
+        }
+        
         $em = $this->getDoctrine()->getManager();
+        $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
+                         ->findAllOrderedByName();
+        
+        
+        
+        $em = $this->getDoctrine()->getManager();
+        //$autoMenus = $em->getRepository('ShopMenuBundle:AutoMenu')->findAll();
 
-        $autoMenus = $em->getRepository('ShopMenuBundle:AutoMenu')->findAll();
+        $dql = $em->getRepository('ShopMenuBundle:AutoMenu')->createQueryBuilder('a');
+        if ($model_id > 0) {
+            $dql = $dql->where('a.modelMenuId = :mid')->setParameter('mid', $model_id);
+        }
+        
+        $query = $dql->getQuery();
 
+        
+        $paginator = $this->get('knp_paginator');
+        $autoMenus = $paginator->paginate(
+                $query, /* query NOT result */ 
+                $request->query->getInt('page', 1)/* page number */, 
+                10/* limit per page */
+        );
+        
+        
         return $this->render('AdminBundle:Automenu:index.html.twig', array(
             'autoMenus' => $autoMenus,
+            
+            'modelMenus' => $modelMenus,
+            'model_id' => $model_id,
         ));
     }
 
