@@ -24,17 +24,14 @@ class ModelMenuController extends Controller {
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
-        $modelMenus = $pagination = $paginator->paginate(
+        $modelMenus = $paginator->paginate(
                 $query, /* query NOT result */ 
                 $request->query->getInt('page', 1)/* page number */, 
-                15/* limit per page */
+                10/* limit per page */
         );
-
-        
 
         return $this->render('AdminBundle:ModelMenu:index.html.twig', array(
                     'modelMenus' => $modelMenus,
-                    'pagination' => $pagination
         ));
     }
 
@@ -101,6 +98,12 @@ class ModelMenuController extends Controller {
      *
      */
     public function deleteAction(Request $request, ModelMenu $modelMenu) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($modelMenu);
+        $em->flush();
+        
+        /*
         $form = $this->createDeleteForm($modelMenu);
         $form->handleRequest($request);
 
@@ -109,7 +112,8 @@ class ModelMenuController extends Controller {
             $em->remove($modelMenu);
             $em->flush();
         }
-
+        */
+        
         return $this->redirectToRoute('modelmenu_index');
     }
 

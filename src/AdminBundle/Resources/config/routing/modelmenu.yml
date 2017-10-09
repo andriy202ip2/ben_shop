@@ -21,4 +21,5 @@ modelmenu_edit:
 modelmenu_delete:
     path:     /{id}/delete
     defaults: { _controller: "AdminBundle:ModelMenu:delete" }
-    methods:  DELETE
+    methods:  [GET]
+#DELETE
