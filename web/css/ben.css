@@ -627,3 +627,12 @@ table.catalogwebshop tr td{
     font-size: 10px;
     
 }
+
+.text-center{
+    text-align: center;
+    /*background-color: green;*/
+}
+
+.admin-font{
+    font-size: 15pt;
+}

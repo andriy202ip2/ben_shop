@@ -41,14 +41,15 @@
                 <li><a href="/"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
                 <li><a href="/"><div class="menu"><div class="menu-text">якість</div></div></a></li>
                 <li><a href="{{ path('shop_menu_homepage') }}"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
+                {% if app.user and app.user.role == 'ROLE_ADMIN' %}
+                    <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адінка</div></div></a></li>
+                {% endif %}
                 {% if app.user %}
                     <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
                 {% else %}
                     <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
                 {% endif %}
-                {% if app.user and app.user.role == 'ROLE_ADMIN' %}
-                    <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адінка</div></div></a></li>
-                {% endif %}
+
                 
 
             </ul>
@@ -57,17 +58,13 @@
                 <!--description-->
 
                 <div id="desc_in">
-                    <div id="desc_in_left">
-
-                        <!-- left - main text-->
-
+                    
+                <!-- left - main text-->
 
                     {% block body %}{% endblock %}
                     <!--INSERT MAIN TEXT-->
 
-                </div><!--end left-->
-
-
+                <!--end left-->
 
             </div>
         </div>
