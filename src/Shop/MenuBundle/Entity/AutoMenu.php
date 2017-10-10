@@ -10,8 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="auto_menu")
  * @ORM\Entity(repositoryClass="Shop\MenuBundle\Repository\AutoMenuRepository")
  */
-class AutoMenu
-{
+class AutoMenu {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ModelMenu", inversedBy="autos")
+     * @ORM\JoinColumn(name="model_menu_id", referencedColumnName="id")
+     */
+    private $model;
+    
     /**
      * @var integer
      *
@@ -35,8 +41,24 @@ class AutoMenu
      */
     private $id;
 
+    public function getModel()
+    {
+        return $this->model;
+    }
+    
+    /**
+     * Set counter
+     *
+     * @param \Web\AdminBundle\Entity\Counter $counter
+     * @return Types
+     */
+    public function setModel(\Shop\MenuBundle\Entity\ModelMenu $model = null)
+    {
+        $this->model = $model;
 
-
+        return $this;
+    }
+    
     /**
      * Set modelMenuId
      *
@@ -44,8 +66,7 @@ class AutoMenu
      *
      * @return AutoMenu
      */
-    public function setModelMenuId($modelMenuId)
-    {
+    public function setModelMenuId($modelMenuId) {
         $this->modelMenuId = $modelMenuId;
 
         return $this;
@@ -56,8 +77,7 @@ class AutoMenu
      *
      * @return integer
      */
-    public function getModelMenuId()
-    {
+    public function getModelMenuId() {
         return $this->modelMenuId;
     }
 
@@ -68,8 +88,7 @@ class AutoMenu
      *
      * @return AutoMenu
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -80,8 +99,7 @@ class AutoMenu
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -90,8 +108,8 @@ class AutoMenu
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
 }

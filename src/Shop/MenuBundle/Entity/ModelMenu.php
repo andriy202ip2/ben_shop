@@ -3,6 +3,7 @@
 namespace Shop\MenuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ModelMenu
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ModelMenu {
 
+    /**
+     * @ORM\OneToMany(targetEntity="AutoMenu", mappedBy="model")
+     */
+    private $autos;
+    
     /**
      * @var string
      *
@@ -28,6 +34,17 @@ class ModelMenu {
      */
     private $id;
 
+    
+    public function __construct()
+    {
+        $this->autos = new ArrayCollection();
+    }
+    
+    public function getAutos()
+    {
+        return $this->autos;
+    }
+    
     /**
      * Set name
      *

@@ -3,7 +3,7 @@
 {% block body %}
 
     <div class="text-center">
-
+        
         <h1>Авто Меню</h1>
         
         <form id="form_item" method="GET">
@@ -32,7 +32,7 @@
         <table align="center" class="admin-table admin-table-width">
             <thead>
                 <tr>
-                    <th>{{ knp_pagination_sortable(autoMenus, 'Modelmenuid', 'a.modelMenuId') }}</th>
+                    <th>{{ knp_pagination_sortable(autoMenus, 'Модель', 'a.modelMenuId') }}</th>
                     <th>{{ knp_pagination_sortable(autoMenus, 'Імя', 'a.name') }}</th>
                     <th>{{ knp_pagination_sortable(autoMenus, 'Id', 'a.id') }}</th>
                     <th>Дії</th>
@@ -41,7 +41,9 @@
             <tbody>
                 {% for autoMenu in autoMenus %}
                     <tr>
-                        <td><a href="{{ path('automenu_show', { 'id': autoMenu.id }) }}">{{ autoMenu.modelMenuId }}</a></td>
+                        <td>
+                            <a href="{{ path('automenu_show', { 'id': autoMenu.id }) }}">{{ autoMenu.model.name }}</a>                                                        
+                        </td>
                         <td>{{ autoMenu.name }}</td>
                         <td>{{ autoMenu.id }}</td>
                         <td>

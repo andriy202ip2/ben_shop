@@ -63,11 +63,16 @@ class AutoMenuController extends Controller
      */
     public function newAction(Request $request)
     {
+                
         $autoMenu = new Automenu();
         $form = $this->createForm('AdminBundle\Form\AutoMenuType', $autoMenu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            //$autoMenu->getModelMenuId()
+            //echo var_dump($autoMenu);
+            //exit();
             $em = $this->getDoctrine()->getManager();
             $em->persist($autoMenu);
             $em->flush();
