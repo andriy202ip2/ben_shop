@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Datamenu creation</h1>
 
-    {{ form_start(form) }}
+    <div class="text-center">
+
+        <h1>Рока Меню створення</h1>
+
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <br/><button class="ui-button ui-corner-all ui-widget">Створити</button>
+        {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('datamenu_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <br/> <a href="{{ path('datamenu_index') }}"><button class="ui-button ui-corner-all ui-widget">Вернутись назад</button></a><br/><br/>
+
+    </div>
 {% endblock %}

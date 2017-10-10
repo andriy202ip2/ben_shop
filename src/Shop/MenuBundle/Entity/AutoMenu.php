@@ -3,6 +3,7 @@
 namespace Shop\MenuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * AutoMenu
@@ -18,6 +19,13 @@ class AutoMenu {
      */
     private $model;
     
+    
+    /**
+     * @ORM\OneToMany(targetEntity="DataMenu", mappedBy="auto")
+     */    
+    private $datas;
+
+    
     /**
      * @var integer
      *
@@ -31,7 +39,7 @@ class AutoMenu {
      * @ORM\Column(name="name", type="string", length=256, nullable=false)
      */
     private $name;
-
+    
     /**
      * @var integer
      *
@@ -41,17 +49,21 @@ class AutoMenu {
      */
     private $id;
 
+    public function __construct()
+    {
+        $this->datas = new ArrayCollection();
+    }    
+    
+    public function getDatas()
+    {
+        return $this->datas;
+    }
+    
     public function getModel()
     {
         return $this->model;
     }
     
-    /**
-     * Set counter
-     *
-     * @param \Web\AdminBundle\Entity\Counter $counter
-     * @return Types
-     */
     public function setModel(\Shop\MenuBundle\Entity\ModelMenu $model = null)
     {
         $this->model = $model;

@@ -49,8 +49,10 @@
             <tbody>
                 {% for dataMenu in dataMenus %}
                     <tr>
-                        <td><a href="{{ path('datamenu_show', { 'id': dataMenu.id }) }}">{{ dataMenu.modelMenuId }}</a></td>
-                        <td>{{ dataMenu.autoMenuId }}</td>
+                        <td>
+                            <a href="{{ path('datamenu_show', { 'id': dataMenu.id }) }}">{{ dataMenu.model.name }}</a>                            
+                        </td>
+                        <td>{{ dataMenu.auto.name }}</td>
                         <td>{{ dataMenu.name }}</td>
                         <td>{{ dataMenu.id }}</td>
                         <td>
