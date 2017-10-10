@@ -10,20 +10,60 @@ use Symfony\Component\HttpFoundation\Request;
  * Datamenu controller.
  *
  */
-class DataMenuController extends Controller
-{
+class DataMenuController extends Controller {
+
     /**
      * Lists all dataMenu entities.
      *
      */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+    public function indexAction(Request $request) {
+        $model_id = $request->query->getInt('mid', 0);
+        if ($model_id < 0) {
+            $model_id = 0;
+        }
 
-        $dataMenus = $em->getRepository('ShopMenuBundle:DataMenu')->findAll();
+        $auto_id = $request->query->getInt('aid', 0);
+        if ($auto_id < 0) {
+            $auto_id = 0;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
+                ->findAllOrderedByName();
+
+        $autoMenu = null;
+        if ($model_id) {
+            $em = $this->getDoctrine()->getManager();
+            $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
+                    ->findByIdOrderedByName($model_id);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        //$dataMenus = $em->getRepository('ShopMenuBundle:DataMenu')->findAll();
+
+        $dql = $em->getRepository('ShopMenuBundle:DataMenu')->createQueryBuilder('a');
+        if ($model_id > 0) {
+            $dql = $dql->where('a.modelMenuId = :mid')->setParameter('mid', $model_id);
+            
+            if ($auto_id > 0) {
+                $dql = $dql->andWhere('a.autoMenuId = :aid')->setParameter('aid', $auto_id);
+            }
+        }
+
+        $query = $dql->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $dataMenus = $paginator->paginate(
+                $query, /* query NOT result */ $request->query->getInt('page', 1)/* page number */, 10/* limit per page */
+        );
+
 
         return $this->render('AdminBundle:Datamenu:index.html.twig', array(
-            'dataMenus' => $dataMenus,
+                    'dataMenus' => $dataMenus,
+                    'modelMenus' => $modelMenus,
+                    'model_id' => $model_id,
+                    'autoMenu' => $autoMenu,
+                    'auto_id' => $auto_id,
         ));
     }
 
@@ -31,8 +71,7 @@ class DataMenuController extends Controller
      * Creates a new dataMenu entity.
      *
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $dataMenu = new Datamenu();
         $form = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu);
         $form->handleRequest($request);
@@ -46,8 +85,8 @@ class DataMenuController extends Controller
         }
 
         return $this->render('AdminBundle:Datamenu:new.html.twig', array(
-            'dataMenu' => $dataMenu,
-            'form' => $form->createView(),
+                    'dataMenu' => $dataMenu,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -55,13 +94,12 @@ class DataMenuController extends Controller
      * Finds and displays a dataMenu entity.
      *
      */
-    public function showAction(DataMenu $dataMenu)
-    {
+    public function showAction(DataMenu $dataMenu) {
         $deleteForm = $this->createDeleteForm($dataMenu);
 
         return $this->render('AdminBundle:Datamenu:show.html.twig', array(
-            'dataMenu' => $dataMenu,
-            'delete_form' => $deleteForm->createView(),
+                    'dataMenu' => $dataMenu,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -69,8 +107,7 @@ class DataMenuController extends Controller
      * Displays a form to edit an existing dataMenu entity.
      *
      */
-    public function editAction(Request $request, DataMenu $dataMenu)
-    {
+    public function editAction(Request $request, DataMenu $dataMenu) {
         $deleteForm = $this->createDeleteForm($dataMenu);
         $editForm = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu);
         $editForm->handleRequest($request);
@@ -82,9 +119,9 @@ class DataMenuController extends Controller
         }
 
         return $this->render('AdminBundle:Datamenu:edit.html.twig', array(
-            'dataMenu' => $dataMenu,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'dataMenu' => $dataMenu,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -92,8 +129,7 @@ class DataMenuController extends Controller
      * Deletes a dataMenu entity.
      *
      */
-    public function deleteAction(Request $request, DataMenu $dataMenu)
-    {
+    public function deleteAction(Request $request, DataMenu $dataMenu) {
         $form = $this->createDeleteForm($dataMenu);
         $form->handleRequest($request);
 
@@ -113,12 +149,12 @@ class DataMenuController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(DataMenu $dataMenu)
-    {
+    private function createDeleteForm(DataMenu $dataMenu) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('datamenu_delete', array('id' => $dataMenu->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('datamenu_delete', array('id' => $dataMenu->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }
