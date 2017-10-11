@@ -72,11 +72,16 @@ class DataMenuController extends Controller {
      *
      */
     public function newAction(Request $request) {
-        $dataMenu = new Datamenu();
-        $form = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu);
+        
+        $em = $this->getDoctrine()->getManager();
+        $no_submit = $request->request->getInt('no_submit', 1);
+        
+        $dataMenu = new Datamenu();                
+        $form = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu, array('em' => $em, 'no_submit' => $no_submit));
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        
+        if ($form->isSubmitted() && $form->isValid() && !$no_submit) {
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($dataMenu);
             $em->flush();
