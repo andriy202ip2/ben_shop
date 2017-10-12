@@ -1,21 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Datamenu edit</h1>
 
-    {{ form_start(edit_form) }}
+    <div class="text-center">
+
+        <h1>Рока Меню редагування</h1>
+
+        {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('datamenu_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <input type="text" name="no_submit" id="no_submit" value="2" style="display: none;">
+
+        <br/><button class="ui-button ui-corner-all ui-widget">Редагувати</button>
+        {{ form_end(edit_form) }}
+
+        <br/> <a href="{{ path('datamenu_index') }}"><button class="ui-button ui-corner-all ui-widget">Вернутись назад</button></a><br/><br/>
+
+        {{ form_start(delete_form) }}
+        <button class="ui-button ui-corner-all ui-widget">Видалити</button>
+        {{ form_end(delete_form) }}
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+
+            $(".mid").change(function () {
+                $("#no_submit").val(1);
+                $('form[name="shop_menubundle_datamenu"]').submit();
+            });
+        });
+    </script>   
 {% endblock %}

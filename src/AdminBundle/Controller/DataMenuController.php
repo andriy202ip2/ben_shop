@@ -74,13 +74,15 @@ class DataMenuController extends Controller {
     public function newAction(Request $request) {
         
         $em = $this->getDoctrine()->getManager();
-        $no_submit = $request->request->getInt('no_submit', 1);
+        $no_submit = $request->request->getInt('no_submit', 0);
+        
+        //echo $no_submit;
         
         $dataMenu = new Datamenu();                
         $form = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu, array('em' => $em, 'no_submit' => $no_submit));
         $form->handleRequest($request);
         
-        if ($form->isSubmitted() && $form->isValid() && !$no_submit) {
+        if ($form->isSubmitted() && $form->isValid() && $no_submit >= 2) {
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($dataMenu);
@@ -113,8 +115,12 @@ class DataMenuController extends Controller {
      *
      */
     public function editAction(Request $request, DataMenu $dataMenu) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $no_submit = $request->request->getInt('no_submit', 0);
+        
         $deleteForm = $this->createDeleteForm($dataMenu);
-        $editForm = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu);
+        $editForm = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu, array('em' => $em, 'no_submit' => $no_submit));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
