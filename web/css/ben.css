@@ -655,6 +655,10 @@ table.catalogwebshop tr td{
     width:700px;
 }
 
+.admin-table-width-big {
+    width:850px;
+}
+
 .admin-input {
     width:400px;
     height:20px;

@@ -1,59 +1,115 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Items list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Modelmenuid</th>
-                <th>Automenuid</th>
-                <th>Datamenuid</th>
-                <th>Sideid</th>
-                <th>Details</th>
-                <th>Name</th>
-                <th>Itemid</th>
-                <th>Side</th>
-                <th>Fit</th>
-                <th>Img</th>
-                <th>Imgdata</th>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for item in items %}
-            <tr>
-                <td><a href="{{ path('items_show', { 'id': item.id }) }}">{{ item.modelMenuId }}</a></td>
-                <td>{{ item.autoMenuId }}</td>
-                <td>{{ item.dataMenuId }}</td>
-                <td>{% if item.sideId %}Yes{% else %}No{% endif %}</td>
-                <td>{{ item.details }}</td>
-                <td>{{ item.name }}</td>
-                <td>{{ item.itemId }}</td>
-                <td>{{ item.side }}</td>
-                <td>{{ item.fit }}</td>
-                <td>{{ item.img }}</td>
-                <td>{{ item.imgData }}</td>
-                <td>{{ item.id }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('items_show', { 'id': item.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('items_edit', { 'id': item.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="text-center">
+        <h1>Запчастини</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('items_new') }}">Create a new item</a>
-        </li>
-    </ul>
+        <form id="form_item" method="GET">
+            Пшук: 
+            <select name="mid" id="mid" class="cat">
+                <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                {% for modelMenu in modelMenus %}
+                    <option value="{{ modelMenu.id }}" {{ model_id == modelMenu.id  ? 'selected=""' : '' }}>
+                        {{ modelMenu.name }}
+                    </option>                                          
+                {% endfor %}
+            </select>
+
+            <select name="aid" id="aid" class="cat" {{ model_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
+                <option value="0" {{ auto_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                {% for auto in autoMenu %}
+                    <option value="{{ auto.id }}" {{ auto_id == auto.id  ? 'selected=""' : '' }}>
+                        {{ auto.name }}
+                    </option>                                          
+                {% endfor %}
+            </select>
+        </form>
+
+        <br/><a href="{{ path('items_new') }}">Створити нову запчастиниу</a><br/><br/>
+
+        <div class="count">
+            Всього результатів: {{ items.getTotalItemCount }}
+        </div><br/>
+
+        <div class="navigation">
+            {{ knp_pagination_render(items) }}
+        </div><br/>
+
+        <table align="center" class="admin-table admin-table-width-big">
+            <thead>
+                <tr>
+                    <th>Дані:</th>
+                    <th>Sideid</th>
+                    <!--<th>Details</th>-->
+                    <th>Код GH</th>
+                    <!--<th>Itemid</th>-->
+                    <th>Сторона</th>
+                    <!--<th>Fit</th>-->
+                    <th>Img</th>
+                    <!--<th>Imgdata</th>-->
+                    <!--<th>Id</th>-->
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>
+                            <br/>
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Модель: </th>
+                                </tr>
+                                <tr>
+                                    <td>{{ item.modelMenuId }}</td>
+                                </tr>
+                            </table> 
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Авто: </th>
+                                </tr>
+                                <tr>
+                                    <td>{{ item.autoMenuId }}</td>
+                                </tr>
+                            </table> 
+                            <table style="width:100%">
+                                <tr>
+                                    <th>Рока: </th>
+                                </tr>
+                                <tr>
+                                    <td>{{ item.dataMenuId }}</td>
+                                </tr>
+                            </table> 
+                            <br/>
+                        </td>
+                        <td>{{item.sideId}}</td>
+                        <!--<td>{{ item.details }}</td>-->
+                        <td>{{ item.name | raw }}
+                            <a href="#" class="item_dialog" val="item{{ item.id }}"><img src="/img/info-small.png" style="border:0"></a>
+                        </td>
+                        <!--<td>{{ item.itemId }}</td>>-->
+                        <td>{{ item.side | raw}}</td>
+                        <!--<td>{{ item.fit }}</td>-->
+                        <td>{{ item.img }}</td>
+                        <!--<td>{{ item.imgData }}</td>-->
+                        <!--<td>{{ item.id }}</td>-->
+                        <td>
+                            <br/>
+                            <a href="{{ path('items_show', { 'id': item.id }) }}">Показати</a>
+                            <br/>
+                            <a href="{{ path('items_edit', { 'id': item.id }) }}">Редагувати</a>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br/><div class="navigation">
+            {{ knp_pagination_render(items) }}
+        </div>
+
+        <br/><a href="{{  path('items_new') }}">Створити нову запчастиниу</a><br/><br/>
+    </div>
 {% endblock %}

@@ -10,20 +10,61 @@ use Symfony\Component\HttpFoundation\Request;
  * Item controller.
  *
  */
-class ItemsController extends Controller
-{
+class ItemsController extends Controller {
+
     /**
      * Lists all item entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
+        $model_id = $request->query->getInt('mid', 0);
+        if ($model_id < 0) {
+            $model_id = 0;
+        }
+
+        $auto_id = $request->query->getInt('aid', 0);
+        if ($auto_id < 0) {
+            $auto_id = 0;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
+                ->findAllOrderedByName();
+
+        $autoMenu = null;
+        if ($model_id) {
+            $em = $this->getDoctrine()->getManager();
+            $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
+                    ->findByIdOrderedByName($model_id);
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $items = $em->getRepository('ShopMenuBundle:Items')->findAll();
+        //$items = $em->getRepository('ShopMenuBundle:Items')->findAll();
+
+        $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');
+        if ($model_id > 0) {
+            $dql = $dql->where('a.modelMenuId = :mid')->setParameter('mid', $model_id);
+
+            if ($auto_id > 0) {
+                $dql = $dql->andWhere('a.autoMenuId = :aid')->setParameter('aid', $auto_id);
+            }
+        }
+
+        $query = $dql->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $items = $paginator->paginate(
+                $query, /* query NOT result */ $request->query->getInt('page', 1)/* page number */, 10/* limit per page */
+        );
+
 
         return $this->render('AdminBundle:Items:index.html.twig', array(
-            'items' => $items,
+                    'items' => $items,
+                    'modelMenus' => $modelMenus,
+                    'model_id' => $model_id,
+                    'autoMenu' => $autoMenu,
+                    'auto_id' => $auto_id,
         ));
     }
 
@@ -31,11 +72,10 @@ class ItemsController extends Controller
      * Creates a new item entity.
      *
      */
-    public function newAction(Request $request)
-    {
-                
+    public function newAction(Request $request) {
+
         $item = new Items();
-        
+
         $form = $this->createForm('AdminBundle\Form\ItemsType', $item);
         $form->handleRequest($request);
 
@@ -48,8 +88,8 @@ class ItemsController extends Controller
         }
 
         return $this->render('AdminBundle:Items:new.html.twig', array(
-            'item' => $item,
-            'form' => $form->createView(),
+                    'item' => $item,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -57,13 +97,12 @@ class ItemsController extends Controller
      * Finds and displays a item entity.
      *
      */
-    public function showAction(Items $item)
-    {
+    public function showAction(Items $item) {
         $deleteForm = $this->createDeleteForm($item);
 
         return $this->render('AdminBundle:Items:show.html.twig', array(
-            'item' => $item,
-            'delete_form' => $deleteForm->createView(),
+                    'item' => $item,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -71,8 +110,7 @@ class ItemsController extends Controller
      * Displays a form to edit an existing item entity.
      *
      */
-    public function editAction(Request $request, Items $item)
-    {
+    public function editAction(Request $request, Items $item) {
         $deleteForm = $this->createDeleteForm($item);
         $editForm = $this->createForm('AdminBundle\Form\ItemsType', $item);
         $editForm->handleRequest($request);
@@ -84,9 +122,9 @@ class ItemsController extends Controller
         }
 
         return $this->render('AdminBundle:Items:edit.html.twig', array(
-            'item' => $item,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'item' => $item,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -94,8 +132,7 @@ class ItemsController extends Controller
      * Deletes a item entity.
      *
      */
-    public function deleteAction(Request $request, Items $item)
-    {
+    public function deleteAction(Request $request, Items $item) {
         $form = $this->createDeleteForm($item);
         $form->handleRequest($request);
 
@@ -115,12 +152,12 @@ class ItemsController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Items $item)
-    {
+    private function createDeleteForm(Items $item) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('items_delete', array('id' => $item->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('items_delete', array('id' => $item->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }
