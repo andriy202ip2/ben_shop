@@ -158,7 +158,18 @@
                 });
             });
 
-            $("#mid, #aid, #did, #s1, #s2").change(function () {
+            $("#mid").change(function () {
+                $("#aid").val(0);
+                $("#did").val(0);
+                $("#form_item").submit();
+            });
+
+            $("#aid").change(function () {
+                $("#did").val(0);
+                $("#form_item").submit();
+            });
+
+            $("#did, #s1, #s2").change(function () {               
                 $("#form_item").submit();
             });
 

@@ -27,6 +27,23 @@ class ItemsController extends Controller {
             $auto_id = 0;
         }
 
+        $data_id = $request->query->getInt('did', 0);
+        if ($data_id < 0) {
+            $data_id = 0;
+        }
+
+        $s1 = $request->query->getInt('s1', 0);
+        $s1 = $s1 >= 1 ? 1 : 0;
+
+        $s2 = $request->query->getInt('s2', 0);
+        $s2 = $s2 >= 1 ? 2 : 0;
+
+        $side = ($s1 + $s2) % 3;
+        if (!$side) {
+            $s1 = 1;
+            $s2 = 2;
+        }
+
         $em = $this->getDoctrine()->getManager();
         $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
                 ->findAllOrderedByName();
@@ -36,6 +53,13 @@ class ItemsController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
                     ->findByIdOrderedByName($model_id);
+        }
+
+        $dataMenu = null;
+        if ($auto_id) {
+            $em = $this->getDoctrine()->getManager();
+            $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
+                    ->findByIdOrderedByName($model_id, $auto_id);
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -48,9 +72,17 @@ class ItemsController extends Controller {
 
             if ($auto_id > 0) {
                 $dql = $dql->andWhere('a.autoMenuId = :aid')->setParameter('aid', $auto_id);
+                
+                if ($data_id > 0) {
+                    $dql = $dql->andWhere('a.dataMenuId = :did')->setParameter('did', $data_id);
+                }
             }
         }
 
+        if ($side) {
+            $dql = $dql->andWhere('a.sideId = :side')->setParameter('side', $side);
+        }
+        
         $query = $dql->getQuery();
 
         $paginator = $this->get('knp_paginator');
@@ -65,6 +97,10 @@ class ItemsController extends Controller {
                     'model_id' => $model_id,
                     'autoMenu' => $autoMenu,
                     'auto_id' => $auto_id,
+                    'dataMenu' => $dataMenu,
+                    'data_id' => $data_id,
+                    's1' => $s1,
+                    's2' => $s2,
         ));
     }
 

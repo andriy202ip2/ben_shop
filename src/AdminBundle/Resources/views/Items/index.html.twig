@@ -5,26 +5,56 @@
     <div class="text-center">
         <h1>Запчастини</h1>
 
-        <form id="form_item" method="GET">
-            Пшук: 
-            <select name="mid" id="mid" class="cat">
-                <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
-                {% for modelMenu in modelMenus %}
-                    <option value="{{ modelMenu.id }}" {{ model_id == modelMenu.id  ? 'selected=""' : '' }}>
-                        {{ modelMenu.name }}
-                    </option>                                          
-                {% endfor %}
-            </select>
+            <form id="form_item" method="GET">
+                <select name="mid" id="mid" class="cat">
+                    <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                    {% for modelMenu in modelMenus %}
+                        <option value="{{ modelMenu.id }}" {{ model_id == modelMenu.id  ? 'selected=""' : '' }}>
+                            {{ modelMenu.name }}
+                        </option>                                          
+                    {% endfor %}
+                </select>
 
-            <select name="aid" id="aid" class="cat" {{ model_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
-                <option value="0" {{ auto_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
-                {% for auto in autoMenu %}
-                    <option value="{{ auto.id }}" {{ auto_id == auto.id  ? 'selected=""' : '' }}>
-                        {{ auto.name }}
-                    </option>                                          
-                {% endfor %}
-            </select>
-        </form>
+                <select name="aid" id="aid" class="cat" {{ model_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
+                    <option value="0" {{ auto_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                    {% for auto in autoMenu %}
+                        <option value="{{ auto.id }}" {{ auto_id == auto.id  ? 'selected=""' : '' }}>
+                            {{ auto.name }}
+                        </option>                                          
+                    {% endfor %}
+                </select>
+
+                <select name="did" id="did" class="cat" {{ auto_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
+                    <option value="0" {{ data_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
+                    {% for data in dataMenu %}
+                        <option value="{{ data.id }}" {{ data_id == data.id  ? 'selected=""' : '' }}>
+                            {{ data.name }}
+                        </option>                                          
+                    {% endfor %}
+                </select>
+                <br>
+
+                <br>
+
+                <table border="0" align="center" style="text-align:center">
+                    <tbody>
+                        <tr><td><img style="cursor:pointer;" src="/img/front_on.png" id="si1"></td>
+                            <td><img style="cursor:pointer; border-left: solid" src="/img/back_on.png" id="si2"></td>
+                            <td width="30"></td>
+                            <td><img align="left" src="/img/shock_on.png"></td>
+                        </tr>
+
+                        <tr><td style="font-size:11px">
+                                передня  <input type="checkbox" name="s1" id="s1" value="1" {{ s1  ? 'checked=""' : '' }}> 
+                            </td><td style="font-size:11px">
+                                задня  <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>
+                            </td><td></td>
+                            <td>Амортизатор </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
 
         <br/><a href="{{ path('items_new') }}">Створити нову запчастиниу</a><br/><br/>
 
@@ -36,75 +66,103 @@
             {{ knp_pagination_render(items) }}
         </div><br/>
 
-        <table align="center" class="admin-table admin-table-width-big">
-            <thead>
-                <tr>
-                    <th>Дані:</th>
-                    <th>Sideid</th>
-                    <!--<th>Details</th>-->
-                    <th>Код GH</th>
-                    <!--<th>Itemid</th>-->
-                    <th>Сторона</th>
-                    <!--<th>Fit</th>-->
-                    <th>Img</th>
-                    <!--<th>Imgdata</th>-->
-                    <!--<th>Id</th>-->
-                    <th>Дії</th>
-                </tr>
-            </thead>
+        <table border="0" class="catalog admin-smol-font" align="center">
             <tbody>
-                {% for item in items %}
+                <tr>
+                    <td><b>Дані</b></td>
+                    <td><b>Код GH</b></td>
+                    <td><b>Сторона</b></td>
+                    <td><b>Застосування</b></td>
+                    <td><b>Фото</b></td>
+                    <td><b>Дії</b></td>
+                </tr>
+                <tr>
+                    <td colspan="6"><hr></td>
+                </tr>
+
+                {% for Item in items %}
+
                     <tr>
                         <td>
-                            <br/>
                             <table style="width:100%">
                                 <tr>
-                                    <th>Модель: </th>
+                                    <th>{{ knp_pagination_sortable(items, 'Модель:', 'a.modelMenuId') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ item.modelMenuId }}</td>
+                                    <td>{{ Item.modelMenuId }}</td>
                                 </tr>
                             </table> 
                             <table style="width:100%">
                                 <tr>
-                                    <th>Авто: </th>
+                                    <th>{{ knp_pagination_sortable(items, 'Авто:', 'a.autoMenuId') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ item.autoMenuId }}</td>
+                                    <td>{{ Item.autoMenuId }}</td>
                                 </tr>
                             </table> 
                             <table style="width:100%">
                                 <tr>
-                                    <th>Рока: </th>
+                                    <th>{{ knp_pagination_sortable(items, 'Рока:', 'a.dataMenuId') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ item.dataMenuId }}</td>
+                                    <td>{{ Item.dataMenuId }}</td>
                                 </tr>
                             </table> 
-                            <br/>
+
                         </td>
-                        <td>{{item.sideId}}</td>
-                        <!--<td>{{ item.details }}</td>-->
-                        <td>{{ item.name | raw }}
-                            <a href="#" class="item_dialog" val="item{{ item.id }}"><img src="/img/info-small.png" style="border:0"></a>
+                        <td>
+                            {{ Item.name | raw }}
+                            <a href="#" class="item_dialog" val="item{{ Item.id }}">
+                                <img src="/img/info-small.png" style="border:0"></a>
                         </td>
-                        <!--<td>{{ item.itemId }}</td>>-->
-                        <td>{{ item.side | raw}}</td>
-                        <!--<td>{{ item.fit }}</td>-->
-                        <td>{{ item.img }}</td>
-                        <!--<td>{{ item.imgData }}</td>-->
-                        <!--<td>{{ item.id }}</td>-->
+                        <td>{{ Item.side | raw}}</td>
+                        <td>{{ Item.fit | raw}}</td>
+                        <td>
+
+                            <a href="#" class="item_dialog" val="item{{ Item.id }}" title="&lt;img src=&#39;/img/upload/{{ Item.img }}&#39; class=&#39;img_big&#39;&gt;{{ Item.imgData }}">
+                                <img src="/img/camera.png"></a>   
+                            <div class="item{{ Item.id }}i" style="display:none;">
+                                <img src="/img/upload/{{ Item.img }}" class="img_big">
+                                {{ Item.imgData | raw}}
+                            </div>
+                            <div class="item{{ Item.id }}t" style="display:none;">                                       
+                                {{ Item.imgData | raw}}
+                            </div>
+                        </td>
                         <td>
                             <br/>
-                            <a href="{{ path('items_show', { 'id': item.id }) }}">Показати</a>
-                            <br/>
-                            <a href="{{ path('items_edit', { 'id': item.id }) }}">Редагувати</a>
+                            <a href="{{ path('items_show', { 'id': Item.id }) }}">Показати</a>
+                            <br/><br/>
+                            <a href="{{ path('items_edit', { 'id': Item.id }) }}">Редагувати</a>
                             <br/><br/>
                         </td>
                     </tr>
-                {% endfor %}
+                    <tr>
+                        <td colspan="6" class="item_element">
+                            <div class="showApplication item_on">Дисплей додаткових додатків</div>
+                            <div class="showApplication item_off" style="display:none;">Приховати</div>
+                            <div style="display:none;" class="item_info item{{ Item.id }}">
+                                <center>
+                                    {{ Item.details | raw}} 
+                                </center>
+                            </div>
+                            <hr></td>
+                    </tr>
+
+                {% endfor %}                
+
             </tbody>
         </table>
+
+        <!-- ui-dialog -->
+        <div id="dialog" title="Dialog Title">            
+            <table style="width:100%">
+                <tr>
+                    <th><div id="dialog_data" style="width: 650px">dialog data</div></th>
+                    <th><div id="dialog_img" style="width: 500px">dialog img</div></th>
+                </tr>
+            </table> 
+        </div>
 
         <br/><div class="navigation">
             {{ knp_pagination_render(items) }}
@@ -112,4 +170,81 @@
 
         <br/><a href="{{  path('items_new') }}">Створити нову запчастиниу</a><br/><br/>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+
+            $("#mid").change(function () {
+                $("#aid").val(0);
+                $("#did").val(0);
+                $("#form_item").submit();
+            });
+
+            $("#aid").change(function () {
+                $("#did").val(0);
+                $("#form_item").submit();
+            });
+
+            $("#did, #s1, #s2").change(function () {               
+                $("#form_item").submit();
+            });
+
+            $("#si1").click(function () {
+                $('#s1').prop('checked', !$('#s1').prop('checked'));
+                $("#form_item").submit();
+            });
+
+            $("#si2").click(function () {
+                $('#s2').prop('checked', !$('#s2').prop('checked'));
+                $("#form_item").submit();
+            });
+
+            $("#dialog").dialog({
+                autoOpen: false,
+                width: 1200,
+                buttons: []
+            });
+
+            $(".item_dialog").each(function () {
+                $(this).click(function () {
+                    var id = $(this).attr('val');
+
+                    var html = $("." + id).html();
+                    var html2 = $("." + id + "i").html();
+                    var html3 = $("." + id + "t").html();
+
+                    $("#dialog_data").html(html);
+                    $("#dialog_img").html(html2);
+
+                    $(".ui-dialog-title").html(html3);
+
+                    $("#dialog").dialog("open");
+
+                    return false;
+                });
+            });
+
+            $(".item_element").each(function () {
+
+                var obj = $(this);
+
+                obj.find(".item_on").click(function () {
+                    $(this).css("display", "none");
+                    obj.find(".item_off").css("display", "block");
+                    obj.find(".item_info").css("display", "block");
+
+                });
+
+                obj.find(".item_off").click(function () {
+                    $(this).css("display", "none");
+                    obj.find(".item_on").css("display", "block");
+                    obj.find(".item_info").css("display", "none");
+                });
+
+            });
+
+        });
+    </script>    
 {% endblock %}
