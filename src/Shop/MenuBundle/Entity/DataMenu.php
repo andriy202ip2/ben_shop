@@ -3,6 +3,7 @@
 namespace Shop\MenuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * DataMenu
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class DataMenu
 {
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Items", mappedBy="data")
+     */    
+    private $items;
     
     /**
      * @ORM\ManyToOne(targetEntity="AutoMenu", inversedBy="datas")
@@ -24,7 +30,7 @@ class DataMenu
      * @ORM\JoinColumn(name="model_menu_id", referencedColumnName="id")
      */
     private $model;
-    
+        
     /**
      * @var integer
      *
@@ -55,7 +61,12 @@ class DataMenu
      */
     private $id;
 
-
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }    
+    
+    
     public function getAuto()
     {
         return $this->auto;

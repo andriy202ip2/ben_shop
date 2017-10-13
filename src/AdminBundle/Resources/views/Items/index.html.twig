@@ -89,7 +89,9 @@
                                     <th>{{ knp_pagination_sortable(items, 'Модель:', 'a.modelMenuId') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ Item.modelMenuId }}</td>
+                                    <td>
+                                        {{ Item.model.name }}
+                                    </td>
                                 </tr>
                             </table> 
                             <table style="width:100%">
@@ -97,7 +99,9 @@
                                     <th>{{ knp_pagination_sortable(items, 'Авто:', 'a.autoMenuId') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ Item.autoMenuId }}</td>
+                                    <td>
+                                        {{ Item.auto.name }}
+                                    </td>
                                 </tr>
                             </table> 
                             <table style="width:100%">
@@ -105,7 +109,9 @@
                                     <th>{{ knp_pagination_sortable(items, 'Рока:', 'a.dataMenuId') }}</th>
                                 </tr>
                                 <tr>
-                                    <td>{{ Item.dataMenuId }}</td>
+                                    <td>
+                                        {{ Item.data.name }}
+                                    </td>
                                 </tr>
                             </table> 
 

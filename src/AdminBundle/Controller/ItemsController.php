@@ -137,7 +137,7 @@ class ItemsController extends Controller {
         $deleteForm = $this->createDeleteForm($item);
 
         return $this->render('AdminBundle:Items:show.html.twig', array(
-                    'item' => $item,
+                    'Item' => $item,
                     'delete_form' => $deleteForm->createView(),
         ));
     }

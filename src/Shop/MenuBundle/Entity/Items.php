@@ -12,6 +12,25 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Items
 {
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="DataMenu", inversedBy="items")
+     * @ORM\JoinColumn(name="data_menu_id", referencedColumnName="id")
+     */
+    private $data;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AutoMenu", inversedBy="datas")
+     * @ORM\JoinColumn(name="auto_menu_id", referencedColumnName="id")
+     */
+    private $auto;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ModelMenu", inversedBy="autos")
+     * @ORM\JoinColumn(name="model_menu_id", referencedColumnName="id")
+     */
+    private $model;
+        
     /**
      * @var integer
      *
@@ -98,7 +117,43 @@ class Items
      */
     private $id;
 
+    
+    public function getData()
+    {
+        return $this->data;
+    }
+    
+    public function setData(\Shop\MenuBundle\Entity\DataMenu $data = null)
+    {
+        $this->data = $data;
 
+        return $this;
+    }
+    
+    
+    public function getAuto()
+    {
+        return $this->auto;
+    }
+    
+    public function setAuto(\Shop\MenuBundle\Entity\AutoMenu $auto = null)
+    {
+        $this->auto = $auto;
+
+        return $this;
+    }
+
+    public function getModel()
+    {
+        return $this->model;
+    }
+    
+    public function setModel(\Shop\MenuBundle\Entity\ModelMenu $model = null)
+    {
+        $this->model = $model;
+
+        return $this;
+    }    
 
     /**
      * Set modelMenuId
