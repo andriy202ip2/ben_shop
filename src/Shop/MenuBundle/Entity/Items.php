@@ -3,6 +3,7 @@
 namespace Shop\MenuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Items
@@ -12,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Items
 {
-    
+        
     /**
      * @ORM\ManyToOne(targetEntity="DataMenu", inversedBy="items")
      * @ORM\JoinColumn(name="data_menu_id", referencedColumnName="id")
@@ -97,8 +98,14 @@ class Items
     /**
      * @var string
      *
-     * @ORM\Column(name="img", type="string", length=256, nullable=false)
-     */
+     * @ORM\Column(name="img", type="string", length=256, nullable=true)
+     * @Assert\File(
+     *     maxSize = "2M",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
+     *     maxSizeMessage = "Максимальний розмір файлю має бути 2MB.",
+     *     mimeTypesMessage = "Тільки малюнки дозволено загружати."
+     * )
+     */    
     private $img;
 
     /**
@@ -394,7 +401,7 @@ class Items
     {
         return $this->img;
     }
-
+    
     /**
      * Set imgData
      *

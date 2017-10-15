@@ -72,7 +72,7 @@ class ItemsController extends Controller {
 
             if ($auto_id > 0) {
                 $dql = $dql->andWhere('a.autoMenuId = :aid')->setParameter('aid', $auto_id);
-                
+
                 if ($data_id > 0) {
                     $dql = $dql->andWhere('a.dataMenuId = :did')->setParameter('did', $data_id);
                 }
@@ -82,7 +82,7 @@ class ItemsController extends Controller {
         if ($side) {
             $dql = $dql->andWhere('a.sideId = :side')->setParameter('side', $side);
         }
-        
+
         $query = $dql->getQuery();
 
         $paginator = $this->get('knp_paginator');
@@ -112,13 +112,18 @@ class ItemsController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $no_submit = $request->request->getInt('no_submit', 0);
-        
+
         $item = new Items();
 
         $form = $this->createForm('AdminBundle\Form\ItemsType', $item, array('em' => $em, 'no_submit' => $no_submit));
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid() && $no_submit >= 2) {
+            
+            if ($item->getImg() != NULL) {                
+                $item = $this->saveImg($item);
+            }            
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($item);
             $em->flush();
@@ -150,15 +155,24 @@ class ItemsController extends Controller {
      *
      */
     public function editAction(Request $request, Items $item) {
-        
+
         $em = $this->getDoctrine()->getManager();
+        $db_item = $em->getRepository('ShopMenuBundle:Items')->findOneBy(["id" => $item->getId()])->getImg();
+
         $no_submit = $request->request->getInt('no_submit', 0);
-        
+
         $deleteForm = $this->createDeleteForm($item);
         $editForm = $this->createForm('AdminBundle\Form\ItemsType', $item, array('em' => $em, 'no_submit' => $no_submit));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid() && $no_submit >= 2) {
+
+            if ($item->getImg() == NULL) {
+                $item->setImg($db_item);
+            } else {
+                $item = $this->saveImg($item);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('items_edit', array('id' => $item->getId()));
@@ -201,6 +215,20 @@ class ItemsController extends Controller {
                         ->setMethod('DELETE')
                         ->getForm()
         ;
+    }
+
+    private function saveImg(Items $item) {
+
+        $file = $item->getImg();
+        $fileName = md5(uniqid()) . '.jpeg';
+
+        $file->move(
+                $this->getParameter('img_directory'), $fileName
+        );
+
+        $item->setImg($fileName);
+        
+        return $item;
     }
 
 }

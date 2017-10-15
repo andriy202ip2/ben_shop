@@ -87,7 +87,9 @@ class ItemsType extends AbstractType {
                     'label' => 'Застосування: ',
                     'label_attr' => array('class' => 'admin-text-lebel')
                 ))
-                ->add('img', TextType::class, array(
+                ->add('img', FileType::class, array(
+                    'data_class' => null,
+                    'required' => false,
                     'attr' => array(
                         'class' => 'admin-input'
                     ),
