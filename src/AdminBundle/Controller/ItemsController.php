@@ -110,12 +110,15 @@ class ItemsController extends Controller {
      */
     public function newAction(Request $request) {
 
+        $em = $this->getDoctrine()->getManager();
+        $no_submit = $request->request->getInt('no_submit', 0);
+        
         $item = new Items();
 
-        $form = $this->createForm('AdminBundle\Form\ItemsType', $item);
+        $form = $this->createForm('AdminBundle\Form\ItemsType', $item, array('em' => $em, 'no_submit' => $no_submit));
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $no_submit >= 2) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($item);
             $em->flush();
@@ -147,11 +150,15 @@ class ItemsController extends Controller {
      *
      */
     public function editAction(Request $request, Items $item) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $no_submit = $request->request->getInt('no_submit', 0);
+        
         $deleteForm = $this->createDeleteForm($item);
-        $editForm = $this->createForm('AdminBundle\Form\ItemsType', $item);
+        $editForm = $this->createForm('AdminBundle\Form\ItemsType', $item, array('em' => $em, 'no_submit' => $no_submit));
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid() && $no_submit >= 2) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('items_edit', array('id' => $item->getId()));

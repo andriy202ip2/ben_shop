@@ -671,6 +671,16 @@ table.catalogwebshop tr td{
     margin: 5px;
 }
 
+.admin-textrea {
+    width:450px;
+    height:220px;
+    margin: 5px;
+}
+
+.admin-text-lebel{
+    display:block;
+}
+
 .admin-smol-font{
     font-size: 9pt;
 }

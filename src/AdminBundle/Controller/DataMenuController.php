@@ -123,7 +123,7 @@ class DataMenuController extends Controller {
         $editForm = $this->createForm('AdminBundle\Form\DataMenuType', $dataMenu, array('em' => $em, 'no_submit' => $no_submit));
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid() && $no_submit >= 2) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('datamenu_edit', array('id' => $dataMenu->getId()));

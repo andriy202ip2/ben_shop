@@ -55,7 +55,7 @@ class Items
     /**
      * @var boolean
      *
-     * @ORM\Column(name="side_id", type="boolean", nullable=false)
+     * @ORM\Column(name="side_id", type="smallint", nullable=false)
      */
     private $sideId;
 
