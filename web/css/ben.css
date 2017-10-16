@@ -686,6 +686,12 @@ table.catalogwebshop tr td{
     margin: 15px;
 }
 
+.text-marning {
+    margin-bottom: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
 .admin-textrea {
     width:450px;
     height:220px;

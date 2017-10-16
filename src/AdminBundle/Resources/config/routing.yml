@@ -21,3 +21,7 @@ admin_datamenu:
 admin_items:
     resource: "@AdminBundle/Resources/config/routing/items.yml"
     prefix:   /items
+    
+admin_about:
+    resource: "@AdminBundle/Resources/config/routing/about.yml"
+    prefix:   /about
