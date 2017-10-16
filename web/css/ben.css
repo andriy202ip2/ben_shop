@@ -684,3 +684,11 @@ table.catalogwebshop tr td{
 .admin-smol-font{
     font-size: 9pt;
 }
+
+#cke_shop_menubundle_items_name, 
+#cke_shop_menubundle_items_side,
+#cke_shop_menubundle_items_fit,
+#cke_shop_menubundle_items_imgData,
+#cke_shop_menubundle_items_details {
+    margin:auto;
+}

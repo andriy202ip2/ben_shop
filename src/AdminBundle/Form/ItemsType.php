@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class ItemsType extends AbstractType {
 
@@ -60,7 +61,18 @@ class ItemsType extends AbstractType {
                     ),
                     'label' => 'Сторона: '
                 ))
-                ->add('name', TextareaType::class, array(
+                ->add('img', FileType::class, array(
+                    'data_class' => null,
+                    'required' => false,
+                    'attr' => array(
+                        'class' => 'admin-input'
+                    ),
+                    'label' => 'Малюнок: '
+                ))                
+                ->add('name', CKEditorType::class, array(
+                    'config' => array(
+                        'width' => '700px',
+                    ),
                     'attr' => array(
                         'class' => 'admin-textrea'
                     ),
@@ -73,36 +85,40 @@ class ItemsType extends AbstractType {
                     ),
                     'label' => 'Айди продукта: '
                 ))
-                ->add('side', TextareaType::class, array(
+                ->add('side', CKEditorType::class, array(
+                    'config' => array(
+                        'width' => '700px',
+                    ),
                     'attr' => array(
                         'class' => 'admin-textrea'
                     ),
-                    'label' => 'Сторона: ',
+                    'label' => 'Сторона Опис: ',
                     'label_attr' => array('class' => 'admin-text-lebel')
                 ))
-                ->add('fit', TextareaType::class, array(
+                ->add('fit', CKEditorType::class, array(
+                    'config' => array(
+                        'width' => '700px',
+                    ),                    
                     'attr' => array(
                         'class' => 'admin-textrea'
                     ),
                     'label' => 'Застосування: ',
                     'label_attr' => array('class' => 'admin-text-lebel')
                 ))
-                ->add('img', FileType::class, array(
-                    'data_class' => null,
-                    'required' => false,
-                    'attr' => array(
-                        'class' => 'admin-input'
-                    ),
-                    'label' => 'Малюнок: '
-                ))
-                ->add('imgData', TextareaType::class, array(
+                ->add('imgData', CKEditorType::class, array(
+                    'config' => array(
+                        'width' => '700px',
+                    ),                      
                     'attr' => array(
                         'class' => 'admin-textrea'
                     ),
                     'label' => 'Опис малюнку: ',
                     'label_attr' => array('class' => 'admin-text-lebel')
                 ))
-                ->add('details', TextareaType::class, array(
+                ->add('details', CKEditorType::class, array(
+                    'config' => array(
+                        'width' => '700px',
+                    ),                     
                     'attr' => array(
                         'class' => 'admin-textrea'
                     ),
