@@ -17,6 +17,7 @@ class ItemsController extends Controller {
      *
      */
     public function indexAction(Request $request) {
+
         $model_id = $request->query->getInt('mid', 0);
         if ($model_id < 0) {
             $model_id = 0;
@@ -119,11 +120,11 @@ class ItemsController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid() && $no_submit >= 2) {
-            
-            if ($item->getImg() != NULL) {                
+
+            if ($item->getImg() != NULL) {
                 $item = $this->saveImg($item);
-            }            
-            
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($item);
             $em->flush();
@@ -170,9 +171,8 @@ class ItemsController extends Controller {
             if ($item->getImg() == NULL) {
                 $item->setImg($db_item);
             } else {
-                $item = $this->saveImg($item);
+                $item = $this->saveImg($item, $db_item);
             }
-
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('items_edit', array('id' => $item->getId()));
@@ -194,6 +194,9 @@ class ItemsController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+                        
+            $this->removeImg($item->getImg());
+            
             $em = $this->getDoctrine()->getManager();
             $em->remove($item);
             $em->flush();
@@ -210,6 +213,7 @@ class ItemsController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Items $item) {
+
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('items_delete', array('id' => $item->getId())))
                         ->setMethod('DELETE')
@@ -217,18 +221,32 @@ class ItemsController extends Controller {
         ;
     }
 
-    private function saveImg(Items $item) {
+    private function saveImg(Items $item, $img = NULL) {
 
         $file = $item->getImg();
-        $fileName = md5(uniqid()) . '.jpeg';
+
+        if ($img != NULL && strlen($img) > 1) {
+            $fileName = $img;
+        } else {
+            $fileName = md5(uniqid()) . '.jpeg';
+        }
 
         $file->move(
                 $this->getParameter('img_directory'), $fileName
         );
 
         $item->setImg($fileName);
-        
+
         return $item;
+    }
+
+    private function removeImg($img) {        
+        if ($img != NULL && strlen($img) > 1) {
+            $url = $this->getParameter('img_directory') . '/' . $img;
+            if (file_exists($url)) {
+                unlink($url);
+            }
+        }
     }
 
 }
