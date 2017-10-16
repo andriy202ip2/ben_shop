@@ -110,19 +110,19 @@ class ItemsController extends Controller {
      *
      */
     public function newAction(Request $request) {
-
+        
         $em = $this->getDoctrine()->getManager();
         $no_submit = $request->request->getInt('no_submit', 0);
 
         $item = new Items();
-
+                
         $form = $this->createForm('AdminBundle\Form\ItemsType', $item, array('em' => $em, 'no_submit' => $no_submit));
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid() && $no_submit >= 2) {
 
             if ($item->getImg() != NULL) {
-                $item = $this->saveImg($item);
+                $item = $item->saveImg($item, $this->getParameter('img_directory'));
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -171,7 +171,7 @@ class ItemsController extends Controller {
             if ($item->getImg() == NULL) {
                 $item->setImg($db_item);
             } else {
-                $item = $this->saveImg($item, $db_item);
+                $item = $item->saveImg($item, $this->getParameter('img_directory'), $db_item);
             }
             $this->getDoctrine()->getManager()->flush();
 
@@ -195,7 +195,7 @@ class ItemsController extends Controller {
 
         if ($form->isSubmitted() && $form->isValid()) {
                         
-            $this->removeImg($item->getImg());
+            $item->removeImg($item->getImg(), $this->getParameter('img_directory'));
             
             $em = $this->getDoctrine()->getManager();
             $em->remove($item);
@@ -220,33 +220,5 @@ class ItemsController extends Controller {
                         ->getForm()
         ;
     }
-
-    private function saveImg(Items $item, $img = NULL) {
-
-        $file = $item->getImg();
-
-        if ($img != NULL && strlen($img) > 1) {
-            $fileName = $img;
-        } else {
-            $fileName = md5(uniqid()) . '.jpeg';
-        }
-
-        $file->move(
-                $this->getParameter('img_directory'), $fileName
-        );
-
-        $item->setImg($fileName);
-
-        return $item;
-    }
-
-    private function removeImg($img) {        
-        if ($img != NULL && strlen($img) > 1) {
-            $url = $this->getParameter('img_directory') . '/' . $img;
-            if (file_exists($url)) {
-                unlink($url);
-            }
-        }
-    }
-
+    
 }

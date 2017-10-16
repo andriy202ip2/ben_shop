@@ -11,27 +11,26 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="items", indexes={@ORM\Index(name="model_menu_id", columns={"model_menu_id"}), @ORM\Index(name="auto_menu_id", columns={"auto_menu_id"}), @ORM\Index(name="data_menu_id", columns={"data_menu_id"}), @ORM\Index(name="side_id", columns={"side_id"})})
  * @ORM\Entity(repositoryClass="Shop\MenuBundle\Repository\ItemsRepository")
  */
-class Items
-{
-        
+class Items {
+
     /**
      * @ORM\ManyToOne(targetEntity="DataMenu", inversedBy="items")
      * @ORM\JoinColumn(name="data_menu_id", referencedColumnName="id")
      */
     private $data;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="AutoMenu", inversedBy="datas")
      * @ORM\JoinColumn(name="auto_menu_id", referencedColumnName="id")
      */
     private $auto;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="ModelMenu", inversedBy="autos")
      * @ORM\JoinColumn(name="model_menu_id", referencedColumnName="id")
      */
     private $model;
-        
+
     /**
      * @var integer
      *
@@ -105,7 +104,7 @@ class Items
      *     maxSizeMessage = "Максимальний розмір файлю має бути 2MB.",
      *     mimeTypesMessage = "Тільки малюнки дозволено загружати."
      * )
-     */    
+     */
     private $img;
 
     /**
@@ -124,43 +123,35 @@ class Items
      */
     private $id;
 
-    
-    public function getData()
-    {
+    public function getData() {
         return $this->data;
     }
-    
-    public function setData(\Shop\MenuBundle\Entity\DataMenu $data = null)
-    {
+
+    public function setData(\Shop\MenuBundle\Entity\DataMenu $data = null) {
         $this->data = $data;
 
         return $this;
     }
-    
-    
-    public function getAuto()
-    {
+
+    public function getAuto() {
         return $this->auto;
     }
-    
-    public function setAuto(\Shop\MenuBundle\Entity\AutoMenu $auto = null)
-    {
+
+    public function setAuto(\Shop\MenuBundle\Entity\AutoMenu $auto = null) {
         $this->auto = $auto;
 
         return $this;
     }
 
-    public function getModel()
-    {
+    public function getModel() {
         return $this->model;
     }
-    
-    public function setModel(\Shop\MenuBundle\Entity\ModelMenu $model = null)
-    {
+
+    public function setModel(\Shop\MenuBundle\Entity\ModelMenu $model = null) {
         $this->model = $model;
 
         return $this;
-    }    
+    }
 
     /**
      * Set modelMenuId
@@ -169,8 +160,7 @@ class Items
      *
      * @return Items
      */
-    public function setModelMenuId($modelMenuId)
-    {
+    public function setModelMenuId($modelMenuId) {
         $this->modelMenuId = $modelMenuId;
 
         return $this;
@@ -181,8 +171,7 @@ class Items
      *
      * @return integer
      */
-    public function getModelMenuId()
-    {
+    public function getModelMenuId() {
         return $this->modelMenuId;
     }
 
@@ -193,8 +182,7 @@ class Items
      *
      * @return Items
      */
-    public function setAutoMenuId($autoMenuId)
-    {
+    public function setAutoMenuId($autoMenuId) {
         $this->autoMenuId = $autoMenuId;
 
         return $this;
@@ -205,8 +193,7 @@ class Items
      *
      * @return integer
      */
-    public function getAutoMenuId()
-    {
+    public function getAutoMenuId() {
         return $this->autoMenuId;
     }
 
@@ -217,8 +204,7 @@ class Items
      *
      * @return Items
      */
-    public function setDataMenuId($dataMenuId)
-    {
+    public function setDataMenuId($dataMenuId) {
         $this->dataMenuId = $dataMenuId;
 
         return $this;
@@ -229,8 +215,7 @@ class Items
      *
      * @return integer
      */
-    public function getDataMenuId()
-    {
+    public function getDataMenuId() {
         return $this->dataMenuId;
     }
 
@@ -241,8 +226,7 @@ class Items
      *
      * @return Items
      */
-    public function setSideId($sideId)
-    {
+    public function setSideId($sideId) {
         $this->sideId = $sideId;
 
         return $this;
@@ -253,8 +237,7 @@ class Items
      *
      * @return boolean
      */
-    public function getSideId()
-    {
+    public function getSideId() {
         return $this->sideId;
     }
 
@@ -265,8 +248,7 @@ class Items
      *
      * @return Items
      */
-    public function setDetails($details)
-    {
+    public function setDetails($details) {
         $this->details = $details;
 
         return $this;
@@ -277,8 +259,7 @@ class Items
      *
      * @return string
      */
-    public function getDetails()
-    {
+    public function getDetails() {
         return $this->details;
     }
 
@@ -289,8 +270,7 @@ class Items
      *
      * @return Items
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -301,8 +281,7 @@ class Items
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -313,8 +292,7 @@ class Items
      *
      * @return Items
      */
-    public function setItemId($itemId)
-    {
+    public function setItemId($itemId) {
         $this->itemId = $itemId;
 
         return $this;
@@ -325,8 +303,7 @@ class Items
      *
      * @return string
      */
-    public function getItemId()
-    {
+    public function getItemId() {
         return $this->itemId;
     }
 
@@ -337,8 +314,7 @@ class Items
      *
      * @return Items
      */
-    public function setSide($side)
-    {
+    public function setSide($side) {
         $this->side = $side;
 
         return $this;
@@ -349,8 +325,7 @@ class Items
      *
      * @return string
      */
-    public function getSide()
-    {
+    public function getSide() {
         return $this->side;
     }
 
@@ -361,8 +336,7 @@ class Items
      *
      * @return Items
      */
-    public function setFit($fit)
-    {
+    public function setFit($fit) {
         $this->fit = $fit;
 
         return $this;
@@ -373,8 +347,7 @@ class Items
      *
      * @return string
      */
-    public function getFit()
-    {
+    public function getFit() {
         return $this->fit;
     }
 
@@ -385,8 +358,7 @@ class Items
      *
      * @return Items
      */
-    public function setImg($img)
-    {
+    public function setImg($img) {
         $this->img = $img;
 
         return $this;
@@ -397,11 +369,10 @@ class Items
      *
      * @return string
      */
-    public function getImg()
-    {
+    public function getImg() {
         return $this->img;
     }
-    
+
     /**
      * Set imgData
      *
@@ -409,8 +380,7 @@ class Items
      *
      * @return Items
      */
-    public function setImgData($imgData)
-    {
+    public function setImgData($imgData) {
         $this->imgData = $imgData;
 
         return $this;
@@ -421,8 +391,7 @@ class Items
      *
      * @return string
      */
-    public function getImgData()
-    {
+    public function getImgData() {
         return $this->imgData;
     }
 
@@ -431,8 +400,36 @@ class Items
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+    public function saveImg(Items $item, $img_directory, $img = NULL) {
+
+        $file = $item->getImg();
+
+        if ($img != NULL && strlen($img) > 1) {
+            $fileName = $img;
+        } else {
+            $fileName = md5(uniqid()) . '.jpeg';
+        }
+
+        $file->move(
+                $img_directory, $fileName
+        );
+
+        $item->setImg($fileName);
+
+        return $item;
+    }
+    
+    public function removeImg($img, $img_directory) {
+        if ($img != NULL && strlen($img) > 1) {
+            $url = $img_directory . '/' . $img;
+            if (file_exists($url)) {
+                unlink($url);
+            }
+        }
+    }    
+    
 }
