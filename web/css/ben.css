@@ -43,6 +43,17 @@ select.cat
     min-width: 170px;
 
 }
+
+.color_text
+{
+    background: #f19c05;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    min-width: 170px;
+
+}
+
 table.catalog{
     border: 1;
 }
@@ -669,6 +680,10 @@ table.catalogwebshop tr td{
     width:400px;
     height:20px;
     margin: 5px;
+}
+
+.admin-chekbox {
+    margin: 15px;
 }
 
 .admin-textrea {

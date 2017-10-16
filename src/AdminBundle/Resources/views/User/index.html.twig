@@ -1,56 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    
 
-    
-    <h1>Users list</h1>
+    <div class="text-center">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Isactive</th>
-                <th>Roles</th>
-                <th>Salt</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.surname }}</td>
-                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
-                <td>{{ user.roles|join(',') }}</td>
-                <td>{{ user.salt }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <h1>Користувачі</h1>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
-        </li>
-    </ul>
+        <a href="{{ path('user_new') }}">Створити новаго користувача</a><br/><br/>
+        
+        <table align="center" class="admin-table admin-table-width">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Імя</th>
+                    <th>Прізвище</th>
+                    <th>Роль</th>
+                    <th>Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.surname }}</td>
+                        <td>{{ user.roles|join(',') }}</td>
+                        <td>
+                            <br/>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">Показати</a>
+                            <br/>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">Редагувати</a>
+                            <br/><br/>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+         <br/><a href="{{ path('user_new') }}">Створити новаго користувача</a><br/><br/>
+    </div>
 {% endblock %}

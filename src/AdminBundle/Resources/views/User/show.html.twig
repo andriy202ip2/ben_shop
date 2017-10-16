@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
+    
+    <div class="text-center"> 
+        
+    <h1>Користувач</h1>
 
-    <table>
+    <table align="center" class="admin-table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -14,7 +17,7 @@
                 <td>{{ user.username }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>Пароль зашифрований</th>
                 <td>{{ user.password }}</td>
             </tr>
             <tr>
@@ -22,39 +25,35 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Name</th>
+                <th>Імя</th>
                 <td>{{ user.name }}</td>
             </tr>
             <tr>
-                <th>Surname</th>
+                <th>Фамілія</th>
                 <td>{{ user.surname }}</td>
             </tr>
             <tr>
-                <th>Isactive</th>
-                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
+                <th>Чи активований</th>
+                <td>{% if user.isActive %}Так{% else %}Ні{% endif %}</td>
             </tr>
             <tr>
-                <th>Roles</th>
+                <th>Роль</th>
                 <td>{{ user.roles|join(',') }}</td>
             </tr>
             <tr>
-                <th>Salt</th>
+                <th>Сіль Паролю</th>
                 <td>{{ user.salt }}</td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
+        <br/><a href="{{ path('user_index') }}"><button class="ui-button ui-corner-all ui-widget">Вернутись назад</button></a><br/><br/>
+        <a href="{{ path('user_edit', { 'id': user.id }) }}"><button class="ui-button ui-corner-all ui-widget">Редагувати</button></a><br/><br/>            
+         
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <button class="ui-button ui-corner-all ui-widget">Видалити</button><br/><br/>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+            
+    </div>
 {% endblock %}
