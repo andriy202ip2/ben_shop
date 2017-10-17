@@ -25,3 +25,7 @@ admin_items:
 admin_about:
     resource: "@AdminBundle/Resources/config/routing/about.yml"
     prefix:   /about
+
+admin_contact:
+    resource: "@AdminBundle/Resources/config/routing/contact.yml"
+    prefix:   /contact
