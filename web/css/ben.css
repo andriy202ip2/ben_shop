@@ -686,6 +686,13 @@ table.catalogwebshop tr td{
     margin: 15px;
 }
 
+.marning-smoll {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
 .text-marning {
     margin-bottom: 20px;
     margin-right: 50px;

@@ -11,3 +11,7 @@ shop_about:
     path:     /about
     defaults: { _controller: ShopMenuBundle:Default:about }
     
+products:
+    resource: "@ShopMenuBundle/Resources/config/routing/products.yml"
+    prefix:   /products
+
