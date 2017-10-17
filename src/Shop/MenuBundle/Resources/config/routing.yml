@@ -3,4 +3,11 @@ shop_menu_homepage:
     path:     /
     defaults: { _controller: ShopMenuBundle:Default:index }
 
+shop_сontact:
+    path:     /сontact
+    defaults: { _controller: ShopMenuBundle:Default:сontact }
+
+shop_about:
+    path:     /about
+    defaults: { _controller: ShopMenuBundle:Default:about }
     
