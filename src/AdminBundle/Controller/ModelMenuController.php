@@ -19,15 +19,13 @@ class ModelMenuController extends Controller {
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         //$modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')->findAll();
-        
+
         $dql = $em->getRepository('ShopMenuBundle:ModelMenu')->createQueryBuilder('a');
         $query = $em->createQuery($dql);
 
         $paginator = $this->get('knp_paginator');
         $modelMenus = $paginator->paginate(
-                $query, /* query NOT result */ 
-                $request->query->getInt('page', 1)/* page number */, 
-                10/* limit per page */
+                $query, /* query NOT result */ $request->query->getInt('page', 1)/* page number */, 10/* limit per page */
         );
 
         return $this->render('AdminBundle:ModelMenu:index.html.twig', array(
@@ -98,22 +96,42 @@ class ModelMenuController extends Controller {
      *
      */
     public function deleteAction(Request $request, ModelMenu $modelMenu) {
-        
+
         $em = $this->getDoctrine()->getManager();
+
+        $Autos = $modelMenu->getAutos();
+        foreach ($Autos as $auto) {
+
+            $Datas = $auto->getDatas();            
+            foreach ($Datas as $data) {
+
+                $Items = $data->getItems();                
+                foreach ($Items as $item) {
+
+                    $item->removeImg($item->getImg(), $this->getParameter('img_directory'));
+                    $em->remove($item);
+                }
+
+                $em->remove($data);
+            }
+            
+            $em->remove($auto);
+        }
+
         $em->remove($modelMenu);
         $em->flush();
-        
-        /*
-        $form = $this->createDeleteForm($modelMenu);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($modelMenu);
-            $em->flush();
-        }
-        */
-        
+        /*
+          $form = $this->createDeleteForm($modelMenu);
+          $form->handleRequest($request);
+
+          if ($form->isSubmitted() && $form->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->remove($modelMenu);
+          $em->flush();
+          }
+         */
+
         return $this->redirectToRoute('modelmenu_index');
     }
 

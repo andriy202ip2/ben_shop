@@ -145,7 +145,15 @@ class DataMenuController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
+            
+            $Items = $dataMenu->getItems();
+            foreach ($Items as $item){                
+                $item->removeImg($item->getImg(), $this->getParameter('img_directory'));                
+                $em->remove($item);                
+            }
+            
             $em->remove($dataMenu);
             $em->flush();
         }

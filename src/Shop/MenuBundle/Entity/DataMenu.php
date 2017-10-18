@@ -66,6 +66,10 @@ class DataMenu
         $this->items = new ArrayCollection();
     }    
     
+    public function getItems()
+    {
+        return $this->items;
+    }
     
     public function getAuto()
     {
