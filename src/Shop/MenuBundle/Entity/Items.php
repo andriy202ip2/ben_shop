@@ -4,6 +4,7 @@ namespace Shop\MenuBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Money\Money;
 
 /**
  * Items
@@ -31,6 +32,13 @@ class Items {
      */
     private $model;
 
+    /**
+     * @var Money
+     *
+     * @ORM\Column(name="price", type="money", nullable=true)
+     */
+    private $price;    
+    
     /**
      * @var integer
      *
@@ -123,6 +131,28 @@ class Items {
      */
     private $id;
 
+    /**
+     * get Money
+     *
+     * @return Money
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set price
+     *
+     * @param Money $price
+     * @return TestMoney
+     */
+    public function setPrice(Money $price)
+    {
+        $this->price = $price;
+        return $this;
+    }    
+    
     public function getData() {
         return $this->data;
     }

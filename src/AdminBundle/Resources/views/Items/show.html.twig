@@ -13,11 +13,12 @@
                     <td><b>Код GH</b></td>
                     <td><b>Сторона</b></td>
                     <td><b>Застосування</b></td>
+                    <td><b>Ціна</b></td>
                     <td><b>Фото</b></td>
                     <td><b>Дії</b></td>
                 </tr>
                 <tr>
-                    <td colspan="6"><hr></td>
+                    <td colspan="7"><hr></td>
                 </tr>
 
                 <tr>
@@ -62,6 +63,15 @@
                     <td>{{ Item.side | raw}}</td>
                     <td>{{ Item.fit | raw}}</td>
                     <td>
+                        {% if Item.price == null %}
+                            Під заказ
+                        {% elseif Item.price | money_as_float == 0 %}    
+                            Під заказ
+                        {% else %}
+                            {{ Item.price | money_convert("UAH") | money_format }}                            
+                        {% endif %}
+                    </td>
+                    <td>
 
                         <a href="#" class="item_dialog" val="item{{ Item.id }}" title="&lt;img src=&#39;/img/upload/{{ Item.img }}&#39; class=&#39;img_big&#39;&gt;{{ Item.imgData }}">
                             <img src="/img/camera.png"></a>   
@@ -80,11 +90,11 @@
                         {{ form_start(delete_form) }}
                         <button class="ui-button ui-corner-all ui-widget">Видалити</button>
                         {{ form_end(delete_form) }}
-                        
+
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="6" class="item_element">
+                    <td colspan="7" class="item_element">
                         <hr>
                         <div class="showApplication item_on" style="display:none;">Дисплей додаткових додатків</div>
                         <div class="showApplication item_off">Приховати</div>
@@ -96,7 +106,7 @@
                         <hr></td>
                 </tr>
                 <tr>
-                    <td colspan="6" class="item_element">
+                    <td colspan="7" class="item_element">
                         <h2>Малюнок:</h2>
                         <img src="/img/upload/{{ Item.img }}" width="700px">
                         <hr>
@@ -115,7 +125,7 @@
             </table> 
         </div>
 
-<br/><br/>
+        <br/><br/>
 
     </div>         
 

@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Tbbc\MoneyBundle\Form\Type\MoneyType;
 
 class ItemsType extends AbstractType {
 
@@ -68,7 +69,12 @@ class ItemsType extends AbstractType {
                         'class' => 'admin-input'
                     ),
                     'label' => 'Малюнок: '
-                ))                
+                ))  
+                ->add('price', MoneyType::class, array(
+                    'attr' => array(
+                        'class' => 'admin-input'
+                    ),
+                    'label' => 'Ціна: '))
                 ->add('name', CKEditorType::class, array(
                     'config' => array(
                         'width' => '700px',

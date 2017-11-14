@@ -10,8 +10,8 @@
     <br/><br/>  
     <center>
         <table border="0" class="catalog">
-            <tbody><tr><td><b>Код GH</b></td><td><b>Сторона</b></td><td><b>Застосування</b></td><td><b>Фото</b></td></tr>
-                <tr><td colspan="4"><hr></td></tr>
+            <tbody><tr><td><b>Код GH</b></td><td><b>Сторона</b></td><td><b>Застосування</b></td><td><b>Ціна</b></td><td><b>Фото</b></td></tr>
+                <tr><td colspan="5"><hr></td></tr>
 
                 {% for Item in ItemsArray %}
 
@@ -23,6 +23,15 @@
                         </td>
                         <td>{{ Item.side | raw}}</td>
                         <td>{{ Item.fit | raw}}</td>
+                        <td>
+                            {% if Item.price == null %}
+                                Під заказ
+                            {% elseif Item.price | money_as_float == 0 %}    
+                                Під заказ
+                            {% else %}
+                                {{ Item.price | money_convert("UAH") | money_format }}                            
+                            {% endif %}
+                        </td>
                         <td>
 
                             <a href="#" class="item_dialog" val="item{{ Item.id }}" title="&lt;img src=&#39;/img/upload/{{ Item.img }}&#39; class=&#39;img_big&#39;&gt;{{ Item.imgData }}">

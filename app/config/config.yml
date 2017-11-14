@@ -41,7 +41,9 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-
+    form_themes: 
+            - 'TbbcMoneyBundle:Form:fields.html.twig'
+    
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -54,6 +56,8 @@ doctrine:
         charset: UTF8
         mapping_types:
             enum: string
+        types:
+            money: Tbbc\MoneyBundle\Type\MoneyType
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
@@ -87,4 +91,9 @@ knp_paginator:
         pagination: '@KnpPaginator/Pagination/sliding.html.twig'     # sliding pagination controls template                                    
         sortable:  "@AdminBundle/Resources/views/sortable_link.html.twig" #sort link template '@KnpPaginator/Pagination/sortable_link.html.twig'                               
         filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
-        
+
+tbbc_money:
+    currencies: ["UAH", "PLN"]
+    reference_currency: "PLN"
+    decimals: 2
+    ratio_provider: tbbc_money.ratio_provider.google

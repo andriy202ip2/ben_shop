@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/Shop/MenuBundle/Entity/DataMenu.php</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Resources/views/Datamenu/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Controller/DataMenuController.php</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Form/DataMenuType.php</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/Shop/MenuBundle/Entity/AutoMenu.php</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Resources/views/Datamenu/show.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Resources/views/Datamenu/new.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/Shop/MenuBundle/Resources/views/Default/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Resources/views/Automenu/edit.html.twig</file>
-            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/Shop/MenuBundle/Entity/ModelMenu.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
