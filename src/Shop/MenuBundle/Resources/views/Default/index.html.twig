@@ -9,6 +9,10 @@
 
             <h1>Каталог продукції</h1>
 
+            <form id="form_serch" method="GET">
+                <h3>Код GH пошук: <input type="text" name="serch" id="datepicker" class="cat" /> <samp class="ui-icon ui-icon-search" style="cursor:pointer;" id="serch_btn"></samp></h3>
+            </form>
+            
             <form id="form_item" method="GET">
                 <select name="mid" id="mid" class="cat">
                     <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
@@ -37,9 +41,8 @@
                     {% endfor %}
                 </select>
                 <br>
-
+                
                 <br>
-
                 <table border="0" style="text-align:center">
                     <tbody>
                         <tr><td><img style="cursor:pointer;" src="/img/front_on.png" id="si1"></td>
@@ -59,11 +62,11 @@
                 </table>
 
             </form>
-
+                            
             <br><br>
             <!-- WYNIKI -->
 
-            {% if model_id and auto_id and data_id %}
+            {% if IsSerch or model_id and auto_id and data_id %}
 
                 <table border="0" class="catalog">
                     <tbody><tr><td><b>Код GH</b></td><td><b>Сторона</b></td><td><b>Застосування</b></td><td><b>Ціна</b></td><td><b>Фото</b></td></tr>
@@ -85,7 +88,7 @@
                                     {% elseif Item.price | money_as_float == 0 %}    
                                         Під заказ
                                     {% else %}
-                                        {{ Item.price | money_convert("UAH") | money_format }}                            
+                                        {{ Item.price | money_convert("UAH") | money_format }} за шт.                          
                                     {% endif %}
                                 </td>
                                 <td>
@@ -141,6 +144,10 @@
 {% block javascripts %}
     <script>
         $(document).ready(function () {
+
+            $("#serch_btn").click(function () {
+                $("#form_serch").submit();
+            });
 
             $("#dialog").dialog({
                 autoOpen: false,

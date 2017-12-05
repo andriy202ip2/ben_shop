@@ -12,6 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class ItemsRepository extends EntityRepository {
 
+    public function findBySerchCodeOrderedById($serch) {
+                  
+        //echo $serch;
+        $query = $this->createQueryBuilder('i')
+            ->where('i.itemId LIKE :serch')
+            ->setParameter('serch', '%'.$serch.'%');
+                
+        $query = $query->orderBy('i.id', 'ASC')
+                 ->getQuery();
+        
+       // echo $query->getSQL();
+        
+        return $query->getResult();
+        
+    }    
     
     public function findByIdOrderedById($model_id, $auto_id, $data_id, $side) {
             

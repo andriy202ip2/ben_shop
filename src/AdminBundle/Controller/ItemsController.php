@@ -63,27 +63,43 @@ class ItemsController extends Controller {
                     ->findByIdOrderedByName($model_id, $auto_id);
         }
 
-        $em = $this->getDoctrine()->getManager();
 
-        //$items = $em->getRepository('ShopMenuBundle:Items')->findAll();
+        $serch = $request->query->get("serch", "");
+        $IsSerch = strlen($serch) > 1;
+        if ($IsSerch) {
 
-        $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');
-        if ($model_id > 0) {
-            $dql = $dql->where('a.modelMenuId = :mid')->setParameter('mid', $model_id);
+            $em = $this->getDoctrine()->getManager();
+            $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('i');
 
-            if ($auto_id > 0) {
-                $dql = $dql->andWhere('a.autoMenuId = :aid')->setParameter('aid', $auto_id);
+            $dql = $dql->where('i.itemId LIKE :serch')
+                    ->setParameter('serch', '%' . $serch . '%');
 
-                if ($data_id > 0) {
-                    $dql = $dql->andWhere('a.dataMenuId = :did')->setParameter('did', $data_id);
+        } else {
+
+
+
+            $em = $this->getDoctrine()->getManager();
+
+            //$items = $em->getRepository('ShopMenuBundle:Items')->findAll();
+
+            $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');
+            if ($model_id > 0) {
+                $dql = $dql->where('a.modelMenuId = :mid')->setParameter('mid', $model_id);
+
+                if ($auto_id > 0) {
+                    $dql = $dql->andWhere('a.autoMenuId = :aid')->setParameter('aid', $auto_id);
+
+                    if ($data_id > 0) {
+                        $dql = $dql->andWhere('a.dataMenuId = :did')->setParameter('did', $data_id);
+                    }
                 }
             }
-        }
 
-        if ($side) {
-            $dql = $dql->andWhere('a.sideId = :side')->setParameter('side', $side);
+            if ($side) {
+                $dql = $dql->andWhere('a.sideId = :side')->setParameter('side', $side);
+            }
         }
-
+        
         $query = $dql->getQuery();
 
         $paginator = $this->get('knp_paginator');
@@ -93,6 +109,7 @@ class ItemsController extends Controller {
 
 
         return $this->render('AdminBundle:Items:index.html.twig', array(
+                    'IsSerch' => $IsSerch,
                     'items' => $items,
                     'modelMenus' => $modelMenus,
                     'model_id' => $model_id,
@@ -110,15 +127,15 @@ class ItemsController extends Controller {
      *
      */
     public function newAction(Request $request) {
-        
+
         $em = $this->getDoctrine()->getManager();
         $no_submit = $request->request->getInt('no_submit', 0);
 
         $item = new Items();
-                
+
         $form = $this->createForm('AdminBundle\Form\ItemsType', $item, array('em' => $em, 'no_submit' => $no_submit));
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid() && $no_submit >= 2) {
 
             if ($item->getImg() != NULL) {
@@ -194,9 +211,9 @@ class ItemsController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-                        
+
             $item->removeImg($item->getImg(), $this->getParameter('img_directory'));
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->remove($item);
             $em->flush();
@@ -220,5 +237,5 @@ class ItemsController extends Controller {
                         ->getForm()
         ;
     }
-    
+
 }

@@ -12,7 +12,8 @@ use Shop\MenuBundle\Entity\ModelMenu;
 class DefaultController extends Controller {
 
     public function indexAction(Request $request) {
-        //echo rand(1, 100000);
+        
+        //echo rand(1, 100000);        
         $model_id = $request->query->getInt('mid', 0);
         if ($model_id < 0) {
             $model_id = 0;
@@ -57,9 +58,19 @@ class DefaultController extends Controller {
             $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
                     ->findByIdOrderedByName($model_id, $auto_id);
         }
-
+        
         $ItemsArray = null;
-        if ($model_id && $auto_id && $data_id) {
+        
+        $serch = $request->query->get("serch", "");
+        $IsSerch = strlen($serch) > 1;
+        if ($IsSerch) {
+           $em = $this->getDoctrine()->getManager();
+            $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
+                    ->findBySerchCodeOrderedById($serch);            
+        } 
+        
+        
+        if (!$IsSerch && $model_id && $auto_id && $data_id) {
 
             $em = $this->getDoctrine()->getManager();
             $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
@@ -67,6 +78,7 @@ class DefaultController extends Controller {
         }
 
         return $this->render('ShopMenuBundle:Default:index.html.twig', array(
+                    'IsSerch' => $IsSerch,
                     'modelMenus' => $modelMenus,
                     'model_id' => $model_id,
                     'autoMenu' => $autoMenu,

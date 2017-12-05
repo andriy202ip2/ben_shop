@@ -5,6 +5,10 @@
     <div class="text-center">
         <h1>Запчастини</h1>
 
+            <form id="form_serch" method="GET">
+                <h3>Код GH пошук: <input type="text" name="serch" id="datepicker" class="cat" /> <samp class="ui-icon ui-icon-search" style="cursor:pointer;" id="serch_btn"></samp></h3>
+            </form>            
+        
             <form id="form_item" method="GET">
                 <select name="mid" id="mid" class="cat">
                     <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
@@ -181,6 +185,10 @@
 {% block javascripts %}
     <script>
         $(document).ready(function () {
+
+            $("#serch_btn").click(function () {
+                $("#form_serch").submit();
+            });
 
             $("#mid").change(function () {
                 $("#aid").val(0);

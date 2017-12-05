@@ -29,7 +29,7 @@
                             {% elseif Item.price | money_as_float == 0 %}    
                                 Під заказ
                             {% else %}
-                                {{ Item.price | money_convert("UAH") | money_format }}                            
+                                {{ Item.price | money_convert("UAH") | money_format }}  за шт.                            
                             {% endif %}
                         </td>
                         <td>
