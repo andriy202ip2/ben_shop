@@ -15,3 +15,6 @@ products:
     resource: "@ShopMenuBundle/Resources/config/routing/products.yml"
     prefix:   /products
 
+shop_mobil:
+    path:     /mobil
+    defaults: { _controller: ShopMenuBundle:Default:mobile }

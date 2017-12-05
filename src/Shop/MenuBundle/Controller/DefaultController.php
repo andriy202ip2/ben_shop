@@ -5,6 +5,7 @@ namespace Shop\MenuBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Shop\MenuBundle\Entity\ModelMenu;
+use Symfony\Component\HttpFoundation\Response;
 
 //use Shop\MenuBundle\Repository;
 //use Doctrine\ORM\EntityManagerInterface;
@@ -112,4 +113,13 @@ class DefaultController extends Controller {
         ));
     }
 
+    public function mobileAction(Request $request) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $mobiles = $em->getRepository('AdminBundle:Mobile')->findOneBy([]);
+        
+        return new Response(
+            $mobiles->getMobile()
+        );
+    }
 }

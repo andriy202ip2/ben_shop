@@ -13,10 +13,10 @@
         <script language="JavaScript" src="/js/qTip.js" type="text/JavaScript"></script>
         <script language="JavaScript" src="/js/jquery.min.js" type="text/JavaScript"></script>
         <script language="JavaScript" src="/js/jquery-ui.js" type="text/JavaScript"></script>
-        
+
         <!--<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />-->
         <!--<script language="JavaScript" src="/js/bootstrap.min.js" type="text/JavaScript"></script>-->
-        
+
     {% block stylesheets %}{% endblock %}
 {% block javascripts %}{% endblock %}
 
@@ -37,21 +37,28 @@
             <a href=""><img src="/img/gh_logo.png" class="logo"></a>
             <div class="slog">ваш постачальник рішень підвіски</div>
 
+            <div class="telefone">
+                <center>
+                    {{ render(url('shop_mobil')) }}
+                    <br/><span style="font-size: 8pt">ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК</span>
+                </center>
+            </div>
+
             <!--menu-->
 
             <ul id="nav">
                 <li><a href="{{ path('shop_about') }}"><div class="menu"><div class="menu-text">Про нас</div></div></a></li>
                 <li><a href="{{ path('products_index') }}"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
                 <li><a href="{{ path('shop_menu_homepage') }}"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
-                {% if app.user and app.user.role == 'ROLE_ADMIN' %}
+                    {% if app.user and app.user.role == 'ROLE_ADMIN' %}
                     <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адінка</div></div></a></li>
-                {% endif %}
+                    {% endif %}
                 <li><a href="{{ path('shop_сontact') }}"><div class="menu"><div class="menu-text">Контакти</div></div></a></li>
-                {% if app.user %}
+                    {% if app.user %}
                     <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
-                {% else %}
+                    {% else %}
                     <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
-                {% endif %}
+                    {% endif %}
 
             </ul>
 
@@ -59,11 +66,11 @@
                 <!--description-->
 
                 <div id="desc_in">
-                    
-                <!-- left - main text-->
 
-                    {% block body %}{% endblock %}
-                    <!--INSERT MAIN TEXT-->
+                    <!-- left - main text-->
+
+                {% block body %}{% endblock %}
+                <!--INSERT MAIN TEXT-->
 
                 <!--end left-->
 

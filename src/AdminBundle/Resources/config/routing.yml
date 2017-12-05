@@ -29,3 +29,7 @@ admin_about:
 admin_contact:
     resource: "@AdminBundle/Resources/config/routing/contact.yml"
     prefix:   /contact
+
+admin_mobile:
+    resource: "@AdminBundle/Resources/config/routing/mobile.yml"
+    prefix:   /mobile
