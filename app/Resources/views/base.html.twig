@@ -17,13 +17,86 @@
         <!--<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />-->
         <!--<script language="JavaScript" src="/js/bootstrap.min.js" type="text/JavaScript"></script>-->
 
+        <script language="JavaScript" src="/js/jquery.mockjax.js" type="text/JavaScript"></script>
+        <script language="JavaScript" src="/js/jquery.validate.js" type="text/JavaScript"></script>
+        <script language="JavaScript" src="/js/jquery.maskedinput.js" type="text/JavaScript"></script>
+
     {% block stylesheets %}{% endblock %}
 {% block javascripts %}{% endblock %}
 
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
+<script>
+    $(document).ready(function () {
+
+        $("#registerForm").validate();
+
+        $("#dialog_contakt").dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: {
+                "Відправити": function () {
+                    if ($("#registerForm").valid()) {
+
+                        $("#dialog_contakt").dialog("close");
+                        $.ajax({
+                            method: "GET",
+                            url: "/sendemale",
+                            data: {call_name: $("#call_name").val(),
+                                    call_mob: $("#call_mob").val(),
+                                    call_time_b: $("#call_time_b").val(),
+                                    call_time_e: $("#call_time_e").val()}
+                        })
+                                .done(function (msg) {
+                                    var data = eval('('+msg+')');
+                                    if(data.Result) {                                        
+                                       $("#dialog_contakt_ok" ).dialog();   
+                                       
+                                       //alert(data.Result);     
+                                    }
+                                });
+                    }
+                }
+            }
+        });
+
+        $(".contact_as").click(function () {
+            $("#dialog_contakt").dialog("open");
+            return false;
+        });
+
+        $("#call_mob").mask("(999) 999-9999");
+        $("#call_time_b").mask("99:99");
+        $("#call_time_e").mask("99:99");
+    });
+</script>   
+
 </head>
 <body>
+
+    <!-- ui-dialog contakt -->
+    <div id="dialog_contakt" title="ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК" style="display: none">  
+
+        <form onsubmit="return false" id="registerForm">
+
+            Ваше ім'я:<br/>
+            <input id="call_name" maxlength="30" name="call_name" class="call-input" value="" type="text" /><br/>
+
+            Телефон:<br/>
+            <input id="call_mob" maxlength="14" name="call_mob" class="call-input required" value="" type="text" data-msg="Поле Телефон обов'язкове." /><br/>
+
+            Зручний час:<br/>
+            <input id="call_time_b" maxlength="5" name="call_time_b" class="call-smoll-input" value="" placeholder="9:00" type="text" /> - 
+            <input id="call_time_e" maxlength="5" name="call_time_e" class="call-smoll-input" value="" placeholder="20:00" type="text" /><br/>
+
+        </form>
+    </div>    
+    <div id="dialog_contakt_ok" title="Повідомлення відправлено" style="display: none">
+        <p>Повідомлення відправлено !<br/>
+            Cкоро ми вам зателефонуємо !
+        </p>
+    </div>
+
 
     <div id="container">
         <img src="/img/background.png" class="background">
@@ -40,7 +113,7 @@
             <div class="telefone">
                 <center>
                     {{ render(url('shop_mobil')) }}
-                    <br/><span style="font-size: 8pt">ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК</span>
+                    <br/><span style="font-size: 8pt;cursor:pointer;" class="contact_as">ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК</span>
                 </center>
             </div>
 

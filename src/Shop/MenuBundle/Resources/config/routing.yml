@@ -18,3 +18,7 @@ products:
 shop_mobil:
     path:     /mobil
     defaults: { _controller: ShopMenuBundle:Default:mobile }
+    
+shop_send_emale:
+    path:     /sendemale
+    defaults: { _controller: ShopMenuBundle:Default:sendemale }

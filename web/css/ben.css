@@ -733,3 +733,19 @@ div.telefone {
     height: 100px;
     
 }
+
+.call-input {
+    width:350px;
+    height:20px;
+    margin: 5px;
+}
+
+.call-smoll-input {
+    width:100px;
+    height:20px;
+    margin: 5px;
+}
+
+.error {
+    color: red;
+}

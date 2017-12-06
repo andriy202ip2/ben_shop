@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller {
 
     public function indexAction(Request $request) {
-        
+
         //echo rand(1, 100000);        
         $model_id = $request->query->getInt('mid', 0);
         if ($model_id < 0) {
@@ -59,18 +59,18 @@ class DefaultController extends Controller {
             $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
                     ->findByIdOrderedByName($model_id, $auto_id);
         }
-        
+
         $ItemsArray = null;
-        
+
         $serch = $request->query->get("serch", "");
         $IsSerch = strlen($serch) > 1;
         if ($IsSerch) {
-           $em = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
-                    ->findBySerchCodeOrderedById($serch);            
-        } 
-        
-        
+                    ->findBySerchCodeOrderedById($serch);
+        }
+
+
         if (!$IsSerch && $model_id && $auto_id && $data_id) {
 
             $em = $this->getDoctrine()->getManager();
@@ -114,12 +114,53 @@ class DefaultController extends Controller {
     }
 
     public function mobileAction(Request $request) {
-        
+
         $em = $this->getDoctrine()->getManager();
         $mobiles = $em->getRepository('AdminBundle:Mobile')->findOneBy([]);
-        
+
         return new Response(
-            $mobiles->getMobile()
+                $mobiles->getMobile()
         );
     }
+
+    public function sendemaleAction(Request $request) {
+
+        $call_name = $request->query->get('call_name', "");
+        $call_mob = $request->query->get('call_mob', "");
+        $call_time_b = $request->query->get('call_time_b', "");
+        $call_time_e = $request->query->get('call_time_e', "");
+
+        //echo '<br/>'.$call_name.'<br/>'.$call_mob.'<br/>'.$call_time_b.'<br/>'.$call_time_e.'<br/>';
+
+        if (mb_strlen($call_mob) >= 10) {
+
+            $message = \Swift_Message::newInstance()
+                    ->setSubject('Перезвоніть мені !')
+                    ->setFrom('send@example.com')
+                    ->setTo('andriy202ip@gmail.com')
+                    ->setBody(
+                    $this->renderView('ShopMenuBundle:Default:email.txt.twig', array(
+                        'call_name' => $call_name,
+                        'call_mob' => $call_mob,
+                        'call_time_b' => $call_time_b,
+                        'call_time_e' => $call_time_e
+                    ))
+            );
+
+            $this->get('mailer')->send($message);
+        }
+
+        return new Response(
+                json_encode(array('Result' => mb_strlen($call_mob) >= 10))
+        );
+
+        /*
+          return $this->render('ShopMenuBundle:Default:email.txt.twig', array(
+          'call_name' => $call_name,
+          'call_mob' => $call_mob,
+          'call_time_b' => $call_time_b,
+          'call_time_e' => $call_time_e
+          )); */
+    }
+
 }
