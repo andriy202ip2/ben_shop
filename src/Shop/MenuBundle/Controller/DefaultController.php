@@ -133,7 +133,7 @@ class DefaultController extends Controller {
                     'delivery' => $delivery,
         ));
     }
-    
+
     public function paymentAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
@@ -144,22 +144,25 @@ class DefaultController extends Controller {
                     'payment' => $payment,
         ));
     }
-    
+
     public function sendemaleAction(Request $request) {
 
-        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>'); 
-        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>'); 
-        $call_time_b = strip_tags($request->query->get('call_time_b', ""), '<p><br>'); 
-        $call_time_e = strip_tags($request->query->get('call_time_e', ""), '<p><br>'); 
+        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
+        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
+        $call_time_b = strip_tags($request->query->get('call_time_b', ""), '<p><br>');
+        $call_time_e = strip_tags($request->query->get('call_time_e', ""), '<p><br>');
 
         //echo '<br/>'.$call_name.'<br/>'.$call_mob.'<br/>'.$call_time_b.'<br/>'.$call_time_e.'<br/>';
 
         if (mb_strlen($call_mob) >= 10) {
 
+            $em = $this->getDoctrine()->getManager();
+            $emales = $em->getRepository('AdminBundle:Emale')->findOneBy([]);            
+            
             $message = \Swift_Message::newInstance()
                     ->setSubject('Перезвоніть мені !')
                     ->setFrom('send@example.com')
-                    ->setTo('andriy202ip@gmail.com')
+                    ->setTo($emales->getEmale())
                     ->setBody(
                     $this->renderView('ShopMenuBundle:Default:email.txt.twig', array(
                         'call_name' => $call_name,
@@ -184,22 +187,24 @@ class DefaultController extends Controller {
           'call_time_e' => $call_time_e
           )); */
     }
-    
-    public function oderemaleAction(Request $request) {
-        
-        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>'); 
-        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');        
-        $oder_code = strip_tags($request->query->get('oder_code', ""), '<p><br>'); 
-        $oder_price = strip_tags($request->query->get('oder_price', ""), '<p><br>'); 
 
-        //echo '<br/>'.$call_name.'<br/>'.$call_mob.'<br/>'.$call_time_b.'<br/>'.$call_time_e.'<br/>';
+    public function oderemaleAction(Request $request) {
+
+        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
+        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
+        $oder_code = strip_tags($request->query->get('oder_code', ""), '<p><br>');
+        $oder_price = strip_tags($request->query->get('oder_price', ""), '<p><br>');
 
         if (mb_strlen($call_mob) >= 10) {
 
+            $em = $this->getDoctrine()->getManager();
+            $emales = $em->getRepository('AdminBundle:Emale')->findOneBy([]);
+            //echo $emales->getEmale();
+
             $message = \Swift_Message::newInstance()
-                    ->setSubject('Перезвоніть мені !')
+                    ->setSubject('Прийшов Заказ !')
                     ->setFrom('send@example.com')
-                    ->setTo('andriy202ip@gmail.com')
+                    ->setTo($emales->getEmale())
                     ->setBody(
                     $this->renderView('ShopMenuBundle:Default:oderemale.txt.twig', array(
                         'call_name' => $call_name,
@@ -224,5 +229,5 @@ class DefaultController extends Controller {
           'oder_price' => $oder_price
           )); */
     }
-    
+
 }
