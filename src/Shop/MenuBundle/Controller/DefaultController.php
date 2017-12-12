@@ -163,4 +163,15 @@ class DefaultController extends Controller {
           )); */
     }
 
+    public function deliveryAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $delivery = $em->getRepository('AdminBundle:Delivery')->findOneBy([]);
+
+        return $this->render('ShopMenuBundle:Default:delivery.html.twig', array(
+                    'delivery' => $delivery,
+        ));
+    }
+    
 }

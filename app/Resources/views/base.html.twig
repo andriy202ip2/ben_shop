@@ -43,16 +43,16 @@
                             method: "GET",
                             url: "/sendemale",
                             data: {call_name: $("#call_name").val(),
-                                    call_mob: $("#call_mob").val(),
-                                    call_time_b: $("#call_time_b").val(),
-                                    call_time_e: $("#call_time_e").val()}
+                                call_mob: $("#call_mob").val(),
+                                call_time_b: $("#call_time_b").val(),
+                                call_time_e: $("#call_time_e").val()}
                         })
                                 .done(function (msg) {
-                                    var data = eval('('+msg+')');
-                                    if(data.Result) {                                        
-                                       $("#dialog_contakt_ok" ).dialog();   
-                                       
-                                       //alert(data.Result);     
+                                    var data = eval('(' + msg + ')');
+                                    if (data.Result) {
+                                        $("#dialog_contakt_ok").dialog();
+
+                                        //alert(data.Result);     
                                     }
                                 });
                     }
@@ -124,38 +124,47 @@
                 <li><a href="{{ path('products_index') }}"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
                 <li><a href="{{ path('shop_menu_homepage') }}"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
                     {% if app.user and app.user.role == 'ROLE_ADMIN' %}
-                    <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адінка</div></div></a></li>
+                    <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адмінка</div></div></a></li>
                     {% endif %}
                 <li><a href="{{ path('shop_сontact') }}"><div class="menu"><div class="menu-text">Контакти</div></div></a></li>
-                    {% if app.user %}
-                    <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
-                    {% else %}
-                    <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
-                    {% endif %}
 
-            </ul>
+                <li><a href="{{ path('shop_delivery') }}"><div class="menu"><div class="menu-text">Доставка</div></div></a></li>
+                
+                <!--{% if app.user %}
+                <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
+                {% else %}
+                <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
+                    {% endif %}-->
 
-            <div id="desc_out">
-                <!--description-->
+                    </ul>
 
-                <div id="desc_in">
+                    <div id="desc_out">
+                        <!--description-->
 
-                    <!-- left - main text-->
+                        <div id="desc_in">
 
-                {% block body %}{% endblock %}
-                <!--INSERT MAIN TEXT-->
+                            <!-- left - main text-->
 
-                <!--end left-->
+                        {% block body %}{% endblock %}
+                        <!--INSERT MAIN TEXT-->
 
-            </div>
+                        <!--end left-->
+
+                    </div>
+                </div>
         </div>
-</div>
 
 
-<div align="center" class="copyright">
-    <hr width="225px">
-        Copyright © 2017.
-</div>
+        <div align="center" class="copyright">
+            <hr width="225px" />
 
-</body>
+            {% if app.user %}
+                <a href="{{ path('security_user_logout') }}">Copyright © 2017. Вихід</a>
+            {% else %}
+                <a href="{{ path('security_user_login') }}">Copyright © 2017.</a>
+            {% endif %}    
+
+        </div>
+
+    </body>
 </html>

@@ -33,3 +33,7 @@ admin_contact:
 admin_mobile:
     resource: "@AdminBundle/Resources/config/routing/mobile.yml"
     prefix:   /mobile
+    
+admin_delivery:
+    resource: "@AdminBundle/Resources/config/routing/delivery.yml"
+    prefix:   /delivery

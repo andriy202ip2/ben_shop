@@ -22,3 +22,7 @@ shop_mobil:
 shop_send_emale:
     path:     /sendemale
     defaults: { _controller: ShopMenuBundle:Default:sendemale }
+    
+shop_delivery:
+    path:     /delivery
+    defaults: { _controller: ShopMenuBundle:Default:delivery }
