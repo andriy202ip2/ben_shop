@@ -174,4 +174,15 @@ class DefaultController extends Controller {
         ));
     }
     
+    public function paymentAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $payment = $em->getRepository('AdminBundle:Payment')->findOneBy([]);
+
+        return $this->render('ShopMenuBundle:Default:payment.html.twig', array(
+                    'payment' => $payment,
+        ));
+    }
+    
 }

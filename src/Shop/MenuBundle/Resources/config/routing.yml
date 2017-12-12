@@ -26,3 +26,7 @@ shop_send_emale:
 shop_delivery:
     path:     /delivery
     defaults: { _controller: ShopMenuBundle:Default:delivery }
+    
+shop_payment:
+    path:     /payment
+    defaults: { _controller: ShopMenuBundle:Default:payment }
