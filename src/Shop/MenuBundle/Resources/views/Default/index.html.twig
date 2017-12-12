@@ -12,7 +12,7 @@
             <form id="form_serch" method="GET">
                 <h3>Код GH пошук: <input type="text" name="serch" id="datepicker" class="cat" /> <samp class="ui-icon ui-icon-search" style="cursor:pointer;" id="serch_btn"></samp></h3>
             </form>
-            
+
             <form id="form_item" method="GET">
                 <select name="mid" id="mid" class="cat">
                     <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
@@ -41,7 +41,7 @@
                     {% endfor %}
                 </select>
                 <br>
-                
+
                 <br>
                 <table border="0" style="text-align:center">
                     <tbody>
@@ -62,7 +62,7 @@
                 </table>
 
             </form>
-                            
+
             <br><br>
             <!-- WYNIKI -->
 
@@ -76,20 +76,23 @@
 
                             <tr>
                                 <td>
-                                    {{ Item.name | raw }}
+                                    <span class="item{{ Item.id }}code">{{ Item.name | raw }}</span>
                                     <a href="#" class="item_dialog" val="item{{ Item.id }}">
                                         <img src="/img/info-small.png" style="border:0"></a>
                                 </td>
                                 <td>{{ Item.side | raw}}</td>
                                 <td>{{ Item.fit | raw}}</td>
                                 <td>
+                                    
                                     {% if Item.price == null %}
-                                        Під заказ
+                                        <span class="item{{ Item.id }}price">Під заказ</span>
                                     {% elseif Item.price | money_as_float == 0 %}    
-                                        Під заказ
+                                        <span class="item{{ Item.id }}price">Під заказ</span>
                                     {% else %}
-                                        {{ Item.price | money_convert("UAH") | money_format }} за шт.                          
+                                        <span class="item{{ Item.id }}price">{{ Item.price | money_convert("UAH") | money_format }} за шт.</span>                          
                                     {% endif %}
+                                                                        
+                                    <br/><br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold" val="item{{ Item.id }}">ЗАКАЗАТИ</span>
                                 </td>
                                 <td>
 
@@ -134,6 +137,28 @@
         </center>
         <br><br>
 
+        <!-- ui-dialog to_order -->
+        <div id="dialog_to_order" title="ЗАКАЗАТИ ТОВАР" style="display: none">  
+
+            <form onsubmit="return false" id="registerOrderForm">
+                Ваше ім'я:<br/>
+                <input id="call_name_oder" maxlength="30" name="call_name_oder" class="call-input" value="" type="text" /><br/>
+
+                Телефон:<br/>
+                <input id="call_mob_oder" maxlength="14" name="call_mob_oder" class="call-input required" value="" type="text" data-msg="Поле Телефон обов'язкове." /><br/>
+
+                <br/>Товар: <span id="diloge_oder_code"></span>
+                
+                <br/>Ціна: <span id="diloge_oder_price"></span><br/>
+                
+            </form>
+        </div>
+        <div id="dialog_to_order_ok" title="Повідомлення відправлено" style="display: none">
+            <p>Повідомлення відправлено !<br/>
+                Cкоро ми вам зателефонуємо !
+            </p>
+        </div>        
+
     </div>
 {% endblock %}
 
@@ -144,6 +169,57 @@
 {% block javascripts %}
     <script>
         $(document).ready(function () {
+
+        $("#registerOrderForm").validate();
+
+        $("#dialog_to_order").dialog({
+            autoOpen: false,
+            width: 400,
+            buttons: {
+                "Відправити": function () {
+                    if ($("#registerOrderForm").valid()) {
+
+                        $("#dialog_to_order").dialog("close");
+                        
+                        $.ajax({
+                            method: "GET",
+                            url: "/oderemale",
+                            data: {call_name: $("#call_name_oder").val(),
+                                call_mob: $("#call_mob_oder").val(),
+                                oder_code: $("#diloge_oder_code").html(),
+                                oder_price: $("#diloge_oder_price").html()
+                            }
+                        })
+                                .done(function (msg) {
+                                    var data = eval('(' + msg + ')');
+                                    if (data.Result) {
+                                        $("#dialog_to_order_ok").dialog();
+
+                                        //alert(data.Result);     
+                                    }
+                                });
+                    }
+                }
+            }
+        });
+
+        $(".to_order_a").click(function () {
+            var id = $(this).attr('val');
+            //alert(id);
+            
+            var html2 = $("." + id + "code").html();
+            var html3 = $("." + id + "price").html();
+            
+             $("#diloge_oder_code").html(html2);
+             $("#diloge_oder_price").html(html3);
+            
+            $("#dialog_to_order").dialog("open");
+            return false;
+        });
+
+        $("#call_mob_oder").mask("(999) 999-9999");
+ 
+        //=====================================================  
 
             $("#serch_btn").click(function () {
                 $("#form_serch").submit();

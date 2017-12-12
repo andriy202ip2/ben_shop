@@ -123,12 +123,34 @@ class DefaultController extends Controller {
         );
     }
 
+    public function deliveryAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $delivery = $em->getRepository('AdminBundle:Delivery')->findOneBy([]);
+
+        return $this->render('ShopMenuBundle:Default:delivery.html.twig', array(
+                    'delivery' => $delivery,
+        ));
+    }
+    
+    public function paymentAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $payment = $em->getRepository('AdminBundle:Payment')->findOneBy([]);
+
+        return $this->render('ShopMenuBundle:Default:payment.html.twig', array(
+                    'payment' => $payment,
+        ));
+    }
+    
     public function sendemaleAction(Request $request) {
 
-        $call_name = $request->query->get('call_name', "");
-        $call_mob = $request->query->get('call_mob', "");
-        $call_time_b = $request->query->get('call_time_b', "");
-        $call_time_e = $request->query->get('call_time_e', "");
+        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>'); 
+        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>'); 
+        $call_time_b = strip_tags($request->query->get('call_time_b', ""), '<p><br>'); 
+        $call_time_e = strip_tags($request->query->get('call_time_e', ""), '<p><br>'); 
 
         //echo '<br/>'.$call_name.'<br/>'.$call_mob.'<br/>'.$call_time_b.'<br/>'.$call_time_e.'<br/>';
 
@@ -162,27 +184,45 @@ class DefaultController extends Controller {
           'call_time_e' => $call_time_e
           )); */
     }
-
-    public function deliveryAction(Request $request) {
-
-        $em = $this->getDoctrine()->getManager();
-
-        $delivery = $em->getRepository('AdminBundle:Delivery')->findOneBy([]);
-
-        return $this->render('ShopMenuBundle:Default:delivery.html.twig', array(
-                    'delivery' => $delivery,
-        ));
-    }
     
-    public function paymentAction(Request $request) {
+    public function oderemaleAction(Request $request) {
+        
+        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>'); 
+        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');        
+        $oder_code = strip_tags($request->query->get('oder_code', ""), '<p><br>'); 
+        $oder_price = strip_tags($request->query->get('oder_price', ""), '<p><br>'); 
 
-        $em = $this->getDoctrine()->getManager();
+        //echo '<br/>'.$call_name.'<br/>'.$call_mob.'<br/>'.$call_time_b.'<br/>'.$call_time_e.'<br/>';
 
-        $payment = $em->getRepository('AdminBundle:Payment')->findOneBy([]);
+        if (mb_strlen($call_mob) >= 10) {
 
-        return $this->render('ShopMenuBundle:Default:payment.html.twig', array(
-                    'payment' => $payment,
-        ));
+            $message = \Swift_Message::newInstance()
+                    ->setSubject('Перезвоніть мені !')
+                    ->setFrom('send@example.com')
+                    ->setTo('andriy202ip@gmail.com')
+                    ->setBody(
+                    $this->renderView('ShopMenuBundle:Default:oderemale.txt.twig', array(
+                        'call_name' => $call_name,
+                        'call_mob' => $call_mob,
+                        'oder_code' => $oder_code,
+                        'oder_price' => $oder_price
+                    ))
+            );
+
+            $this->get('mailer')->send($message);
+        }
+
+        return new Response(
+                json_encode(array('Result' => mb_strlen($call_mob) >= 10))
+        );
+
+        /*
+          return $this->render('ShopMenuBundle:Default:oderemale.txt.twig', array(
+          'call_name' => $call_name,
+          'call_mob' => $call_mob,
+          'oder_code' => $oder_code,
+          'oder_price' => $oder_price
+          )); */
     }
     
 }
