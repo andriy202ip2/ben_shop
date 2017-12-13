@@ -49,3 +49,7 @@ admin_emale:
 admin_oderemale:
     resource: "@AdminBundle/Resources/config/routing/oderemale.yml"
     prefix:   /oderemale
+
+admin_sendemale:
+    resource: "@AdminBundle/Resources/config/routing/sendemale.yml"
+    prefix:   /sendemale

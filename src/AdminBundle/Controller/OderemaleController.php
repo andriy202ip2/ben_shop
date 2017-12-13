@@ -25,7 +25,6 @@ class OderemaleController extends Controller {
                 ->createQueryBuilder('a')
                 ->orderBy('a.id', 'DESC');
 
-        //ORDER BY `oderemale`.`data` DESC
         $query = $dql->getQuery();
 
         $paginator = $this->get('knp_paginator');

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Shop\MenuBundle\Entity\ModelMenu;
 use Symfony\Component\HttpFoundation\Response;
 use AdminBundle\Entity\Oderemale;
+use AdminBundle\Entity\Sendemale;
 
 //use Shop\MenuBundle\Repository;
 //use Doctrine\ORM\EntityManagerInterface;
@@ -160,18 +161,27 @@ class DefaultController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $emales = $em->getRepository('AdminBundle:Emale')->findOneBy([]);
 
+            $view = $this->renderView('ShopMenuBundle:Default:email.txt.twig', array(
+                'call_name' => $call_name,
+                'call_mob' => $call_mob,
+                'call_time_b' => $call_time_b,
+                'call_time_e' => $call_time_e
+            ));
+            
+            $sendemale = new Sendemale();
+            $sendemale->setSendemale($view);
+            $sendemale->setData(new \DateTime());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($sendemale);
+            $em->flush();
+            
+            //meler
             $message = \Swift_Message::newInstance()
                     ->setSubject('Перезвоніть мені !')
                     ->setFrom('send@example.com')
                     ->setTo($emales->getEmale())
-                    ->setBody(
-                    $this->renderView('ShopMenuBundle:Default:email.txt.twig', array(
-                        'call_name' => $call_name,
-                        'call_mob' => $call_mob,
-                        'call_time_b' => $call_time_b,
-                        'call_time_e' => $call_time_e
-                    ))
-            );
+                    ->setBody($view);
 
             $this->get('mailer')->send($message);
         }

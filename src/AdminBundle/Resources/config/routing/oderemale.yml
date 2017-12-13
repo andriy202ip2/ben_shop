@@ -26,4 +26,4 @@ oderemale_delete:
 oderemale_delete_all:
     path:     /delete_all
     defaults: { _controller: "AdminBundle:Oderemale:delete_all" }
-    methods:  [GET, DELETE]
+    methods:  [GET]
