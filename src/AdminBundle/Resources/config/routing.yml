@@ -45,3 +45,7 @@ admin_payment:
 admin_emale:
     resource: "@AdminBundle/Resources/config/routing/emale.yml"
     prefix:   /emale
+
+admin_oderemale:
+    resource: "@AdminBundle/Resources/config/routing/oderemale.yml"
+    prefix:   /oderemale

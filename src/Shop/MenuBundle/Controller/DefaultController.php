@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Shop\MenuBundle\Entity\ModelMenu;
 use Symfony\Component\HttpFoundation\Response;
+use AdminBundle\Entity\Oderemale;
 
 //use Shop\MenuBundle\Repository;
 //use Doctrine\ORM\EntityManagerInterface;
@@ -157,8 +158,8 @@ class DefaultController extends Controller {
         if (mb_strlen($call_mob) >= 10) {
 
             $em = $this->getDoctrine()->getManager();
-            $emales = $em->getRepository('AdminBundle:Emale')->findOneBy([]);            
-            
+            $emales = $em->getRepository('AdminBundle:Emale')->findOneBy([]);
+
             $message = \Swift_Message::newInstance()
                     ->setSubject('Перезвоніть мені !')
                     ->setFrom('send@example.com')
@@ -201,18 +202,27 @@ class DefaultController extends Controller {
             $emales = $em->getRepository('AdminBundle:Emale')->findOneBy([]);
             //echo $emales->getEmale();
 
+            $view = $this->renderView('ShopMenuBundle:Default:oderemale.txt.twig', array(
+                'call_name' => $call_name,
+                'call_mob' => $call_mob,
+                'oder_code' => $oder_code,
+                'oder_price' => $oder_price
+            ));
+
+            $oderemale = new Oderemale();
+            $oderemale->setOderemale($view);
+            $oderemale->setData(new \DateTime());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($oderemale);
+            $em->flush();
+
+            //meler
             $message = \Swift_Message::newInstance()
                     ->setSubject('Прийшов Заказ !')
                     ->setFrom('send@example.com')
                     ->setTo($emales->getEmale())
-                    ->setBody(
-                    $this->renderView('ShopMenuBundle:Default:oderemale.txt.twig', array(
-                        'call_name' => $call_name,
-                        'call_mob' => $call_mob,
-                        'oder_code' => $oder_code,
-                        'oder_price' => $oder_price
-                    ))
-            );
+                    ->setBody($view);
 
             $this->get('mailer')->send($message);
         }
