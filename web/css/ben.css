@@ -676,6 +676,12 @@ table.catalogwebshop tr td{
     margin: 5px;
 }
 
+.admin-input-smoll {
+    width:100px;
+    height:20px;
+    margin: 5px;
+}
+
 .admin-selekt {
     width:400px;
     height:20px;

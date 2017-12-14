@@ -53,3 +53,7 @@ admin_oderemale:
 admin_sendemale:
     resource: "@AdminBundle/Resources/config/routing/sendemale.yml"
     prefix:   /sendemale
+
+admin_add_prices:
+    path:     /add_prices
+    defaults: { _controller: AdminBundle:Default:add_prices }
