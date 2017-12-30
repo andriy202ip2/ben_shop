@@ -4,7 +4,7 @@ security_user_login:
 
 security_user_login_check:
     path:     /login_check
-    defaults: { _controller: SecurityUserBundle:Login:login_check }
+    defaults: { _controller: SecurityUserBundle:Login:loginCheck }
 
 security_user_logout:
     path:     /logout

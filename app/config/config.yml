@@ -54,6 +54,8 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
+        options:
+                1002: "SET NAMES 'UTF8' COLLATE 'utf8_unicode_ci'" 
         mapping_types:
             enum: string
         types:
@@ -72,11 +74,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
-    username: '%mailer_user%'
-    password: '%mailer_password%'
-    spool: { type: memory }
+
+    #transport: '%mailer_transport%'
+    #host: '%mailer_host%'
+    #username: '%mailer_user%'
+    #password: '%mailer_password%'
+    #port: 465
+    #spool: { type: memory }
 
 knp_paginator:
     page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)

@@ -5,6 +5,8 @@ namespace AdminBundle\Controller;
 use AdminBundle\Entity\About;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Core\SecurityContext;
 
 /**
  * About controller.
@@ -16,8 +18,10 @@ class AboutController extends Controller
      * Lists all about entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        //echo $user = $this->getUser();
+        
         $em = $this->getDoctrine()->getManager();
 
         $abouts = $em->getRepository('AdminBundle:About')->findOneBy([]);
@@ -33,6 +37,8 @@ class AboutController extends Controller
      */
     public function editAction(Request $request, About $about)
     {
+
+        
         //$deleteForm = $this->createDeleteForm($about);
         $editForm = $this->createForm('AdminBundle\Form\AboutType', $about);
         $editForm->handleRequest($request);
@@ -41,7 +47,10 @@ class AboutController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             //return $this->redirectToRoute('about_edit', array('id' => $about->getId()));
+            //return $this->redirect($this->generateUrl('about_index'));
             return $this->redirectToRoute('about_index');
+                        
+            
         }
 
         return $this->render('AdminBundle:About:edit.html.twig', array(

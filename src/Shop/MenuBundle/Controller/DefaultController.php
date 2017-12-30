@@ -181,7 +181,7 @@ class DefaultController extends Controller {
                     ->setSubject('Перезвоніть мені !')
                     ->setFrom('send@example.com')
                     ->setTo($emales->getEmale())
-                    ->setBody($view);
+                    ->setBody(strip_tags($view));
 
             $this->get('mailer')->send($message);
         }
@@ -232,7 +232,7 @@ class DefaultController extends Controller {
                     ->setSubject('Прийшов Заказ !')
                     ->setFrom('send@example.com')
                     ->setTo($emales->getEmale())
-                    ->setBody($view);
+                    ->setBody(strip_tags($view));
 
             $this->get('mailer')->send($message);
         }

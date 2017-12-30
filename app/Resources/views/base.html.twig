@@ -116,7 +116,7 @@
             <div class="telefone">
                 <center>
                     {{ render(url('shop_mobil')) }}
-                    <br/><span style="font-size: 8pt;cursor:pointer;" class="contact_as">ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК</span>
+                    <br/><span style="cursor:pointer;" class="contact_as">ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК</span>
                 </center>
             </div>
 
@@ -133,7 +133,7 @@
 
                 <li><a href="{{ path('shop_payment') }}"><div class="menu"><div class="menu-text">Оплата</div></div></a></li>
 
-                {% if app.user and app.user.role == 'ROLE_ADMIN' %}
+                {% if app.user and (app.user.role == 'ROLE_ADMIN' or app.user.role == 'ROLE_ROOT') %}
                     <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адмінка</div></div></a></li>
                     {% endif %}
 

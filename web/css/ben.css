@@ -730,14 +730,19 @@ table.catalogwebshop tr td{
 div.telefone {
     position: absolute;
     z-index: 3;
-    top: 20px;
+    top: 10px;
     left: 850px;
     color: #ffffff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     font-family: garamond;
     height: 100px;
     
+}
+
+.contact_as {
+    color: #f19c05;
+    font-size: 12px;
 }
 
 .call-input {

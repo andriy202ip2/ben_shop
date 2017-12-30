@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/AdminBundle/Controller/AboutController.php</file>
+            <file>file:/C:/xampp/htdocs/ben-shop2.com/app/config/security.yml</file>
+            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/Security/UserBundle/Controller/LoginController.php</file>
+            <file>file:/C:/xampp/htdocs/ben-shop2.com/src/Security/UserBundle/Resources/config/routing.yml</file>
+        </group>
     </open-files>
 </project-private>
