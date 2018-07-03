@@ -44,7 +44,7 @@ class Items {
      *
      * @ORM\Column(name="acsesoris_price", type="money", nullable=true)
      */
-    private $acsesoris_price;
+    private $acsesorisPrice;
 
     /**
      * @var integer
@@ -203,7 +203,7 @@ class Items {
      */
     public function setAcsesorisPrice(Money $acsesorisPrice)
     {
-        $this->acsesoris_price = $acsesorisPrice;
+        $this->acsesorisPrice = $acsesorisPrice;
         return $this;
     }
 
@@ -214,7 +214,7 @@ class Items {
      */
     public function getAcsesorisPrice()
     {
-        return $this->acsesoris_price;
+        return $this->acsesorisPrice;
     }
 
 

@@ -28,12 +28,30 @@ class ItemsRepository extends EntityRepository {
         
     }    
     
-    public function findByIdOrderedById($model_id, $auto_id, $data_id, $side) {
-            
+    public function findByIdOrderedById($model_id, $auto_id, $data_id, $side, $t, $t1, $t2, $t3) {
+
+        $tId = "";
+        if($t){
+
+            $arr = array();
+            if ($t2){
+                $arr[] = 2;
+            }
+            if ($t1){
+                $arr[] = 3;
+            }
+            if ($t3){
+                $arr[] = 5;
+            }
+
+            $tId = " and i.tId IN(".implode(",",$arr).")";
+
+        }
+
         $sideId = $side ? " and i.sideId = :side" : ""; 
                 
         $query = $this->createQueryBuilder('i')
-            ->where('i.modelMenuId = :model_id and i.autoMenuId = :auto_id and i.dataMenuId = :data_id'.$sideId)
+            ->andwhere('i.modelMenuId = :model_id and i.autoMenuId = :auto_id and i.dataMenuId = :data_id'.$sideId.$tId)
             ->setParameter('model_id', $model_id)
             ->setParameter('auto_id', $auto_id)
             ->setParameter('data_id', $data_id);
