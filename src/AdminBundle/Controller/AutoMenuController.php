@@ -134,6 +134,7 @@ class AutoMenuController extends Controller {
                 foreach ($Items as $item) {
                                         
                     $item->removeImg($item->getImg(), $this->getParameter('img_directory'));
+                    $item->removeImg($item->getAcsesorisImg(), $this->getParameter('img_directory'));
                     $em->remove($item);
                 }
 
