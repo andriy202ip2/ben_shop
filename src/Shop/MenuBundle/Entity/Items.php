@@ -37,8 +37,15 @@ class Items {
      *
      * @ORM\Column(name="price", type="money", nullable=true)
      */
-    private $price;    
-    
+    private $price;
+
+    /**
+     * @var Money
+     *
+     * @ORM\Column(name="acsesoris_price", type="money", nullable=true)
+     */
+    private $acsesoris_price;
+
     /**
      * @var integer
      *
@@ -185,8 +192,32 @@ class Items {
     {
         $this->price = $price;
         return $this;
-    }    
-    
+    }
+
+    /**
+     * Set acsesorisPrice
+     *
+     * @param money $acsesorisPrice
+     *
+     * @return Items
+     */
+    public function setAcsesorisPrice(Money $acsesorisPrice)
+    {
+        $this->acsesoris_price = $acsesorisPrice;
+        return $this;
+    }
+
+    /**
+     * Get acsesorisPrice
+     *
+     * @return money
+     */
+    public function getAcsesorisPrice()
+    {
+        return $this->acsesoris_price;
+    }
+
+
     public function getData() {
         return $this->data;
     }
@@ -592,4 +623,6 @@ class Items {
     {
         return $this->acsesorisImgData;
     }
+
+
 }

@@ -37,8 +37,15 @@ class Items {
      *
      * @ORM\Column(name="price", type="money", nullable=true)
      */
-    private $price;    
-    
+    private $price;
+
+    /**
+     * @var Money
+     *
+     * @ORM\Column(name="acsesoris_price", type="money", nullable=true)
+     */
+    private $acsesoris_price;
+
     /**
      * @var integer
      *
@@ -496,4 +503,100 @@ class Items {
         }
     }    
     
+
+    /**
+     * Set tId
+     *
+     * @param integer $tId
+     *
+     * @return Items
+     */
+    public function setTId($tId)
+    {
+        $this->tId = $tId;
+
+        return $this;
+    }
+
+    /**
+     * Get tId
+     *
+     * @return integer
+     */
+    public function getTId()
+    {
+        return $this->tId;
+    }
+
+    /**
+     * Set acsesorisId
+     *
+     * @param string $acsesorisId
+     *
+     * @return Items
+     */
+    public function setAcsesorisId($acsesorisId)
+    {
+        $this->acsesorisId = $acsesorisId;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesorisId
+     *
+     * @return string
+     */
+    public function getAcsesorisId()
+    {
+        return $this->acsesorisId;
+    }
+
+    /**
+     * Set acsesorisImg
+     *
+     * @param string $acsesorisImg
+     *
+     * @return Items
+     */
+    public function setAcsesorisImg($acsesorisImg)
+    {
+        $this->acsesorisImg = $acsesorisImg;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesorisImg
+     *
+     * @return string
+     */
+    public function getAcsesorisImg()
+    {
+        return $this->acsesorisImg;
+    }
+
+    /**
+     * Set acsesorisImgData
+     *
+     * @param string $acsesorisImgData
+     *
+     * @return Items
+     */
+    public function setAcsesorisImgData($acsesorisImgData)
+    {
+        $this->acsesorisImgData = $acsesorisImgData;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesorisImgData
+     *
+     * @return string
+     */
+    public function getAcsesorisImgData()
+    {
+        return $this->acsesorisImgData;
+    }
 }
