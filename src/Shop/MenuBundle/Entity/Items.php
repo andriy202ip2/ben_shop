@@ -590,6 +590,25 @@ class Items {
         return $this;
     }
 
+    public function saveAcsesorisImg(Items $item, $img_directory, $img = NULL) {
+
+        $file = $item->getAcsesorisImg();
+
+        if ($img != NULL && strlen($img) > 1) {
+            $fileName = $img;
+        } else {
+            $fileName = md5(uniqid()) . '.jpeg';
+        }
+
+        $file->move(
+            $img_directory, $fileName
+        );
+
+        $item->setAcsesorisImg($fileName);
+
+        return $item;
+    }
+
     /**
      * Get acsesorisImg
      *

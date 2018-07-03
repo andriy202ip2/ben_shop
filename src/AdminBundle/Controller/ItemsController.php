@@ -181,6 +181,10 @@ class ItemsController extends Controller {
                 $item = $item->saveImg($item, $this->getParameter('img_directory'));
             }
 
+            if ($item->getAcsesorisImg() != NULL) {
+                $item = $item->saveAcsesorisImg($item, $this->getParameter('img_directory'));
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($item);
             $em->flush();
@@ -215,6 +219,7 @@ class ItemsController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $db_item = $em->getRepository('ShopMenuBundle:Items')->findOneBy(["id" => $item->getId()])->getImg();
+        $db_item2 = $em->getRepository('ShopMenuBundle:Items')->findOneBy(["id" => $item->getId()])->getAcsesorisImg();
 
         $no_submit = $request->request->getInt('no_submit', 0);
 
@@ -229,6 +234,13 @@ class ItemsController extends Controller {
             } else {
                 $item = $item->saveImg($item, $this->getParameter('img_directory'), $db_item);
             }
+
+            if ($item->getAcsesorisImg() == NULL) {
+                $item->setAcsesorisImg($db_item2);
+            } else {
+                $item = $item->saveAcsesorisImg($item, $this->getParameter('img_directory'), $db_item2);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('items_edit', array('id' => $item->getId()));
@@ -252,6 +264,7 @@ class ItemsController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
 
             $item->removeImg($item->getImg(), $this->getParameter('img_directory'));
+            $item->removeImg($item->getAcsesorisImg(), $this->getParameter('img_directory'));
 
             $em = $this->getDoctrine()->getManager();
             $em->remove($item);
