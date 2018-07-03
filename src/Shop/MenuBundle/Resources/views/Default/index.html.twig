@@ -48,7 +48,9 @@
                         <tr><td><img style="cursor:pointer;" src="/img/front_on.png" id="si1"></td>
                             <td><img style="cursor:pointer; border-left: solid" src="/img/back_on.png" id="si2"></td>
                             <td width="30"></td>
-                            <td><img align="left" src="/img/shock_on.png"></td>
+                            <td><img align="left" src="/img/shock_on.png" style="cursor:pointer;"></td>
+                            <td style="width: 90px;"><img align="left" src="/img/coil_on.png" style="cursor:pointer; border-left: solid;"></td>
+                            <td><img align="left" src="/img/arm_on.png" style="cursor:pointer; border-left: solid;"></td>
                         </tr>
 
                         <tr><td style="font-size:11px">
@@ -56,7 +58,15 @@
                             </td><td style="font-size:11px">
                                 задня  <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>
                             </td><td></td>
-                            <td>Амортизатор </td>
+                            <td>Амортизатор
+                                <input type="checkbox" name="t1" id="t1" value="1">
+                            </td>
+                            <td>Пружина
+                                <input type="checkbox" name="t2" id="t2" value="2">
+                            </td>
+                            <td>поперечний важіль
+                                <input type="checkbox" name="t3" id="t3" value="4">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -69,8 +79,16 @@
             {% if IsSerch or model_id and auto_id and data_id %}
 
                 <table border="0" class="catalog">
-                    <tbody><tr><td><b>Код GH</b></td><td><b>Сторона</b></td><td><b>Застосування</b></td><td><b>Ціна</b></td><td><b>Фото</b></td></tr>
-                        <tr><td colspan="5"><hr></td></tr>
+                    <tbody>
+                    <tr>
+                        <td><b>Код GH</b></td>
+                        <td><b>Сторона</b></td>
+                        <td><b>Застосування</b></td>
+                        <td><b>Ціна</b></td>
+                        <td><b>Фото</b></td>
+                        <td><b>Аксесуари</b></td>
+                    </tr>
+                        <tr><td colspan="6"><hr></td></tr>
 
                         {% for Item in ItemsArray %}
 
@@ -85,14 +103,14 @@
                                 <td>
                                     
                                     {% if Item.price == null %}
-                                        <span class="item{{ Item.id }}price">Під заказ</span>
+                                        <span class="item{{ Item.id }}price">Під замовилення</span>
                                     {% elseif Item.price | money_as_float == 0 %}    
-                                        <span class="item{{ Item.id }}price">Під заказ</span>
+                                        <span class="item{{ Item.id }}price">Під замовилення</span>
                                     {% else %}
                                         <span class="item{{ Item.id }}price">{{ Item.price | money_convert("UAH") | money_format }} за шт.</span>                          
                                     {% endif %}
                                                                         
-                                    <br/><br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold" val="item{{ Item.id }}">ЗАКАЗАТИ</span>
+                                    <br/><br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold" val="item{{ Item.id }}">ЗАМОВИТИ</span>
                                 </td>
                                 <td>
 
@@ -106,9 +124,15 @@
                                         {{ Item.imgData | raw}}
                                     </div>
                                 </td>
+
+                                <td>
+                                GH-694707
+                                    <br><a href="#" title="<img src='/img/upload/GH-694707.jpg' class='img_big'><br><b>Пильник - GH-694707</b><br>передня/задня Правий/лівий   ">
+                                        <img src="/img/camera.png" style="width: 30px"></a>
+                                </td>
                             </tr>
                             <tr>
-                                <td colspan="5" class="item_element">
+                                <td colspan="6" class="item_element">
                                     <div class="showApplication item_on">Дисплей додаткових додатків</div>
                                     <div class="showApplication item_off" style="display:none;">Приховати</div>
                                     <div style="display:none;" class="item_info item{{ Item.id }}">
@@ -138,7 +162,7 @@
         <br><br>
 
         <!-- ui-dialog to_order -->
-        <div id="dialog_to_order" title="ЗАКАЗАТИ ТОВАР" style="display: none">  
+        <div id="dialog_to_order" title="ЗАМОВИТИ ТОВАР" style="display: none">
 
             <form onsubmit="return false" id="registerOrderForm">
                 Ваше ім'я:<br/>
