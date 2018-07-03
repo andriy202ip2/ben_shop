@@ -12,9 +12,11 @@ use AdminBundle\Entity\Sendemale;
 //use Shop\MenuBundle\Repository;
 //use Doctrine\ORM\EntityManagerInterface;
 
-class DefaultController extends Controller {
+class DefaultController extends Controller
+{
 
-    public function indexAction(Request $request) {
+    public function indexAction(Request $request)
+    {
 
         //echo rand(1, 100000);        
         $model_id = $request->query->getInt('mid', 0);
@@ -54,7 +56,7 @@ class DefaultController extends Controller {
         }
 
         $t = $t1 + $t2 + $t3;
-        if ($t == 0){
+        if ($t == 0) {
             $t1 = 1;
             $t2 = 2;
             $t3 = 4;
@@ -65,20 +67,20 @@ class DefaultController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
-                ->findAllOrderedByName();
+            ->findAllOrderedByName();
 
         $autoMenu = null;
         if ($model_id) {
             $em = $this->getDoctrine()->getManager();
             $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
-                    ->findByIdOrderedByName($model_id);
+                ->findByIdOrderedByName($model_id);
         }
 
         $dataMenu = null;
         if ($auto_id) {
             $em = $this->getDoctrine()->getManager();
             $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
-                    ->findByIdOrderedByName($model_id, $auto_id);
+                ->findByIdOrderedByName($model_id, $auto_id);
         }
 
         $ItemsArray = null;
@@ -88,7 +90,8 @@ class DefaultController extends Controller {
         if ($IsSerch) {
             $em = $this->getDoctrine()->getManager();
             $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
-                    ->findBySerchCodeOrderedById($serch);
+                ->findBySerchCodeOrderedById($serch);
+            //->getResult();
         }
 
 
@@ -96,80 +99,97 @@ class DefaultController extends Controller {
 
             $em = $this->getDoctrine()->getManager();
             $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
-                    ->findByIdOrderedById($model_id, $auto_id, $data_id, $side, $t, $t1, $t2, $t3);
+                ->findByIdOrderedById($model_id, $auto_id, $data_id, $side, $t, $t1, $t2, $t3);
+            //->getResult();
+        }
+
+
+        if ($IsSerch || $model_id && $auto_id && $data_id) {
+
+            $paginator = $this->get('knp_paginator');
+            $ItemsArray = $paginator->paginate(
+                $ItemsArray, /* query NOT result */
+                $request->query->getInt('page', 1)/* page number */, 15/* limit per page */
+            );
         }
 
         return $this->render('ShopMenuBundle:Default:index.html.twig', array(
-                    'IsSerch' => $IsSerch,
-                    'modelMenus' => $modelMenus,
-                    'model_id' => $model_id,
-                    'autoMenu' => $autoMenu,
-                    'auto_id' => $auto_id,
-                    'dataMenu' => $dataMenu,
-                    'data_id' => $data_id,
-                    's1' => $s1,
-                    's2' => $s2,
-                    'ItemsArray' => $ItemsArray,
-                    't1' => $t1,
-                    't2' => $t2,
-                    't3' => $t3,
+            'IsSerch' => $IsSerch,
+            'modelMenus' => $modelMenus,
+            'model_id' => $model_id,
+            'autoMenu' => $autoMenu,
+            'auto_id' => $auto_id,
+            'dataMenu' => $dataMenu,
+            'data_id' => $data_id,
+            's1' => $s1,
+            's2' => $s2,
+            'ItemsArray' => $ItemsArray,
+            't1' => $t1,
+            't2' => $t2,
+            't3' => $t3,
         ));
     }
 
-    public function aboutAction(Request $request) {
+    public function aboutAction(Request $request)
+    {
 
         $em = $this->getDoctrine()->getManager();
 
         $abouts = $em->getRepository('AdminBundle:About')->findOneBy([]);
 
         return $this->render('ShopMenuBundle:Default:about.html.twig', array(
-                    'abouts' => $abouts,
+            'abouts' => $abouts,
         ));
     }
 
-    public function сontactAction(Request $request) {
+    public function сontactAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $contacts = $em->getRepository('AdminBundle:Contact')->findOneBy([]);
 
         return $this->render('ShopMenuBundle:Default:contact.html.twig', array(
-                    'contacts' => $contacts,
+            'contacts' => $contacts,
         ));
     }
 
-    public function mobileAction(Request $request) {
+    public function mobileAction(Request $request)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $mobiles = $em->getRepository('AdminBundle:Mobile')->findOneBy([]);
 
         return new Response(
-                $mobiles->getMobile()
+            $mobiles->getMobile()
         );
     }
 
-    public function deliveryAction(Request $request) {
+    public function deliveryAction(Request $request)
+    {
 
         $em = $this->getDoctrine()->getManager();
 
         $delivery = $em->getRepository('AdminBundle:Delivery')->findOneBy([]);
 
         return $this->render('ShopMenuBundle:Default:delivery.html.twig', array(
-                    'delivery' => $delivery,
+            'delivery' => $delivery,
         ));
     }
 
-    public function paymentAction(Request $request) {
+    public function paymentAction(Request $request)
+    {
 
         $em = $this->getDoctrine()->getManager();
 
         $payment = $em->getRepository('AdminBundle:Payment')->findOneBy([]);
 
         return $this->render('ShopMenuBundle:Default:payment.html.twig', array(
-                    'payment' => $payment,
+            'payment' => $payment,
         ));
     }
 
-    public function sendemaleAction(Request $request) {
+    public function sendemaleAction(Request $request)
+    {
 
         $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
         $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
@@ -189,7 +209,7 @@ class DefaultController extends Controller {
                 'call_time_b' => $call_time_b,
                 'call_time_e' => $call_time_e
             ));
-            
+
             $sendemale = new Sendemale();
             $sendemale->setSendemale($view);
             $sendemale->setData(new \DateTime());
@@ -197,19 +217,19 @@ class DefaultController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($sendemale);
             $em->flush();
-            
+
             //meler
             $message = \Swift_Message::newInstance()
-                    ->setSubject('Перезвоніть мені !')
-                    ->setFrom('send@example.com')
-                    ->setTo($emales->getEmale())
-                    ->setBody(strip_tags($view));
+                ->setSubject('Перезвоніть мені !')
+                ->setFrom('send@example.com')
+                ->setTo($emales->getEmale())
+                ->setBody(strip_tags($view));
 
             $this->get('mailer')->send($message);
         }
 
         return new Response(
-                json_encode(array('Result' => mb_strlen($call_mob) >= 10))
+            json_encode(array('Result' => mb_strlen($call_mob) >= 10))
         );
 
         /*
@@ -221,7 +241,8 @@ class DefaultController extends Controller {
           )); */
     }
 
-    public function oderemaleAction(Request $request) {
+    public function oderemaleAction(Request $request)
+    {
 
         $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
         $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
@@ -251,16 +272,16 @@ class DefaultController extends Controller {
 
             //meler
             $message = \Swift_Message::newInstance()
-                    ->setSubject('Прийшов Заказ !')
-                    ->setFrom('send@example.com')
-                    ->setTo($emales->getEmale())
-                    ->setBody(strip_tags($view));
+                ->setSubject('Прийшов Заказ !')
+                ->setFrom('send@example.com')
+                ->setTo($emales->getEmale())
+                ->setBody(strip_tags($view));
 
             $this->get('mailer')->send($message);
         }
 
         return new Response(
-                json_encode(array('Result' => mb_strlen($call_mob) >= 10))
+            json_encode(array('Result' => mb_strlen($call_mob) >= 10))
         );
 
         /*

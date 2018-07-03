@@ -25,7 +25,7 @@ class ItemsRepository extends EntityRepository {
         
        // echo $query->getSQL();
         
-        return $query->getResult();
+        return $query;
         
     }    
     
@@ -63,7 +63,7 @@ class ItemsRepository extends EntityRepository {
 
         $query = $query->orderBy('i.id', 'ASC')
                  ->getQuery();
-        return $query->getResult();
+        return $query;
         
     }
     

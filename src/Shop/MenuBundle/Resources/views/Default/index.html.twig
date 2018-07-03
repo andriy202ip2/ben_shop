@@ -78,6 +78,10 @@
 
             {% if IsSerch or model_id and auto_id and data_id %}
 
+                <div class="navigation">
+                    {{ knp_pagination_render(ItemsArray) }}
+                </div><br/>
+
                 <table border="0" class="catalog">
                     <tbody>
                     <tr>
@@ -159,6 +163,10 @@
 
                     </tbody>
                 </table>
+
+                <br/><div class="navigation">
+                    {{ knp_pagination_render(ItemsArray) }}
+                </div><br/>
 
             {% endif %}
 
