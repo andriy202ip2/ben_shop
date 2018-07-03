@@ -2,45 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b915af-95c0-46d3-b2f8-ce53e53e5145" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Entity/Items.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Entity/Items.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-202513.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-202513.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-203213.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-203213.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-203607.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-203607.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-203609.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-203609.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-205003.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-205003.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-205004.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-205004.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-222212.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-222212.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-224303.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-224303.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-224860.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-224860.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-339320.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-339320.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-353492H.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-353492H.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-353492V.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-353492V.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-355252H.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-355252H.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-355252V.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-355252V.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-359322.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-359322.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-504703.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-504703.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-504799.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-504799.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-534701.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-534701.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-549961H.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-549961H.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-549961V.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-549961V.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-553621.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-553621.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-562227.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-562227.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-562533.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-562533.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-562566.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-562566.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-562579.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-562579.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-563992.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-563992.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-563993.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-563993.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-564701H.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-564701H.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-564701V.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-564701V.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-565042.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-565042.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-574569.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-574569.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-581571.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-581571.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-694705.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-694705.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/img/upload/GH-694708.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/web/img/upload/GH-694708.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,16 +20,16 @@
         <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Entity/Items.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="203">
-              <caret line="46" column="27" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="27" />
+              <caret line="109" column="24" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="154" column="45" selection-start-line="154" selection-start-column="45" selection-end-line="154" selection-end-column="45" />
+            <state relative-caret-position="303">
+              <caret line="155" column="25" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
               <folding>
                 <element signature="e#2385#2443#0#HTML" expanded="true" />
                 <element signature="e#7800#7821#0#HTML" expanded="true" />
@@ -79,8 +41,17 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
+            <state relative-caret-position="325">
+              <caret line="90" column="48" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemsRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -89,7 +60,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
+      <find>Під заказ</find>
       <find>price</find>
       <find>$acsesoris_price</find>
       <find>$price</find>
@@ -97,13 +68,14 @@
       <find>si2</find>
       <find>tId</find>
       <find>findByIdOrderedById</find>
-      <find>acsesoris_id</find>
       <find>null</find>
       <find>ull</find>
       <find>acsesoris_img</find>
       <find>acsesoris_img_data</find>
       <find>acsesoris_price</find>
       <find>img</find>
+      <find>findBySerchCodeOrderedById</find>
+      <find>acsesoris_id</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,9 +86,9 @@
       <list>
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Entity/Items.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" />
       </list>
     </option>
   </component>
@@ -295,12 +267,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530583683776</updated>
       <workItem from="1530583687680" duration="5632000" />
-      <workItem from="1530632062589" duration="7499000" />
+      <workItem from="1530632062589" duration="7823000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13131000" />
+    <option name="totallyTimeSpent" value="13455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
@@ -359,35 +331,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="53" column="119" selection-start-line="53" selection-start-column="119" selection-end-line="53" selection-end-column="119" />
+        <state relative-caret-position="303">
+          <caret line="155" column="25" selection-start-line="155" selection-start-column="25" selection-end-line="155" selection-end-column="25" />
+          <folding>
+            <element signature="e#2385#2443#0#HTML" expanded="true" />
+            <element signature="e#7800#7821#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="90" column="48" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Entity/Items.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
-          <caret line="46" column="27" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="27" />
+          <caret line="109" column="24" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="59" column="19" selection-start-line="59" selection-start-column="19" selection-end-line="59" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="154" column="45" selection-start-line="154" selection-start-column="45" selection-end-line="154" selection-end-column="45" />
-          <folding>
-            <element signature="e#2385#2443#0#HTML" expanded="true" />
-            <element signature="e#7800#7821#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="253">
+          <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
         </state>
       </provider>
     </entry>

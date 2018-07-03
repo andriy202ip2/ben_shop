@@ -16,7 +16,8 @@ class ItemsRepository extends EntityRepository {
                   
         //echo $serch;
         $query = $this->createQueryBuilder('i')
-            ->where('i.itemId LIKE :serch')
+            ->andwhere('i.itemId LIKE :serch')
+            ->orWhere('i.acsesorisId LIKE :serch')
             ->setParameter('serch', '%'.$serch.'%');
                 
         $query = $query->orderBy('i.id', 'ASC')
