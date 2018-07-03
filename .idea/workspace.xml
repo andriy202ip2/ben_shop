@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b915af-95c0-46d3-b2f8-ce53e53e5145" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Controller/ItemsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Controller/ItemsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Items/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Items/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,6 +18,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ItemsRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-197">
+              <caret line="33" selection-start-line="33" selection-end-line="49" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Items.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Entity/Items.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -27,33 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="166" column="21" selection-start-line="166" selection-start-column="21" selection-end-line="166" selection-end-column="21" />
-              <folding>
-                <element signature="e#2385#2443#0#HTML" expanded="true" />
-                <element signature="e#7800#7821#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemsRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+            <state relative-caret-position="291">
+              <caret line="126" selection-start-line="126" selection-end-line="128" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -61,17 +48,36 @@
       <file leaf-file-name="ItemsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/ItemsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2275">
-              <caret line="102" selection-start-line="102" selection-end-line="107" selection-end-column="10" />
+            <state relative-caret-position="300">
+              <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="133" selection-start-line="133" selection-end-line="151" selection-end-column="37" />
+              <folding>
+                <element signature="e#2293#2318#0#HTML" expanded="true" />
+                <element signature="e#2385#2443#0#HTML" expanded="true" />
+                <element signature="e#7048#7402#0#HTML" />
+                <element signature="e#7800#7821#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Items/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="70" selection-end-column="19" />
+            <state relative-caret-position="247">
+              <caret line="199" column="34" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#form#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,9 +99,9 @@
       <find>acsesoris_img</find>
       <find>acsesoris_img_data</find>
       <find>acsesoris_price</find>
-      <find>img</find>
       <find>acsesoris_id</find>
       <find>findBySerchCodeOrderedById</find>
+      <find>img</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,6 +115,8 @@
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Controller/ItemsController.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Items/index.html.twig" />
       </list>
     </option>
   </component>
@@ -317,12 +325,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530583683776</updated>
       <workItem from="1530583687680" duration="5632000" />
-      <workItem from="1530632062589" duration="8761000" />
+      <workItem from="1530632062589" duration="10331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14393000" />
+    <option name="totallyTimeSpent" value="15963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
@@ -368,7 +376,9 @@
         <state relative-caret-position="3225">
           <caret line="129" column="81" selection-start-line="129" selection-start-column="81" selection-end-line="129" selection-end-column="81" />
           <folding>
+            <element signature="e#2293#2318#0#HTML" expanded="true" />
             <element signature="e#2385#2443#0#HTML" expanded="true" />
+            <element signature="e#7048#7402#0#HTML" />
             <element signature="e#7800#7821#0#HTML" expanded="true" />
           </folding>
         </state>
@@ -390,39 +400,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Repository/ItemsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
+        <state relative-caret-position="-197">
+          <caret line="33" selection-start-line="33" selection-end-line="49" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+        <state relative-caret-position="291">
+          <caret line="126" selection-start-line="126" selection-end-line="128" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/ItemsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2275">
-          <caret line="102" selection-start-line="102" selection-end-line="107" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Items/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="70" selection-end-column="19" />
+        <state relative-caret-position="300">
+          <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="166" column="21" selection-start-line="166" selection-start-column="21" selection-end-line="166" selection-end-column="21" />
+        <state relative-caret-position="59">
+          <caret line="133" selection-start-line="133" selection-end-line="151" selection-end-column="37" />
           <folding>
+            <element signature="e#2293#2318#0#HTML" expanded="true" />
             <element signature="e#2385#2443#0#HTML" expanded="true" />
+            <element signature="e#7048#7402#0#HTML" />
             <element signature="e#7800#7821#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Items/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="199" column="34" selection-start-line="199" selection-start-column="34" selection-end-line="199" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#form#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#1;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

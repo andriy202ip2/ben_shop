@@ -45,7 +45,8 @@
                 <br>
                 <table border="0" style="text-align:center">
                     <tbody>
-                        <tr><td><img style="cursor:pointer;" src="{{ s1  ? '/img/front_on.png' : '/img/front_off.png' }}" id="si1"></td>
+                        <tr>
+                            <td><img style="cursor:pointer;" src="{{ s1  ? '/img/front_on.png' : '/img/front_off.png' }}" id="si1"></td>
                             <td><img style="cursor:pointer; border-left: solid" src="{{ s2  ? '/img/back_on.png' : '/img/back_off.png' }}" id="si2"></td>
                             <td width="30"></td>
                             <td><img align="left" src="{{ t1  ? '/img/shock_on.png' : '/img/shock_off.png' }}" style="cursor:pointer;" id="ti1"></td>
@@ -53,7 +54,8 @@
                             <td><img align="left" src="{{ t3  ? '/img/arm_on.png' : '/img/arm_off.png' }}" style="cursor:pointer; border-left: solid;" id="ti3"></td>
                         </tr>
 
-                        <tr><td style="font-size:11px">
+                        <tr>
+                            <td style="font-size:11px">
                                 передня  <input type="checkbox" name="s1" id="s1" value="1" {{ s1  ? 'checked=""' : '' }}> 
                             </td><td style="font-size:11px">
                                 задня  <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>

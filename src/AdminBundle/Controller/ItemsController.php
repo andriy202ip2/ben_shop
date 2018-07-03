@@ -45,6 +45,25 @@ class ItemsController extends Controller {
             $s2 = 2;
         }
 
+        $t1 = $request->query->getInt('t1', 0);
+        $t1 = $t1 >= 1 ? 1 : 0;
+
+        $t2 = $request->query->getInt('t2', 0);
+        $t2 = $t2 >= 1 ? 2 : 0;
+
+        $t3 = $request->query->getInt('t3', 0);
+        $t3 = $t3 >= 1 ? 4 : 0;
+
+        $t = $t1 + $t2 + $t3;
+        if ($t == 0) {
+            $t1 = 1;
+            $t2 = 2;
+            $t3 = 4;
+        }
+        if ($t == 7) {
+            $t = 0;
+        }
+
         $em = $this->getDoctrine()->getManager();
         $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
                 ->findAllOrderedByName();
@@ -71,11 +90,11 @@ class ItemsController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('i');
 
-            $dql = $dql->where('i.itemId LIKE :serch')
-                    ->setParameter('serch', '%' . $serch . '%');
+            $dql = $dql->andwhere('i.itemId LIKE :serch')
+                        ->orWhere('i.acsesorisId LIKE :serch')
+                        ->setParameter('serch', '%' . $serch . '%');
 
         } else {
-
 
 
             $em = $this->getDoctrine()->getManager();
@@ -98,6 +117,23 @@ class ItemsController extends Controller {
             if ($side) {
                 $dql = $dql->andWhere('a.sideId = :side')->setParameter('side', $side);
             }
+
+            if($t){
+
+                $arr = array();
+                if ($t2){
+                    $arr[] = 2;
+                }
+                if ($t1){
+                    $arr[] = 3;
+                }
+                if ($t3){
+                    $arr[] = 5;
+                }
+
+                $tId = "a.tId IN(".implode(",",$arr).")";
+                $dql = $dql->andWhere($tId);
+            }
         }
         
         $query = $dql->getQuery();
@@ -119,6 +155,9 @@ class ItemsController extends Controller {
                     'data_id' => $data_id,
                     's1' => $s1,
                     's2' => $s2,
+                    't1' => $t1,
+                    't2' => $t2,
+                    't3' => $t3,
         ));
     }
 
