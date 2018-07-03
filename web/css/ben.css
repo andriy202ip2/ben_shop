@@ -111,17 +111,28 @@ img.lang:hover {
     -o-transform:rotate(10deg);
     transform:rotate(10deg);
 }
+
+img.logo-base {
+    position: absolute;
+    z-index: 2;
+    top: -5px;
+    left: 15px;
+    height: 105px;
+}
+
 img.logo {
     position: absolute;
     z-index: 2;
-    top: 37px;
-    left: 95px;
+    top: -5px;
+    left: 240px;
+    width: 250px;
 }
+
 div.slog {
     position: absolute;
     z-index: 3;
     top: 110px;
-    left: 95px;
+    left: 15px;
     color: #ffffff;
     font-weight: bold;
     font-size: 16px;

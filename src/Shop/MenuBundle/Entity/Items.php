@@ -9,7 +9,7 @@ use Money\Money;
 /**
  * Items
  *
- * @ORM\Table(name="items", indexes={@ORM\Index(name="model_menu_id", columns={"model_menu_id"}), @ORM\Index(name="auto_menu_id", columns={"auto_menu_id"}), @ORM\Index(name="data_menu_id", columns={"data_menu_id"}), @ORM\Index(name="side_id", columns={"side_id"})})
+ * @ORM\Table(name="items", indexes={@ORM\Index(name="model_menu_id", columns={"model_menu_id"}), @ORM\Index(name="auto_menu_id", columns={"auto_menu_id"}), @ORM\Index(name="data_menu_id", columns={"data_menu_id"}), @ORM\Index(name="side_id", columns={"side_id"}), @ORM\Index(name="t_id", columns={"t_id"})})
  * @ORM\Entity(repositoryClass="Shop\MenuBundle\Repository\ItemsRepository")
  */
 class Items {
@@ -68,6 +68,13 @@ class Items {
     private $sideId;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="t_id", type="smallint", nullable=false)
+     */
+    private $tId;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="details", type="text", length=65535, nullable=false)
@@ -87,6 +94,13 @@ class Items {
      * @ORM\Column(name="item_id", type="string", length=256, nullable=false)
      */
     private $itemId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="acsesoris_id", type="string", length=256, nullable=false)
+     */
+    private $acsesorisId;
 
     /**
      * @var string
@@ -118,9 +132,29 @@ class Items {
     /**
      * @var string
      *
+     * @ORM\Column(name="acsesoris_img", type="string", length=256, nullable=true)
+     * @Assert\File(
+     *     maxSize = "2M",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
+     *     maxSizeMessage = "Максимальний розмір файлю має бути 2MB.",
+     *     mimeTypesMessage = "Тільки малюнки дозволено загружати."
+     * )
+     */
+    private $acsesorisImg;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="img_data", type="text", length=65535, nullable=false)
      */
     private $imgData;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="acsesoris_img_data", type="text", length=65535, nullable=false)
+     */
+    private $acsesorisImgData;
 
     /**
      * @var integer
@@ -462,4 +496,100 @@ class Items {
         }
     }    
     
+
+    /**
+     * Set tId
+     *
+     * @param integer $tId
+     *
+     * @return Items
+     */
+    public function setTId($tId)
+    {
+        $this->tId = $tId;
+
+        return $this;
+    }
+
+    /**
+     * Get tId
+     *
+     * @return integer
+     */
+    public function getTId()
+    {
+        return $this->tId;
+    }
+
+    /**
+     * Set acsesorisId
+     *
+     * @param string $acsesorisId
+     *
+     * @return Items
+     */
+    public function setAcsesorisId($acsesorisId)
+    {
+        $this->acsesorisId = $acsesorisId;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesorisId
+     *
+     * @return string
+     */
+    public function getAcsesorisId()
+    {
+        return $this->acsesorisId;
+    }
+
+    /**
+     * Set acsesorisImg
+     *
+     * @param string $acsesorisImg
+     *
+     * @return Items
+     */
+    public function setAcsesorisImg($acsesorisImg)
+    {
+        $this->acsesorisImg = $acsesorisImg;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesorisImg
+     *
+     * @return string
+     */
+    public function getAcsesorisImg()
+    {
+        return $this->acsesorisImg;
+    }
+
+    /**
+     * Set acsesorisImgData
+     *
+     * @param string $acsesorisImgData
+     *
+     * @return Items
+     */
+    public function setAcsesorisImgData($acsesorisImgData)
+    {
+        $this->acsesorisImgData = $acsesorisImgData;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesorisImgData
+     *
+     * @return string
+     */
+    public function getAcsesorisImgData()
+    {
+        return $this->acsesorisImgData;
+    }
 }
