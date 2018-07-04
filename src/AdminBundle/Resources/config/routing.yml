@@ -57,3 +57,7 @@ admin_sendemale:
 admin_add_prices:
     path:     /add_prices
     defaults: { _controller: AdminBundle:Default:add_prices }
+
+admin_add_prices_acsesory:
+    path:     /add_prices_acsesory
+    defaults: { _controller: AdminBundle:Default:add_prices_acsesory }
