@@ -1,12 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% endblock %}
+{% block description %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% endblock %}
+
+
 {% block body %}
 
     <div id="desc_in_left">
 
         <center>
 
-            <h1>Продукти</h1><br>
+            <h1>Запчастини</h1><br>
 
 
             <form id="form_item" method="GET">
@@ -270,7 +274,7 @@
             $("#call_mob_oder").mask("(999) 999-9999");
 
             //=====================================================
-            
+
             $("#dialog").dialog({
                 autoOpen: false,
                 width: 1200,

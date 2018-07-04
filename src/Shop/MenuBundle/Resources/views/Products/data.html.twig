@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Роки авто{% endblock %}
+{% block title %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% endblock %}
+{% block description %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% endblock %}
+
 
 {% block body %}
 

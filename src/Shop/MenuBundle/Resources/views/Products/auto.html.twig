@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Авто{% endblock %}
+{% block title %}Авто {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% endblock %}
+{% block description %}Авто  {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% endblock %}
+
 
 {% block body %}
 

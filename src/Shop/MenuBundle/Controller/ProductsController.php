@@ -23,8 +23,12 @@ class ProductsController extends Controller {
         $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
                 ->findByIdOrderedByName($model_id);
 
+        $I = $em->getRepository('ShopMenuBundle:ModelMenu')
+            ->findOneBy(["id" => $model_id]);
+
         return $this->render('ShopMenuBundle:Products:auto.html.twig', array(
                     'autoMenu' => $autoMenu,
+                    'I' => $I,
         ));
     }
 
@@ -34,8 +38,12 @@ class ProductsController extends Controller {
         $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
                 ->findByIdOrderedByName($model_id, $auto_id);
 
+        $I = $em->getRepository('ShopMenuBundle:AutoMenu')
+            ->findOneBy(["id" => $auto_id]);
+
         return $this->render('ShopMenuBundle:Products:data.html.twig', array(
                     'dataMenu' => $dataMenu,
+                    'I' => $I,
         ));
     }
 
@@ -77,6 +85,10 @@ class ProductsController extends Controller {
                 ->findByIdOrderedById($model_id, $auto_id, $data_id, $side, $t, $t1, $t2, $t3)
                 ->getResult();
 
+        $I = $em->getRepository('ShopMenuBundle:DataMenu')
+            ->findOneBy(["id" => $data_id]);
+
+
         return $this->render('ShopMenuBundle:Products:items.html.twig', array(
                     'ItemsArray' => $ItemsArray,
                     's1' => $s1,
@@ -84,6 +96,7 @@ class ProductsController extends Controller {
                     't1' => $t1,
                     't2' => $t2,
                     't3' => $t3,
+                    'I' => $I,
         ));
     }
 
