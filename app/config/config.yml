@@ -77,9 +77,9 @@ swiftmailer:
     transport:  smtp
     encryption: ssl
     auth_mode:  login
-    host:       mail.autostopdrg.com.ua
-    username:   _mainaccount@autostopdrg.com.ua
-    password:   iYuU89kHsd
+    host:       mail.gh-parts.com.ua
+    username:   zakaz@gh-parts.com.ua
+    password:   7qOA2#BK,Ci]I!
     #transport: '%mailer_transport%'
     #host: '%mailer_host%'
     #username: '%mailer_user%'

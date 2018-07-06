@@ -115,9 +115,9 @@ img.lang:hover {
 img.logo-base {
     position: absolute;
     z-index: 2;
-    top: -5px;
-    left: 15px;
-    height: 105px;
+    top: 37px;
+    left: 95px;
+
 }
 
 img.logo {
@@ -132,7 +132,7 @@ div.slog {
     position: absolute;
     z-index: 3;
     top: 110px;
-    left: 15px;
+    left: 65px;
     color: #ffffff;
     font-weight: bold;
     font-size: 16px;
@@ -742,7 +742,7 @@ table.catalogwebshop tr td{
 div.telefone {
     position: absolute;
     z-index: 3;
-    top: 10px;
+    top: -20px;
     left: 850px;
     color: #ffffff;
     font-weight: bold;
