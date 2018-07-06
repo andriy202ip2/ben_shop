@@ -30,15 +30,24 @@ class DefaultController extends Controller {
             $em = $this->getDoctrine()->getManager();
             
             $data = $editForm->getData();
-            $arr = explode("}", $data["list"]);
+            $arr = explode("|", $data["list"]);
             foreach ($arr as $val) {
                 $arr2 = explode("{", $val);
 
                 if (count($arr2) == 2) {
 
+                    $arr3 = explode("}", $arr2[1]);
+
                     $id = preg_replace('/\s+/', '', $arr2[0]);
-                    $prise = preg_replace('/\s+/', '', $arr2[1]);
+
+                    $prise = preg_replace('/\s+/', '', $arr3[0]);
+                    $is = preg_replace('/\s+/', '', $arr3[1]);
+                    if($is > 0){
+                        $is = 1;
+                    }
+
                     $prise = str_replace(array(","), array("."), $prise);
+
                     $prise = $prise * ($data['curling'] / 100 + 1);
                     $prise = round($prise, 2) * 100;     
                     
@@ -55,9 +64,10 @@ class DefaultController extends Controller {
                     foreach ($items as $item) {
                         $i++;
                         
-                        $money = Money::PLN($prise);
+                        $money = Money::UAH($prise);
                         $item->setPrice($money);
-                                                        
+                        $item->setItemIs($is);
+
                         //exit();
                     }
                     if ($i == 0) {
@@ -95,15 +105,24 @@ class DefaultController extends Controller {
             $em = $this->getDoctrine()->getManager();
 
             $data = $editForm->getData();
-            $arr = explode("}", $data["list"]);
+            $arr = explode("|", $data["list"]);
             foreach ($arr as $val) {
                 $arr2 = explode("{", $val);
 
                 if (count($arr2) == 2) {
 
+                    $arr3 = explode("}", $arr2[1]);
+
                     $id = preg_replace('/\s+/', '', $arr2[0]);
-                    $prise = preg_replace('/\s+/', '', $arr2[1]);
+
+                    $prise = preg_replace('/\s+/', '', $arr3[0]);
+                    $is = preg_replace('/\s+/', '', $arr3[1]);
+                    if($is > 0){
+                        $is = 1;
+                    }
+
                     $prise = str_replace(array(","), array("."), $prise);
+
                     $prise = $prise * ($data['curling'] / 100 + 1);
                     $prise = round($prise, 2) * 100;
 
@@ -120,9 +139,9 @@ class DefaultController extends Controller {
                     foreach ($items as $item) {
                         $i++;
 
-                        $money = Money::PLN($prise);
+                        $money = Money::UAH($prise);
                         $item->setAcsesorisPrice($money);
-
+                        $item->setAcsesoriIs($is);
                         //exit();
                     }
                     if ($i == 0) {
