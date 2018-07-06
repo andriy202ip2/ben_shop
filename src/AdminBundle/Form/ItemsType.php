@@ -75,6 +75,16 @@ class ItemsType extends AbstractType
                 ),
                 'label' => 'Запчастина: '
             ))
+            ->add('itemIs', ChoiceType::class, array(
+                'choices' => array(
+                    'в наявності' => 1,
+                    'під замовлення ' => 0,
+                ),
+                'attr' => array(
+                    'class' => 'admin-selekt cat'
+                ),
+                'label' => 'Чи э в наявності: '
+            ))
             ->add('img', FileType::class, array(
                 'data_class' => null,
                 'required' => false,
@@ -157,6 +167,16 @@ class ItemsType extends AbstractType
                     'class' => 'admin-input'
                 ),
                 'label' => 'Ціна  Аксесуару: '))
+            ->add('acsesoriIs', ChoiceType::class, array(
+                'choices' => array(
+                    'в наявності' => 1,
+                    'під замовлення ' => 0,
+                ),
+                'attr' => array(
+                    'class' => 'admin-selekt cat'
+                ),
+                'label' => 'Чи э в наявності Аксесуар: '
+            ))
             ->add('acsesorisId', TextType::class, array(
                 'attr' => array(
                     'class' => 'admin-input'

@@ -82,6 +82,20 @@ class Items {
     private $tId;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="item_is", type="smallint", nullable=false)
+     */
+    private $itemIs;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="acsesori_is", type="smallint", nullable=false)
+     */
+    private $acsesoriIs;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="details", type="text", length=65535, nullable=false)
@@ -644,4 +658,52 @@ class Items {
     }
 
 
+
+    /**
+     * Set itemIs
+     *
+     * @param integer $itemIs
+     *
+     * @return Items
+     */
+    public function setItemIs($itemIs)
+    {
+        $this->itemIs = $itemIs;
+
+        return $this;
+    }
+
+    /**
+     * Get itemIs
+     *
+     * @return integer
+     */
+    public function getItemIs()
+    {
+        return $this->itemIs;
+    }
+
+    /**
+     * Set acsesoriIs
+     *
+     * @param integer $acsesoriIs
+     *
+     * @return Items
+     */
+    public function setAcsesoriIs($acsesoriIs)
+    {
+        $this->acsesoriIs = $acsesoriIs;
+
+        return $this;
+    }
+
+    /**
+     * Get acsesoriIs
+     *
+     * @return integer
+     */
+    public function getAcsesoriIs()
+    {
+        return $this->acsesoriIs;
+    }
 }

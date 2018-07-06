@@ -179,11 +179,15 @@
                             <br/>
 
                             {% if Item.acsesorisPrice == null %}
-                                Під замовилення
+                                0 грн
                             {% elseif Item.acsesorisPrice | money_as_float == 0 %}
-                                Під замовилення
+                                0 грн
                             {% else %}
-                                {{ Item.acsesorisPrice | money_convert("UAH") | money_format }} за шт.
+                                {{ Item.acsesorisPrice | money_convert("UAH") | money_format |replace({'UAH': "грн"})}} за шт.
+                            {% endif %}
+
+                            {% if Item.acsesoriIs == 0 %}
+                                <br/>Під замовлення
                             {% endif %}
 
                         {% endif %}

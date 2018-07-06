@@ -88,12 +88,16 @@
                             <td>
 
                                 {% if Item.price == null %}
-                                    <span class="item{{ Item.id }}price">Під замовилення</span>
+                                    <span class="item{{ Item.id }}price">0 грн</span>
                                 {% elseif Item.price | money_as_float == 0 %}
-                                    <span class="item{{ Item.id }}price">Під замовилення</span>
+                                    <span class="item{{ Item.id }}price">0 грн</span>
                                 {% else %}
-                                    <span class="item{{ Item.id }}price">{{ Item.price | money_convert("UAH") | money_format }}
+                                    <span class="item{{ Item.id }}price">{{ Item.price | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }}
                                         за шт.</span>
+                                {% endif %}
+
+                                {% if Item.itemIs == 0 %}
+                                    <br/>Під замовлення
                                 {% endif %}
 
                                 <br/><br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold"
@@ -124,14 +128,19 @@
                                     <br/>
 
                                     {% if Item.acsesorisPrice == null %}
-                                        <span class="item{{ Item.id }}price2">Під замовилення</span>
+                                        <span class="item{{ Item.id }}price2">0 грн</span>
                                     {% elseif Item.acsesorisPrice | money_as_float == 0 %}
-                                        <span class="item{{ Item.id }}price2">Під замовилення</span>
+                                        <span class="item{{ Item.id }}price2">0 грн</span>
                                     {% else %}
                                         <span class="item{{ Item.id }}price2">
-                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_format }} за шт.
+                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }} за шт.
                                         </span>
                                     {% endif %}
+
+                                    {% if Item.acsesoriIs == 0 %}
+                                        <br/>Під замовлення
+                                    {% endif %}
+
                                     <br/>
                                     <span style="font-size: 8pt;cursor:pointer;" class="to_order_a2 gold"
                                           val="item{{ Item.id }}">ЗАМОВИТИ</span>

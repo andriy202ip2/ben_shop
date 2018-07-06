@@ -44,7 +44,7 @@ class Items {
      *
      * @ORM\Column(name="acsesoris_price", type="money", nullable=true)
      */
-    private $acsesoris_price;
+    private $acsesorisPrice;
 
     /**
      * @var integer
@@ -80,6 +80,20 @@ class Items {
      * @ORM\Column(name="t_id", type="smallint", nullable=false)
      */
     private $tId;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="item_is", type="smallint", nullable=false)
+     */
+    private $itemIs;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="acsesori_is", type="smallint", nullable=false)
+     */
+    private $acsesoriIs;
 
     /**
      * @var string
@@ -192,8 +206,32 @@ class Items {
     {
         $this->price = $price;
         return $this;
-    }    
-    
+    }
+
+    /**
+     * Set acsesorisPrice
+     *
+     * @param money $acsesorisPrice
+     *
+     * @return Items
+     */
+    public function setAcsesorisPrice(Money $acsesorisPrice)
+    {
+        $this->acsesorisPrice = $acsesorisPrice;
+        return $this;
+    }
+
+    /**
+     * Get acsesorisPrice
+     *
+     * @return money
+     */
+    public function getAcsesorisPrice()
+    {
+        return $this->acsesorisPrice;
+    }
+
+
     public function getData() {
         return $this->data;
     }
@@ -566,6 +604,25 @@ class Items {
         return $this;
     }
 
+    public function saveAcsesorisImg(Items $item, $img_directory, $img = NULL) {
+
+        $file = $item->getAcsesorisImg();
+
+        if ($img != NULL && strlen($img) > 1) {
+            $fileName = $img;
+        } else {
+            $fileName = md5(uniqid()) . '.jpeg';
+        }
+
+        $file->move(
+            $img_directory, $fileName
+        );
+
+        $item->setAcsesorisImg($fileName);
+
+        return $item;
+    }
+
     /**
      * Get acsesorisImg
      *
@@ -599,4 +656,6 @@ class Items {
     {
         return $this->acsesorisImgData;
     }
+
+
 }
