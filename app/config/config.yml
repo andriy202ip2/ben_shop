@@ -103,6 +103,6 @@ knp_paginator:
 
 tbbc_money:
     currencies: ["UAH", "PLN"]
-    reference_currency: "PLN"
+    reference_currency: "UAH"
     decimals: 2
     ratio_provider: tbbc_money.ratio_provider.google
