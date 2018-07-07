@@ -9,16 +9,46 @@
     <div class="text-center">
         <h1>Авто</h1>
     </div>
+    <br/>
 
     <div class="text-marning">
 
-        {% for auto in autoMenu %} 
-            <div class="marning-smoll"><a href="{{ path('products_data', { 'model_id': auto.modelMenuId, 'auto_id': auto.id }) }}">{{ auto.name }}</a></div>
+        {% set isEnd = 1 %}
+        {% set i = 0 %}
 
-        {% endfor %}     
+        <table style="width:100%">
 
-    </div>        
-    <br/><br/><br/><br/>  
+            {% for auto in autoMenu %}
+
+                {% if i % 3 == 0 %}
+                    <tr>
+                    {% set isEnd = 0 %}
+                {% endif %}
+
+                <td>
+
+                    <div class="marning-smoll"><a
+                                href="{{ path('products_data', { 'model_id': auto.modelMenuId, 'auto_id': auto.id }) }}">{{ auto.name }}</a>
+                    </div>
+
+                </td>
+
+                {% if i % 3 == 2 %}
+                    </tr>
+                    {% set isEnd = 1 %}
+                {% endif %}
+
+                {% set i = i + 1 %}
+            {% endfor %}
+
+            {% if isEnd == 0 %}
+                </tr>
+            {% endif %}
+
+        </table>
+
+    </div>
+    <br/><br/><br/><br/>
 
 
 {% endblock %}

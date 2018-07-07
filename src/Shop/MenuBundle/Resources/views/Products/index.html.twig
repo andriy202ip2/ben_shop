@@ -8,15 +8,44 @@
     <div class="text-center">
         <h1>Моделі</h1>
     </div>
+    <br/>
 
     <div class="text-marning">
 
-        {% for model in modelMenus %} 
-            <div class="marning-smoll"><a href="{{ path('products_autos', { 'model_id': model.id }) }}">{{ model.name }}</a></div>
-        {% endfor %}     
+        {% set isEnd = 1 %}
+        {% set i = 0 %}
 
-    </div>        
-    <br/><br/><br/><br/>  
+        <table style="width:100%">
+
+            {% for model in modelMenus %}
+
+                {% if i % 3 == 0 %}
+                    <tr>
+                    {% set isEnd = 0 %}
+                {% endif %}
+
+                    <td>
+                        <div class="marning-smoll"><a
+                                    href="{{ path('products_autos', { 'model_id': model.id }) }}">{{ model.name }}</a>
+                        </div>
+                    </td>
+
+                {% if i % 3 == 2 %}
+                    </tr>
+                    {% set isEnd = 1 %}
+                {% endif %}
+
+                {% set i = i + 1 %}
+            {% endfor %}
+
+            {% if isEnd == 0 %}
+                </tr>
+            {% endif %}
+
+        </table>
+
+    </div>
+    <br/><br/><br/><br/>
 
 
 {% endblock %}
