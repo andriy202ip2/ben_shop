@@ -193,6 +193,7 @@ class DefaultController extends Controller
 
         $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
         $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
+        $call_vin = strip_tags($request->query->get('call_vin', ""), '<p><br>');
         $call_time_b = strip_tags($request->query->get('call_time_b', ""), '<p><br>');
         $call_time_e = strip_tags($request->query->get('call_time_e', ""), '<p><br>');
 
@@ -206,6 +207,7 @@ class DefaultController extends Controller
             $view = $this->renderView('ShopMenuBundle:Default:email.txt.twig', array(
                 'call_name' => $call_name,
                 'call_mob' => $call_mob,
+                'call_vin' => $call_vin,
                 'call_time_b' => $call_time_b,
                 'call_time_e' => $call_time_e
             ));

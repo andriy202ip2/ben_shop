@@ -47,6 +47,7 @@
                             url: "/sendemale",
                             data: {call_name: $("#call_name").val(),
                                 call_mob: $("#call_mob").val(),
+                                call_vin: $("#call_vin").val(),
                                 call_time_b: $("#call_time_b").val(),
                                 call_time_e: $("#call_time_e").val()}
                         })
@@ -90,6 +91,9 @@
 
             Телефон:<br/>
             <input id="call_mob" maxlength="14" name="call_mob" class="call-input required" value="" type="text" data-msg="Поле Телефон обов'язкове." /><br/>
+
+            VIN-код автомобіля:<br/>
+            <input id="call_vin" maxlength="33" name="call_vin" class="call-input" value="" type="text" /><br/>
 
             Зручний час:<br/>
             <input id="call_time_b" maxlength="5" name="call_time_b" class="call-smoll-input" value="" placeholder="9:00" type="text" /> - 
