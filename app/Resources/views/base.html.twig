@@ -1,66 +1,73 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="pl" lang="pl" dir="ltr" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="description" content="{% block description %}Найкращі якісні амортизатори, спіральні пружини, керуючі озброєння та гальма{% endblock %}" />
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="pl" lang="pl" dir="ltr"
+      prefix="og: http://ogp.me/ns#">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description"
+          content="{% block description %}Найкращі якісні амортизатори, спіральні пружини, керуючі озброєння та гальма{% endblock %}"/>
 
-        <link rel="icon" type="image/x-icon" href="/img/ico7.ico">
+    <link rel="icon" type="image/x-icon" href="/img/ico7.ico">
 
-        <meta property="og:image" content="/img/viber_logo.jpg" />
+    <meta property="og:image" content="/img/viber_logo.jpg"/>
 
-        <link type="text/css" rel="stylesheet" href="/css/ben.css" />
-        <link href="/css/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="/css/ben.css"/>
+    <link href="/css/jquery-ui.css" rel="stylesheet"/>
 
-        <title>{% block title %}Найкраща якість автозапчастин!{% endblock %}</title>
+    <title>{% block title %}Найкраща якість автозапчастин!{% endblock %}</title>
 
-        <script language="JavaScript" src="/js/qTip.js" type="text/JavaScript"></script>
-        <script language="JavaScript" src="/js/jquery.min.js" type="text/JavaScript"></script>
-        <script language="JavaScript" src="/js/jquery-ui.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/qTip.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/jquery.min.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/jquery-ui.js" type="text/JavaScript"></script>
 
-        <!--<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />-->
-        <!--<script language="JavaScript" src="/js/bootstrap.min.js" type="text/JavaScript"></script>-->
+    <!--<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />-->
+    <!--<script language="JavaScript" src="/js/bootstrap.min.js" type="text/JavaScript"></script>-->
 
-        <script language="JavaScript" src="/js/jquery.mockjax.js" type="text/JavaScript"></script>
-        <script language="JavaScript" src="/js/jquery.validate.js" type="text/JavaScript"></script>
-        <script language="JavaScript" src="/js/jquery.maskedinput.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/jquery.mockjax.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/jquery.validate.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/jquery.maskedinput.js" type="text/JavaScript"></script>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93485038-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93485038-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-            gtag('config', 'UA-93485038-2');
-        </script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-93485038-2');
+    </script>
 
     {% block stylesheets %}{% endblock %}
-{% block javascripts %}{% endblock %}
+    {% block javascripts %}{% endblock %}
 
 
+    <script>
+        $(document).ready(function () {
 
-<script>
-    $(document).ready(function () {
+            $("#registerForm").validate();
 
-        $("#registerForm").validate();
+            $("#dialog_contakt").dialog({
+                autoOpen: false,
+                width: 400,
+                buttons: {
+                    "Відправити": function () {
+                        if ($("#registerForm").valid()) {
 
-        $("#dialog_contakt").dialog({
-            autoOpen: false,
-            width: 400,
-            buttons: {
-                "Відправити": function () {
-                    if ($("#registerForm").valid()) {
-
-                        $("#dialog_contakt").dialog("close");
-                        $.ajax({
-                            method: "GET",
-                            url: "/sendemale",
-                            data: {call_name: $("#call_name").val(),
-                                call_mob: $("#call_mob").val(),
-                                call_vin: $("#call_vin").val(),
-                                call_time_b: $("#call_time_b").val(),
-                                call_time_e: $("#call_time_e").val()}
-                        })
+                            $("#dialog_contakt").dialog("close");
+                            $.ajax({
+                                method: "GET",
+                                url: "/sendemale",
+                                data: {
+                                    call_name: $("#call_name").val(),
+                                    call_mob: $("#call_mob").val(),
+                                    call_vin: $("#call_vin").val(),
+                                    call_time_b: $("#call_time_b").val(),
+                                    call_time_e: $("#call_time_e").val()
+                                }
+                            })
                                 .done(function (msg) {
                                     var data = eval('(' + msg + ')');
                                     if (data.Result) {
@@ -69,128 +76,159 @@
                                         //alert(data.Result);     
                                     }
                                 });
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        $(".contact_as").click(function () {
-            $("#dialog_contakt").dialog("open");
-            return false;
-        });
+            $(".contact_as").click(function () {
+                $("#dialog_contakt").dialog("open");
+                return false;
+            });
 
-        $("#call_mob").mask("(999) 999-9999");
-        $("#call_time_b").mask("99:99");
-        $("#call_time_e").mask("99:99");
-                
-        $("#container").height($(document).height());        
-              
-    });
-</script>   
+            $("#call_mob").mask("(999) 999-9999");
+            $("#call_time_b").mask("99:99");
+            $("#call_time_e").mask("99:99");
+
+            $("#container").height($(document).height());
+
+        });
+    </script>
 
 </head>
 <body>
 
-    <!-- ui-dialog contakt -->
-    <div id="dialog_contakt" title="ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК" style="display: none">  
+<!-- ui-dialog contakt -->
+<div id="dialog_contakt" title="Підбір по VIN-коду автомобіля" style="display: none">
 
-        <form onsubmit="return false" id="registerForm">
+    <form onsubmit="return false" id="registerForm">
 
-            Ваше ім'я:<br/>
-            <input id="call_name" maxlength="30" name="call_name" class="call-input" value="" type="text" /><br/>
+        Ваше ім'я:<br/>
+        <input id="call_name" maxlength="30" name="call_name" class="call-input" value="" type="text"/><br/>
 
-            Телефон:<br/>
-            <input id="call_mob" maxlength="14" name="call_mob" class="call-input required" value="" type="text" data-msg="Поле Телефон обов'язкове." /><br/>
+        Телефон:<br/>
+        <input id="call_mob" maxlength="14" name="call_mob" class="call-input required" value="" type="text"
+               data-msg="Поле Телефон обов'язкове."/><br/>
 
-            VIN-код автомобіля:<br/>
-            <input id="call_vin" maxlength="33" name="call_vin" class="call-input" value="" type="text" /><br/>
+        VIN-код автомобіля:<br/>
+        <input id="call_vin" maxlength="33" name="call_vin" class="call-input" value="" type="text"/><br/>
 
-            Зручний час:<br/>
-            <input id="call_time_b" maxlength="5" name="call_time_b" class="call-smoll-input" value="" placeholder="9:00" type="text" /> - 
-            <input id="call_time_e" maxlength="5" name="call_time_e" class="call-smoll-input" value="" placeholder="20:00" type="text" /><br/>
+        Зручний час:<br/>
+        <input id="call_time_b" maxlength="5" name="call_time_b" class="call-smoll-input" value="" placeholder="9:00"
+               type="text"/> -
+        <input id="call_time_e" maxlength="5" name="call_time_e" class="call-smoll-input" value="" placeholder="20:00"
+               type="text"/><br/>
 
-        </form>
-    </div>    
-    <div id="dialog_contakt_ok" title="Повідомлення відправлено" style="display: none">
-        <p>Повідомлення відправлено !<br/>
-            Cкоро ми вам зателефонуємо !
-        </p>
+    </form>
+</div>
+<div id="dialog_contakt_ok" title="Повідомлення відправлено" style="display: none">
+    <p>Повідомлення відправлено !<br/>
+        Cкоро ми вам зателефонуємо !
+    </p>
+</div>
+
+
+<div id="container">
+    <img src="/img/background.png" class="background">
+
+    <!--languages-->
+    <a href="{{ path('shop_menu_homepage') }}"><img src="/img/lang_uk.png" class="lang_uk"></a>
+    <div style="height: 40px;"></div>
+
+    <!--logo-->
+
+    <a href="{{ path('shop_menu_homepage') }}">
+        <img src="/img/gh_logo.png" class="logo-base">
+    </a>
+    <div class="slog">Ваш постачальник елементів підвіски</div>
+
+    <div class="telefone">
+        <center>
+            {{ render(url('shop_mobil')) }}
+            <br/><span style="cursor:pointer;" class="contact_as">ПІДБІР ПО VIN-КОДУ АВТОМОБІЛЯ</span>
+        </center>
     </div>
 
+    <!--menu-->
 
-    <div id="container">
-        <img src="/img/background.png" class="background">
+    <ul id="nav">
+        <li><a href="{{ path('shop_about') }}">
+                <div class="menu">
+                    <div class="menu-text">Про нас</div>
+                </div>
+            </a></li>
+        <li><a href="{{ path('products_index') }}">
+                <div class="menu">
+                    <div class="menu-text">Продукція</div>
+                </div>
+            </a></li>
+        <li><a href="{{ path('shop_menu_homepage') }}">
+                <div class="menu">
+                    <div class="menu-text">Каталоги</div>
+                </div>
+            </a></li>
 
-            <!--languages-->
+        <li><a href="{{ path('shop_сontact') }}">
+                <div class="menu">
+                    <div class="menu-text">Контакти</div>
+                </div>
+            </a></li>
 
-            <div style="height: 40px;"></div>
+        <li><a href="{{ path('shop_delivery') }}">
+                <div class="menu">
+                    <div class="menu-text">Доставка</div>
+                </div>
+            </a></li>
 
-            <!--logo-->
+        <li><a href="{{ path('shop_payment') }}">
+                <div class="menu">
+                    <div class="menu-text">Оплата</div>
+                </div>
+            </a></li>
 
-            <a href="{{ path('shop_menu_homepage') }}">
-                <img src="/img/gh_logo.png" class="logo-base">
-            </a>
-            <div class="slog">ваш постачальник рішень підвіски</div>
+        {% if app.user and (app.user.role == 'ROLE_ADMIN' or app.user.role == 'ROLE_ROOT') %}
+            <li><a href="{{ path('admin_homepage') }}">
+                    <div class="menu">
+                        <div class="menu-text">Адмінка</div>
+                    </div>
+                </a></li>
+        {% endif %}
 
-            <div class="telefone">
-                <center>
-                    {{ render(url('shop_mobil')) }}
-                    <br/><span style="cursor:pointer;" class="contact_as">ЗАМОВИТИ ЗВОРОТНІЙ ДЗВІНОК</span>
-                </center>
-            </div>
-
-            <!--menu-->
-
-            <ul id="nav">
-                <li><a href="{{ path('shop_about') }}"><div class="menu"><div class="menu-text">Про нас</div></div></a></li>
-                <li><a href="{{ path('products_index') }}"><div class="menu"><div class="menu-text">Продукція</div></div></a></li>
-                <li><a href="{{ path('shop_menu_homepage') }}"><div class="menu"><div class="menu-text">Каталоги</div></div></a></li>
-
-                <li><a href="{{ path('shop_сontact') }}"><div class="menu"><div class="menu-text">Контакти</div></div></a></li>
-
-                <li><a href="{{ path('shop_delivery') }}"><div class="menu"><div class="menu-text">Доставка</div></div></a></li>
-
-                <li><a href="{{ path('shop_payment') }}"><div class="menu"><div class="menu-text">Оплата</div></div></a></li>
-
-                {% if app.user and (app.user.role == 'ROLE_ADMIN' or app.user.role == 'ROLE_ROOT') %}
-                    <li><a href="{{ path('admin_homepage') }}"><div class="menu"><div class="menu-text">Адмінка</div></div></a></li>
-                    {% endif %}
-
-                <!--{% if app.user %}
+        <!--{% if app.user %}
                 <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
                 {% else %}
                 <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
                     {% endif %}-->
 
-                    </ul>
+    </ul>
 
-                    <div id="desc_out">
-                        <!--description-->
+    <div id="desc_out">
+        <!--description-->
 
-                        <div id="desc_in">
+        <div id="desc_in">
 
-                            <!-- left - main text-->
+            <!-- left - main text-->
 
-                        {% block body %}{% endblock %}
-                        <!--INSERT MAIN TEXT-->
+            {% block body %}{% endblock %}
+            <!--INSERT MAIN TEXT-->
 
-                        <!--end left-->
-
-                    </div>
-                </div>
-        </div>
-
-
-        <div align="center" class="copyright">
-            <hr width="225px" />
-
-            {% if app.user %}
-                <a href="{{ path('security_user_logout') }}">Copyright © 2017. Вихід</a>
-            {% else %}
-                <a href="{{ path('security_user_login') }}">Copyright © 2017.</a>
-            {% endif %}    
+            <!--end left-->
 
         </div>
+    </div>
+</div>
 
-    </body>
+
+<div align="center" class="copyright">
+    <hr width="225px"/>
+
+    {% if app.user %}
+        <a href="{{ path('security_user_logout') }}">Copyright © 2017. Вихід</a>
+    {% else %}
+        <a href="{{ path('security_user_login') }}">Copyright © 2017.</a>
+    {% endif %}
+
+</div>
+
+</body>
 </html>

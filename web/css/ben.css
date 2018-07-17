@@ -120,6 +120,13 @@ img.logo-base {
 
 }
 
+.lang_uk{
+    position: absolute;
+    z-index: 2;
+    top: 13px;
+    left: 245px;
+}
+
 img.logo {
     position: absolute;
     z-index: 2;
@@ -742,7 +749,7 @@ table.catalogwebshop tr td{
 div.telefone {
     position: absolute;
     z-index: 3;
-    top: -20px;
+    top: -23px;
     left: 850px;
     color: #ffffff;
     font-weight: bold;
