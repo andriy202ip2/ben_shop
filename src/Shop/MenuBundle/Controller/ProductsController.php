@@ -88,6 +88,8 @@ class ProductsController extends Controller {
         $I = $em->getRepository('ShopMenuBundle:DataMenu')
             ->findOneBy(["id" => $data_id]);
 
+        $percent = $em->getRepository('AdminBundle:Percent')->findOneBy([]);
+        $percent = $percent->getPercent();
 
         return $this->render('ShopMenuBundle:Products:items.html.twig', array(
                     'ItemsArray' => $ItemsArray,
@@ -97,6 +99,7 @@ class ProductsController extends Controller {
                     't2' => $t2,
                     't3' => $t3,
                     'I' => $I,
+                    'percent' => $percent,
         ));
     }
 

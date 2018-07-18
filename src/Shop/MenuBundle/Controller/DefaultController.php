@@ -113,6 +113,9 @@ class DefaultController extends Controller
             );
         }
 
+        $percent = $em->getRepository('AdminBundle:Percent')->findOneBy([]);
+        $percent = $percent->getPercent();
+
         return $this->render('ShopMenuBundle:Default:index.html.twig', array(
             'IsSerch' => $IsSerch,
             'modelMenus' => $modelMenus,
@@ -127,6 +130,7 @@ class DefaultController extends Controller
             't1' => $t1,
             't2' => $t2,
             't3' => $t3,
+            'percent' => $percent,
         ));
     }
 

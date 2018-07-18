@@ -764,6 +764,10 @@ div.telefone {
     font-weight: bold;
 }
 
+.price-percent{
+    text-decoration: line-through;
+}
+
 .contact_as {
     color: #f19c05;
     font-size: 12px;
