@@ -279,6 +279,50 @@
     <script>
         $(document).ready(function () {
 
+            var timeI = 0;
+            function flashing(){
+
+                if($("#mid").val() == 0){
+
+                    if(!$("#mid").is(":focus")){
+                        $("#mid").css("background", timeI % 2 ? "#f19c05" : "transparent");
+                        $("#mid").css("color", timeI % 2 ? "#fff" : "#000");
+                    }
+
+                }
+                else if($("#aid").val() == 0){
+
+                    $("#mid").css("background", "#f19c05");
+                    $("#mid").css("color", "#fff");
+
+                    if(!$("#aid").is(":focus")){
+
+                        $("#aid").css("background", timeI % 2 ? "#f19c05" : "transparent");
+                        $("#aid").css("color", timeI % 2 ? "#fff" : "#000");
+
+                    }
+
+                }
+                else if($("#did").val() == 0){
+
+                    $("#mid").css("background", "#f19c05");
+                    $("#mid").css("color", "#fff");
+
+                    $("#aid").css("background", "#f19c05");
+                    $("#aid").css("color", "#fff");
+
+                    if(!$("#did").is(":focus")){
+
+                        $("#did").css("background", timeI % 2 ? "#f19c05" : "transparent");
+                        $("#did").css("color", timeI % 2 ? "#fff" : "#000");
+
+                    }
+                }
+
+                timeI++;
+            }
+            setInterval(flashing, 1000);
+
             $("#registerOrderForm").validate();
 
             $("#dialog_to_order").dialog({
