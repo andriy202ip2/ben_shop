@@ -1,0 +1,10 @@
+percent_index:
+    path:     /
+    defaults: { _controller: "AdminBundle:Percent:index" }
+    methods:  GET
+
+percent_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminBundle:Percent:edit" }
+    methods:  [GET, POST]
+
