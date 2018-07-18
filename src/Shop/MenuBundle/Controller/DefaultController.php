@@ -134,6 +134,17 @@ class DefaultController extends Controller
         ));
     }
 
+    public function percentAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $percent = $em->getRepository('AdminBundle:Percent')->findOneBy([]);
+
+        return new Response(
+            (float)$percent->getPercent()
+        );
+    }
+
     public function aboutAction(Request $request)
     {
 

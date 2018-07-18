@@ -120,6 +120,19 @@ img.logo-base {
 
 }
 
+.percent-free{
+    position: absolute;
+    z-index: 2;
+    top: 30px;
+    left: 570px;
+
+    border: 2px solid #f19c05;
+    padding: 10px;
+
+    color: #f19c05;
+    font-size: 18px;
+}
+
 .lang_uk{
     position: absolute;
     z-index: 2;
