@@ -132,7 +132,7 @@
                                 {% elseif Item.price | money_as_float == 0 %}
                                     <span class="item{{ Item.id }}price pricef">0 грн</span>
                                 {% else %}
-                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_format |replace({'UAH': "грн"})}}
+                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }}
                                         за шт.</span>
                                 {% endif %}
 
@@ -143,13 +143,15 @@
                                 {% endif %}
 
                                 <br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold"
-                                                val="item{{ Item.id }}">ЗАМОВИТИ</span>
+                                           val="item{{ Item.id }}">ЗАМОВИТИ</span>
                             </td>
                             <td>
 
                                 <a href="#" class="item_dialog" val="item{{ Item.id }}"
                                    title="&lt;img src=&#39;/img/upload/{{ Item.img }}&#39; class=&#39;img_big&#39;&gt;{{ Item.imgData }}">
                                     <img src="/img/camera.png"></a>
+                                <br/><span style="font-size: 8pt;cursor:pointer;" class="to_3D gold"
+                                           val="{{ Item.itemId }}">Переглянути 3-D фото</span>
                                 <div class="item{{ Item.id }}i" style="display:none;">
                                     <img src="/img/upload/{{ Item.img }}" class="img_big">
                                     {{ Item.imgData | raw }}
@@ -157,6 +159,7 @@
                                 <div class="item{{ Item.id }}t" style="display:none;">
                                     {{ Item.imgData | raw }}
                                 </div>
+
                             </td>
 
                             <td>
@@ -175,7 +178,8 @@
                                         <span class="item{{ Item.id }}price2 pricef">0 грн</span>
                                     {% else %}
                                         <span class="item{{ Item.id }}price2 pricef">
-                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }} за шт.
+                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }}
+                                            за шт.
                                         </span>
                                     {% endif %}
 
@@ -256,6 +260,12 @@
             </p>
         </div>
 
+        <div id="dialog_to_3D" title="Переглянути 3-D фото" style="display: none">
+            <iframe src="" width="810" height="420" align="left" id="3d-frame" val="">
+                Ваш браузер не підтримує плаваючі фрейми!
+            </iframe>
+        </div>
+
     </div>
 {% endblock %}
 
@@ -301,6 +311,47 @@
                 }
             });
 
+            $("#dialog_to_3D").dialog({
+                autoOpen: false,
+                width: 850,
+                height: 500
+            });
+
+            $(".to_3D").click(function () {
+                var id = $(this).attr('val');
+                //alert(id);
+
+                //$("#3d-frame").attr('val', id);
+                $("#3d-frame").attr('src', 'http://s0.nt.gh-parts.eu/360/' + id + '/index.html');
+
+                $.ajax({
+                    url: 'http://s0.nt.gh-parts.eu/360/' + id + '/index.html',
+                    dataType: "jsonp",
+                    timeout: 5000,
+
+                    success: function () {
+                        //alert('1');
+                    },
+                    error: function (parsedjson) {
+                        if(parsedjson.status == "200") {
+                            //alert('2');
+                        } else {
+                            // Handle error
+                            $("#3d-frame").attr('src', "/img/upload/" + id + ".jpg");
+                        }
+                    }
+                });
+
+                $(".ui-dialog-title").html("Переглянути 3-D фото");
+                $("#dialog_to_3D").dialog("open");
+
+                /*
+                                $("#diloge_oder_price").html(html3);
+
+                                */
+                return false;
+            });
+
             $(".to_order_a").click(function () {
                 var id = $(this).attr('val');
                 //alert(id);
@@ -308,6 +359,7 @@
                 var html2 = $("." + id + "code").html();
                 var html3 = $("." + id + "price").html();
 
+                $(".ui-dialog-title").html("ЗАМОВИТИ ТОВАР");
                 $("#diloge_oder_code").html(html2);
                 $("#diloge_oder_price").html(html3);
 
@@ -322,6 +374,7 @@
                 var html2 = $("." + id + "code2").html();
                 var html3 = $("." + id + "price2").html();
 
+                $(".ui-dialog-title").html("ЗАМОВИТИ ТОВАР");
                 $("#diloge_oder_code").html(html2);
                 $("#diloge_oder_price").html(html3);
 
