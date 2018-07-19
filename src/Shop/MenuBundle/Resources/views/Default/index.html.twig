@@ -14,7 +14,7 @@
             <h1>Каталог продукції</h1>
 
             <form id="form_serch" method="GET">
-                <h3>Код GH пошук: <input type="text" name="serch" id="datepicker" class="cat"/> <samp
+                <h3>Пошук по артикулу GH: <input type="text" name="serch" id="datepicker" class="cat"/> <samp
                             class="ui-icon ui-icon-search" style="cursor:pointer;" id="serch_btn"></samp></h3>
             </form>
 
@@ -132,8 +132,8 @@
                                 {% elseif Item.price | money_as_float == 0 %}
                                     <span class="item{{ Item.id }}price pricef">0 грн</span>
                                 {% else %}
-                                    <span class="price-percent">{{ ((Item.price| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(2, 'common')|replace({'.': ","}) }} грн</span><br/>
-                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }}
+                                    <span class="price-percent">{{ ((Item.price| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }} грн</span><br/>
+                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","})}} грн
                                         за шт.</span>
                                 {% endif %}
 
@@ -178,9 +178,9 @@
                                     {% elseif Item.acsesorisPrice | money_as_float == 0 %}
                                         <span class="item{{ Item.id }}price2 pricef">0 грн</span>
                                     {% else %}
-                                        <span class="price-percent">{{ ((Item.acsesorisPrice| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(2, 'common')|replace({'.': ","}) }} грн</span><br/>
+                                        <span class="price-percent">{{ ((Item.acsesorisPrice| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }} грн</span><br/>
                                         <span class="item{{ Item.id }}price2 pricef">
-                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_format |replace({'UAH': "грн"}) }}
+                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","})}} грн
                                             за шт.
                                         </span>
                                     {% endif %}

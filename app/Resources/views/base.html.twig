@@ -82,6 +82,7 @@
             });
 
             $(".contact_as").click(function () {
+                $(".ui-dialog-title").html("Підбір по VIN-коду автомобіля");
                 $("#dialog_contakt").dialog("open");
                 return false;
             });
@@ -97,8 +98,6 @@
 
 </head>
 <body>
-
-<div class="percent-free"><b>Знижка {{ render(url('shop_percent')) }} % на всі продукти GH-Parts </b></div>
 
 <!-- ui-dialog contakt -->
 <div id="dialog_contakt" title="Підбір по VIN-коду автомобіля" style="display: none">
@@ -132,6 +131,8 @@
 
 <div id="container">
     <img src="/img/background.png" class="background">
+
+    <div class="percent-free"><b>Знижка {{ render(url('shop_percent')) }} % на всі продукти GH-Parts </b></div>
 
     <!--languages-->
     <a href="{{ path('shop_menu_homepage') }}"><img src="/img/lang_uk.png" class="lang_uk"></a>
