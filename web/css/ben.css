@@ -120,11 +120,15 @@ img.logo-base {
 
 }
 
+.new-font{
+    font-size: 16px;
+}
+
 .percent-free{
     position: absolute;
     z-index: 2;
-    top: 20px;
-    left: 470px;
+    top: 35px;
+    left: 370px;
 
     border: 2px solid #f19c05;
     padding: 10px;

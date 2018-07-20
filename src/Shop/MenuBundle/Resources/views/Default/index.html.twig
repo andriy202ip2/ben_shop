@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% endblock %}
-{% block description %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% endblock %}
+{% block title %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Авто {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% endif %}{% endblock %}
+
+{% block description %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Авто {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% endif %}{% endblock %}
 
 {% block body %}
 
@@ -93,7 +94,204 @@
             <br><br>
             <!-- WYNIKI -->
 
-            {% if IsSerch or model_id and auto_id and data_id %}
+            {% if IsSerch == 0 and model_id == 0 %}
+
+                <div class="text-center">
+                    <h1>Моделі</h1>
+                </div>
+                <br/>
+
+                <div class="text-marning new-font">
+
+                    {% set isEnd = 1 %}
+                    {% set i = 0 %}
+                    {% set len = modelMenus|length %}
+
+                    {% set r1 = -1 %}
+                    {% set r2 = 0 %}
+                    {% set r3 = 0 %}
+
+                    {% set r1t = -1 %}
+                    {% set r2t = 0 %}
+
+                    {% for k in 0..len-1 %}
+                        {% set r1t = k % 3 == 0 ? r1t + 1 : r1t %}
+                        {% set r2t = k % 3 == 1 ? r2t + 1 : r2t %}
+                    {% endfor %}
+
+
+                    <table style="width:100%">
+
+                        {% for k in 0..len-1 %}
+
+                            {% set r1 = i % 3 == 0 ? r1 + 1 : r1 %}
+                            {% set r2 = i % 3 == 1 ? r2 + 1 : r2 %}
+                            {% set r3 = i % 3 == 2 ? r3 + 1 : r3 %}
+
+                            {% set id = i % 3 == 0 ? r1 : (i % 3 == 1 ? r2 + r1t : (i % 3 == 2 ? r3 + r1t + r2t : 0)) %}
+
+                            {% if i % 3 == 0 %}
+                                <tr>
+                                {% set isEnd = 0 %}
+                            {% endif %}
+
+                            <td>
+                                <div class="marning-smoll"><a
+                                            href="{{ path('shop_menu_homepage', { 'mid': modelMenus[id].id }) }}">{{ modelMenus[id].name }}</a>
+                                </div>
+                            </td>
+
+                            {% if i % 3 == 2 %}
+                                </tr>
+                                {% set isEnd = 1 %}
+                            {% endif %}
+
+                            {% set i = i + 1 %}
+                        {% endfor %}
+
+                        {% if isEnd == 0 %}
+                            </tr>
+                        {% endif %}
+
+                    </table>
+
+                </div>
+                <br/><br/><br/><br/>
+
+            {% elseif IsSerch == 0 and model_id != 0 and auto_id == 0 %}
+
+                <div class="text-center">
+                    <h1>Авто</h1>
+                </div>
+                <br/>
+
+                <div class="text-marning new-font">
+
+                    {% set isEnd = 1 %}
+                    {% set i = 0 %}
+                    {% set len = autoMenu|length %}
+
+                    {% set r1 = -1 %}
+                    {% set r2 = 0 %}
+                    {% set r3 = 0 %}
+
+                    {% set r1t = -1 %}
+                    {% set r2t = 0 %}
+
+                    {% for k in 0..len-1 %}
+                        {% set r1t = k % 3 == 0 ? r1t + 1 : r1t %}
+                        {% set r2t = k % 3 == 1 ? r2t + 1 : r2t %}
+                    {% endfor %}
+
+
+                    <table style="width:100%">
+
+                        {% for k in 0..len-1 %}
+
+                            {% set r1 = i % 3 == 0 ? r1 + 1 : r1 %}
+                            {% set r2 = i % 3 == 1 ? r2 + 1 : r2 %}
+                            {% set r3 = i % 3 == 2 ? r3 + 1 : r3 %}
+
+                            {% set id = i % 3 == 0 ? r1 : (i % 3 == 1 ? r2 + r1t : (i % 3 == 2 ? r3 + r1t + r2t : 0)) %}
+
+                            {% if i % 3 == 0 %}
+                                <tr>
+                                {% set isEnd = 0 %}
+                            {% endif %}
+
+                            <td>
+
+                                <div class="marning-smoll"><a
+                                            href="{{ path('shop_menu_homepage', { 'mid': autoMenu[id].modelMenuId, 'aid': autoMenu[id].id }) }}">{{ autoMenu[id].name }}</a>
+                                </div>
+
+                            </td>
+
+                            {% if i % 3 == 2 %}
+                                </tr>
+                                {% set isEnd = 1 %}
+                            {% endif %}
+
+                            {% set i = i + 1 %}
+                        {% endfor %}
+
+                        {% if isEnd == 0 %}
+                            </tr>
+                        {% endif %}
+
+                    </table>
+
+                </div>
+                <br/><br/><br/><br/>
+
+            {% elseif IsSerch == 0 and model_id != 0 and auto_id != 0 and data_id == 0 %}
+
+                <div class="text-center">
+                    <h1>Роки авто</h1>
+                </div>
+
+                <div class="text-marning new-font">
+
+                    {% set isEnd = 1 %}
+                    {% set i = 0 %}
+                    {% set len = dataMenu|length %}
+
+                    {% set r1 = -1 %}
+                    {% set r2 = 0 %}
+                    {% set r3 = 0 %}
+
+                    {% set r1t = -1 %}
+                    {% set r2t = 0 %}
+
+                    {% for k in 0..len-1 %}
+                        {% set r1t = k % 3 == 0 ? r1t + 1 : r1t %}
+                        {% set r2t = k % 3 == 1 ? r2t + 1 : r2t %}
+                    {% endfor %}
+
+                    <br/>
+                    <table style="width:100%">
+
+                        {% for k in 0..len-1 %}
+
+                            {% set r1 = i % 3 == 0 ? r1 + 1 : r1 %}
+                            {% set r2 = i % 3 == 1 ? r2 + 1 : r2 %}
+                            {% set r3 = i % 3 == 2 ? r3 + 1 : r3 %}
+
+                            {% set id = i % 3 == 0 ? r1 : (i % 3 == 1 ? r2 + r1t : (i % 3 == 2 ? r3 + r1t + r2t : 0)) %}
+
+                            {% if i % 3 == 0 %}
+                                <tr>
+                                {% set isEnd = 0 %}
+                            {% endif %}
+
+                            <td>
+
+                                <div class="marning-smoll">
+                                    <a
+                                            href="{{ path('shop_menu_homepage', { 'mid': dataMenu[id].modelMenuId, 'aid': dataMenu[id].autoMenuId, 'did': dataMenu[id].id }) }}">Роки
+                                        авто: {{ dataMenu[id].name }}</a>
+                                </div>
+
+                            </td>
+
+                            {% if i % 3 == 2 %}
+                                </tr>
+                                {% set isEnd = 1 %}
+                            {% endif %}
+
+                            {% set i = i + 1 %}
+                        {% endfor %}
+
+                        {% if isEnd == 0 %}
+                            </tr>
+                        {% endif %}
+
+                    </table>
+
+                </div>
+                <br/><br/><br/><br/>
+
+            {% elseif IsSerch or model_id and auto_id and data_id %}
 
                 <div class="navigation">
                     {{ knp_pagination_render(ItemsArray) }}
@@ -132,8 +330,10 @@
                                 {% elseif Item.price | money_as_float == 0 %}
                                     <span class="item{{ Item.id }}price pricef">0 грн</span>
                                 {% else %}
-                                    <span class="price-percent">{{ ((Item.price| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }} грн</span><br/>
-                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","})}} грн
+                                    <span class="price-percent">{{ ((Item.price| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }}
+                                        грн</span><br/>
+                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","}) }}
+                                        грн
                                         за шт.</span>
                                 {% endif %}
 
@@ -178,9 +378,11 @@
                                     {% elseif Item.acsesorisPrice | money_as_float == 0 %}
                                         <span class="item{{ Item.id }}price2 pricef">0 грн</span>
                                     {% else %}
-                                        <span class="price-percent">{{ ((Item.acsesorisPrice| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }} грн</span><br/>
+                                        <span class="price-percent">{{ ((Item.acsesorisPrice| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }}
+                                            грн</span><br/>
                                         <span class="item{{ Item.id }}price2 pricef">
-                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","})}} грн
+                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","}) }}
+                                            грн
                                             за шт.
                                         </span>
                                     {% endif %}
@@ -280,22 +482,23 @@
         $(document).ready(function () {
 
             var timeI = 0;
-            function flashing(){
 
-                if($("#mid").val() == 0){
+            function flashing() {
 
-                    if(!$("#mid").is(":focus")){
+                if ($("#mid").val() == 0) {
+
+                    if (!$("#mid").is(":focus")) {
                         $("#mid").css("background", timeI % 2 ? "#f19c05" : "transparent");
                         $("#mid").css("color", timeI % 2 ? "#fff" : "#000");
                     }
 
                 }
-                else if($("#aid").val() == 0){
+                else if ($("#aid").val() == 0) {
 
                     $("#mid").css("background", "#f19c05");
                     $("#mid").css("color", "#fff");
 
-                    if(!$("#aid").is(":focus")){
+                    if (!$("#aid").is(":focus")) {
 
                         $("#aid").css("background", timeI % 2 ? "#f19c05" : "transparent");
                         $("#aid").css("color", timeI % 2 ? "#fff" : "#000");
@@ -303,7 +506,7 @@
                     }
 
                 }
-                else if($("#did").val() == 0){
+                else if ($("#did").val() == 0) {
 
                     $("#mid").css("background", "#f19c05");
                     $("#mid").css("color", "#fff");
@@ -311,7 +514,7 @@
                     $("#aid").css("background", "#f19c05");
                     $("#aid").css("color", "#fff");
 
-                    if(!$("#did").is(":focus")){
+                    if (!$("#did").is(":focus")) {
 
                         $("#did").css("background", timeI % 2 ? "#f19c05" : "transparent");
                         $("#did").css("color", timeI % 2 ? "#fff" : "#000");
@@ -321,6 +524,7 @@
 
                 timeI++;
             }
+
             setInterval(flashing, 1000);
 
             $("#registerOrderForm").validate();
@@ -379,7 +583,7 @@
                         //alert('1');
                     },
                     error: function (parsedjson) {
-                        if(parsedjson.status == "200") {
+                        if (parsedjson.status == "200") {
                             //alert('2');
                         } else {
                             // Handle error

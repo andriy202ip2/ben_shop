@@ -116,6 +116,25 @@ class DefaultController extends Controller
         $percent = $em->getRepository('AdminBundle:Percent')->findOneBy([]);
         $percent = $percent->getPercent();
 
+        $I = null;
+        if ($model_id && !$auto_id && !$data_id) {
+
+            $I = $em->getRepository('ShopMenuBundle:ModelMenu')
+                ->findOneBy(["id" => $model_id]);
+
+        } elseif ($model_id && $auto_id && !$data_id){
+
+            $I = $em->getRepository('ShopMenuBundle:AutoMenu')
+                ->findOneBy(["id" => $auto_id]);
+
+        } elseif ($model_id && $auto_id && $data_id){
+
+            $I = $em->getRepository('ShopMenuBundle:DataMenu')
+                ->findOneBy(["id" => $data_id]);
+
+        }
+
+
         return $this->render('ShopMenuBundle:Default:index.html.twig', array(
             'IsSerch' => $IsSerch,
             'modelMenus' => $modelMenus,
@@ -131,6 +150,7 @@ class DefaultController extends Controller
             't2' => $t2,
             't3' => $t3,
             'percent' => $percent,
+            'I' => $I,
         ));
     }
 
