@@ -84,6 +84,8 @@ class ItemsController extends Controller {
 
 
         $serch = $request->query->get("serch", "");
+        $serch = strip_tags($serch);
+        $serch = strtr($serch, array('<' => " ", '>' => " ", ' ' => ""));
         $IsSerch = strlen($serch) > 1;
         if ($IsSerch) {
 

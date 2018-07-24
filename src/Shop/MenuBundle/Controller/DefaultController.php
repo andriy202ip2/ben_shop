@@ -86,6 +86,8 @@ class DefaultController extends Controller
         $ItemsArray = null;
 
         $serch = $request->query->get("serch", "");
+        $serch = strip_tags($serch);
+        $serch = strtr($serch, array('<' => " ", '>' => " ", ' ' => ""));
         $IsSerch = strlen($serch) > 1;
         if ($IsSerch) {
             $em = $this->getDoctrine()->getManager();
