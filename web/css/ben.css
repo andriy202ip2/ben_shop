@@ -154,6 +154,27 @@ img.logo-base {
     font-size: 18px;
 }
 
+.user-info-poz{
+
+    position: absolute;
+    z-index: 3;
+    top: 132px;
+    left: 65px;
+
+    width: 270px;
+    /*background: #000;*/
+    text-align: center;
+}
+
+.user-info{
+
+    border: 1px solid #fff;
+    padding: 4px;
+
+    color: #fff;
+    font-size: 12px;
+}
+
 .lang_uk{
     position: absolute;
     z-index: 2;

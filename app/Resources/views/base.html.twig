@@ -134,6 +134,17 @@
 
     <div class="percent-free"><b>Знижка {{ render(url('shop_percent')) }} % на всі продукти GH-Parts </b></div>
 
+    {% if app.user %}
+        <div class="user-info-poz">
+            <div class="user-info">
+                <b>
+                    {{ app.user.username }}:
+                    {{ app.user.roles|join(',')|replace({'ROLE_USER': 'Оптовик', 'ROLE_ADMIN': 'Адміністратор', 'ROLE_ROOT': 'Супер Адміністратор'}) }}
+                </b>
+            </div>
+        </div>
+    {% endif %}
+
     <!--languages-->
     <a href="{{ path('shop_menu_homepage') }}"><img src="/img/lang_uk.png" class="lang_uk"></a>
     <div style="height: 40px;"></div>
@@ -160,11 +171,11 @@
                     <div class="menu-text">Про нас</div>
                 </div>
             </a></li>
-{#        <li><a href="{{ path('products_index') }}">
-                <div class="menu">
-                    <div class="menu-text">Продукція</div>
-                </div>
-            </a></li>#}
+        {#        <li><a href="{{ path('products_index') }}">
+                        <div class="menu">
+                            <div class="menu-text">Продукція</div>
+                        </div>
+                    </a></li>#}
         <li><a href="{{ path('shop_menu_homepage') }}">
                 <div class="menu">
                     <div class="menu-text">Каталоги</div>
@@ -197,11 +208,19 @@
                 </a></li>
         {% endif %}
 
-        <!--{% if app.user %}
-                <li><a href="{{ path('security_user_logout') }}"><div class="menu"><div class="menu-text">Вихід</div></div></a></li>
-                {% else %}
-                <li><a href="{{ path('security_user_login') }}"><div class="menu"><div class="menu-text">Вхід</div></div></a></li>
-                    {% endif %}-->
+        {% if app.user %}
+            <li><a href="{{ path('security_user_logout') }}">
+                    <div class="menu">
+                        <div class="menu-text">Вихід</div>
+                    </div>
+                </a></li>
+        {% else %}
+            <li><a href="{{ path('security_user_login') }}">
+                    <div class="menu">
+                        <div class="menu-text">Вхід</div>
+                    </div>
+                </a></li>
+        {% endif %}
 
     </ul>
 

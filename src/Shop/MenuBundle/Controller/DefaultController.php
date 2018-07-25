@@ -162,8 +162,10 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $percent = $em->getRepository('AdminBundle:Percent')->findOneBy([]);
 
+        $user = $this->getUser();
+
         return new Response(
-            (float)$percent->getPercent()
+            (float) ($user != null && $user->getRole() == 'ROLE_USER' ? $percent->getPercentWholesaler() : $percent->getPercent())
         );
     }
 
