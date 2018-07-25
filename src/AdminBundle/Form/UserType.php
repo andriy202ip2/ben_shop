@@ -56,24 +56,24 @@ class UserType extends AbstractType
                     'required' => false,
                     'label' => 'Чи активований: '
                 ))
-                ->add('salt', TextType::class, array(
+/*                ->add('salt', TextType::class, array(
                     'attr' => array(
                         'class' => 'admin-input'
                     ),
                     'required' => false,
                     'label' => 'Сіль Паролю: '
-                ))
+                ))*/
                 ->add('role', ChoiceType::class, array(
                     'attr' => array(
                         'class' => 'admin-selekt cat'
                     ),
                     'label' => 'Роль: ',
                             'choices'  => array(
-                                'ROLE_USER' => 'ROLE_USER', 
-                                'ROLE_TEAM' => 'ROLE_TEAM', 
-                                'ROLE_OPERATOR' => 'ROLE_OPERATOR', 
-                                'ROLE_ADMIN' => 'ROLE_ADMIN', 
-                                'ROLE_ROOT' => 'ROLE_ROOT', ),
+                                'ОПТОВИК' => 'ROLE_USER',
+/*                                'ROLE_TEAM' => 'ROLE_TEAM',
+                                'ROLE_OPERATOR' => 'ROLE_OPERATOR', */
+                                'АДМІНІСТРАТОР' => 'ROLE_ADMIN',
+                                'СУПЕР АДМІНІСТРАТОР' => 'ROLE_ROOT', ),
                                 'empty_data' => 'ROLE_USER'
                             ));
 

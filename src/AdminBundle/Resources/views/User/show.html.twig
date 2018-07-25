@@ -38,12 +38,12 @@
             </tr>
             <tr>
                 <th>Роль</th>
-                <td>{{ user.roles|join(',') }}</td>
+                <td>{{ user.roles|join(',')|replace({'ROLE_USER': 'ОПТОВИК', 'ROLE_ADMIN': 'АДМІНІСТРАТОР', 'ROLE_ROOT': 'СУПЕР АДМІНІСТРАТОР'}) }}</td>
             </tr>
-            <tr>
+{#            <tr>
                 <th>Сіль Паролю</th>
                 <td>{{ user.salt }}</td>
-            </tr>
+            </tr>#}
         </tbody>
     </table>
 
