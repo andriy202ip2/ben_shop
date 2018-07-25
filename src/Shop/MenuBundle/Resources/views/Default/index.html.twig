@@ -330,11 +330,16 @@
                                 {% elseif Item.price | money_as_float == 0 %}
                                     <span class="item{{ Item.id }}price pricef">0 грн</span>
                                 {% else %}
-                                    <span class="price-percent">{{ ((Item.price| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }}
+
+                                    {% set price = ((Item.price | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : percent.cheat))/100)) %}
+                                    {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : percent.percent) %}
+
+                                    <span class="price-percent">
+                                        {{ (price / ((100 - banerPersent)/100))|round(0, 'common')|replace({'.': ","}) }}
                                         грн</span><br/>
-                                    <span class="item{{ Item.id }}price pricef">{{ Item.price | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","}) }}
-                                        грн
-                                        за шт.</span>
+                                    <span class="item{{ Item.id }}price pricef">
+                                        {{ price |round(0, 'common')|replace({'.': ","}) }}
+                                        грн за шт.</span>
                                 {% endif %}
 
                                 {% if Item.itemIs == 0 %}
@@ -378,10 +383,15 @@
                                     {% elseif Item.acsesorisPrice | money_as_float == 0 %}
                                         <span class="item{{ Item.id }}price2 pricef">0 грн</span>
                                     {% else %}
-                                        <span class="price-percent">{{ ((Item.acsesorisPrice| money_convert("UAH") | money_as_float) / ((100 - percent)/100))|round(0, 'common')|replace({'.': ","}) }}
+
+                                        {% set price = ((Item.acsesorisPrice | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : percent.cheat))/100)) %}
+                                        {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : percent.percent) %}
+
+                                        <span class="price-percent">
+                                            {{ (price / ((100 - banerPersent)/100))|round(0, 'common')|replace({'.': ","}) }}
                                             грн</span><br/>
                                         <span class="item{{ Item.id }}price2 pricef">
-                                            {{ Item.acsesorisPrice | money_convert("UAH") | money_as_float |round(0, 'common')|replace({'.': ","}) }}
+                                            {{ price |round(0, 'common')|replace({'.': ","}) }}
                                             грн
                                             за шт.
                                         </span>

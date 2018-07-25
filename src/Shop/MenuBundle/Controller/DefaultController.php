@@ -116,7 +116,7 @@ class DefaultController extends Controller
         }
 
         $percent = $em->getRepository('AdminBundle:Percent')->findOneBy([]);
-        $percent = $percent->getPercent();
+        //$percent = $percent->getPercent();
 
         $I = null;
         if ($model_id && !$auto_id && !$data_id) {
