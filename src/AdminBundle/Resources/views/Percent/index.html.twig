@@ -3,13 +3,22 @@
 {% block body %}
 
     <div class="text-center">
-        <h1>Скидка на всі товари в процентах </h1>
+        <h1>Скидки і накрутки </h1>
         
         <a href="{{ path('percent_edit', { 'id': percent.id }) }}"><button type="submit" class="ui-button ui-corner-all ui-widget">Редагувати</button></a><br/><br/>
     </div>
     
     <div class="text-marning">
-        <b>{{ percent.percent | raw}} %</b>
+
+        Накрутка для користувача (роздріб) : <b>{{ percent.cheat | raw}} %</b><br/>
+        Знижка для користувача (банер знижки): <b>{{ percent.percent | raw}} %</b><br/>
+
+        <br/>
+        <div style="color: green">
+            Накрутка для оптовика: <b>{{ percent.cheatWholesaler | raw}} %</b><br/>
+            Знижка для оптовика (банер знижки): <b>{{ percent.percentWholesaler | raw}} %</b><br/>
+        </div>
+
     </div>        
     <br/><br/><br/><br/>  
 

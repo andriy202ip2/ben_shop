@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22b915af-95c0-46d3-b2f8-ce53e53e5145" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/ben.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/ben.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +20,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ben.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/css/ben.css">
+      <file leaf-file-name="Percent.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="160" column="16" lean-forward="true" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+            <state relative-caret-position="464">
+              <caret line="49" column="28" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PercentType.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="18" column="79" lean-forward="true" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="79" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -31,7 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>to_order_a gold</find>
       <find>code</find>
       <find>icon</find>
       <find>base.png</find>
@@ -61,6 +83,7 @@
       <find>teble-center</find>
       <find>Моделі</find>
       <find>Авто</find>
+      <find>lang_uk</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -92,15 +115,10 @@
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/email.txt.twig" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Products/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Products/auto.html.twig" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Repository/PercentRepository.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Resources/config/routing.yml" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Resources/config/routing/percent.yml" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Controller/PercentController.php" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/edit.html.twig" />
-        <option value="$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/ProductsController.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Products/items.html.twig" />
@@ -109,6 +127,11 @@
         <option value="$PROJECT_DIR$/src/AdminBundle/Controller/ItemsController.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/web/css/ben.css" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php" />
       </list>
     </option>
   </component>
@@ -221,6 +244,30 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Percent" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
@@ -361,12 +408,12 @@
       <workItem from="1532078616882" duration="7185000" />
       <workItem from="1532439358137" duration="1183000" />
       <workItem from="1532441609636" duration="3681000" />
-      <workItem from="1532512010467" duration="925000" />
+      <workItem from="1532512010467" duration="2373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91236000" />
+    <option name="totallyTimeSpent" value="92684000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -608,20 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/config/routing/percent.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -629,24 +662,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/edit.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Form/ItemsType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="112" column="44" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -660,13 +679,6 @@
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Payment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1200" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="30" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/PercentController.php">
@@ -750,6 +762,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="160" column="16" lean-forward="true" selection-start-line="160" selection-start-column="16" selection-end-line="160" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="33" column="83" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Entity/Percent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="49" column="28" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Resources/views/Percent/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="18" column="79" lean-forward="true" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Form/PercentType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
         </state>
       </provider>
     </entry>

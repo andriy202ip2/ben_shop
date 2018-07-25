@@ -15,14 +15,38 @@ class PercentType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         
-        $builder->add('percent', NumberType::class, array(
-            'scale' => 2,
-            'attr' => array(
-                'class' => 'admin-input'
-            ),
-            'label' => 'Скидка в процентах: ',
-            'label_attr' => array('class' => 'admin-text-lebel')
-        ));
+        $builder->add('cheat', NumberType::class, array(
+                'scale' => 2,
+                'attr' => array(
+                    'class' => 'admin-input'
+                ),
+                'label' => 'Накрутка для користувача (роздріб) %: ',
+                'label_attr' => array('class' => 'admin-text-lebel')
+            ))
+            ->add('percent', NumberType::class, array(
+                'scale' => 2,
+                'attr' => array(
+                    'class' => 'admin-input'
+                ),
+                'label' => 'Знижка для користувача (банер знижки) %: ',
+                'label_attr' => array('class' => 'admin-text-lebel')
+            ))
+            ->add('cheatWholesaler', NumberType::class, array(
+                'scale' => 2,
+                'attr' => array(
+                    'class' => 'admin-input'
+                ),
+                'label' => 'Накрутка для оптовика: %: ',
+                'label_attr' => array('class' => 'admin-text-lebel')
+            ))
+            ->add('percentWholesaler', NumberType::class, array(
+                'scale' => 2,
+                'attr' => array(
+                    'class' => 'admin-input'
+                ),
+                'label' => 'Знижка для оптовика (банер знижки) %: ',
+                'label_attr' => array('class' => 'admin-text-lebel')
+            ));
         
     }
 
