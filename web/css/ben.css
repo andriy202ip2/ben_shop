@@ -124,6 +124,23 @@ img.logo-base {
     font-size: 16px;
 }
 
+.teble-center-miraz{
+
+    width:100%;
+    /*margin-left: 55px;*/
+}
+
+.teble-center-miraz td{
+    width: 279px;
+}
+
+.marning-smoll {
+    margin-bottom: 3px;
+    margin-top: 3px;
+    /*margin-left: 30px;*/
+    text-align:center;
+}
+
 .percent-free{
     position: absolute;
     z-index: 2;
@@ -142,6 +159,8 @@ img.logo-base {
     z-index: 2;
     top: 13px;
     left: 245px;
+
+    transform: rotate(18deg);
 }
 
 img.logo {
@@ -725,13 +744,6 @@ table.catalogwebshop tr td{
 
 .admin-chekbox {
     margin: 15px;
-}
-
-.marning-smoll {
-    margin-bottom: 3px;
-    margin-top: 3px;
-    margin-right: 30px;
-    margin-left: 30px;
 }
 
 .text-marning {

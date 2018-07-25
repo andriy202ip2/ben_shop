@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Авто {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% endif %}{% endblock %}
+{% block title %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Моделі {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% endif %}{% endblock %}
 
-{% block description %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Авто {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% endif %}{% endblock %}
+{% block description %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Моделі {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% endif %}{% endblock %}
 
 {% block body %}
 
@@ -97,7 +97,7 @@
             {% if IsSerch == 0 and model_id == 0 %}
 
                 <div class="text-center">
-                    <h1>Моделі</h1>
+                    <h1>Марки</h1>
                 </div>
                 <br/>
 
@@ -120,7 +120,7 @@
                     {% endfor %}
 
 
-                    <table style="width:100%">
+                    <table class="teble-center-miraz">
 
                         {% for k in 0..len-1 %}
 
@@ -161,7 +161,7 @@
             {% elseif IsSerch == 0 and model_id != 0 and auto_id == 0 %}
 
                 <div class="text-center">
-                    <h1>Авто</h1>
+                    <h1>Моделі</h1>
                 </div>
                 <br/>
 
@@ -184,7 +184,7 @@
                     {% endfor %}
 
 
-                    <table style="width:100%">
+                    <table class="teble-center-miraz">
 
                         {% for k in 0..len-1 %}
 
@@ -249,7 +249,7 @@
                     {% endfor %}
 
                     <br/>
-                    <table style="width:100%">
+                    <table class="teble-center-miraz">
 
                         {% for k in 0..len-1 %}
 
