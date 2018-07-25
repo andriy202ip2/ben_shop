@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 class ProductsController extends Controller {
 
     public function indexAction() {
+
+        return $this->redirectToRoute('shop_menu_homepage');
+
         $em = $this->getDoctrine()->getManager();
         $modelMenus = $em->getRepository('ShopMenuBundle:ModelMenu')
                 ->findAllOrderedByName();
@@ -15,9 +18,12 @@ class ProductsController extends Controller {
         return $this->render('ShopMenuBundle:Products:index.html.twig', array(
                     'modelMenus' => $modelMenus,
         ));
+
     }
 
     public function autosAction(Request $request, $model_id) {
+
+        return $this->redirectToRoute('shop_menu_homepage');
 
         $em = $this->getDoctrine()->getManager();
         $autoMenu = $em->getRepository('ShopMenuBundle:AutoMenu')
@@ -26,6 +32,7 @@ class ProductsController extends Controller {
         $I = $em->getRepository('ShopMenuBundle:ModelMenu')
             ->findOneBy(["id" => $model_id]);
 
+
         return $this->render('ShopMenuBundle:Products:auto.html.twig', array(
                     'autoMenu' => $autoMenu,
                     'I' => $I,
@@ -33,6 +40,8 @@ class ProductsController extends Controller {
     }
 
     public function dataAction($model_id, $auto_id) {
+
+        return $this->redirectToRoute('shop_menu_homepage');
 
         $em = $this->getDoctrine()->getManager();
         $dataMenu = $em->getRepository('ShopMenuBundle:DataMenu')
@@ -48,6 +57,8 @@ class ProductsController extends Controller {
     }
 
     public function itemsAction($model_id, $auto_id, $data_id, Request $request) {
+
+        return $this->redirectToRoute('shop_menu_homepage');
 
         $s1 = $request->query->getInt('s1', 0);
         $s1 = $s1 >= 1 ? 1 : 0;
