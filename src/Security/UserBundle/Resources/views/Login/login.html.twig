@@ -1,27 +1,27 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}SecurityUserBundle:Login:login{% endblock %}
+{% block title %}Вхід для партнерів{% endblock %}
 
 {% block body %}
 
     <div class="text-center">
 
         <div class="login-box-body">
-            <p class="login-box-msg">Залогінитись</p>
+            <p class="login-box-msg"><b>Вхід для партнерів</b></p>
             <form action="{{ path('security_user_login_check') }}"  method="post">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control admin-input" id="username" name="_username" value="{{ last_username }}" placeholder="Логін чи емейл">
+                    <input type="text" class="form-control admin-input color_text2" id="username" name="_username" value="{{ last_username }}" placeholder="Логін чи емейл">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control admin-input color_text" name="_password" placeholder="Пароль">
+                    <input type="password" class="form-control admin-input color_text color_text2" name="_password" placeholder="Пароль">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck admin-chekbox">
                             <label>
-                                <input type="checkbox"> Запямятати мене
+                                <input type="checkbox" id="remember_me" name="_remember_me"> Запямятати мене
                             </label>
                         </div>
                     </div><!-- /.col -->
@@ -32,7 +32,7 @@
             </form>
 
             {% if error is defined and error %}
-                <div class="container col-md-6 col-lg-6 col-sm-12 col-xs-12" style="width:100%;margin:20px;background: #337AB7;color: white;border-radius: 2px;font-size: 18px;">
+                <div class="container col-md-6 col-lg-6 col-sm-12 col-xs-12" style="width:95%;margin:20px;background: #337AB7;color: white;border-radius: 2px;font-size: 18px;">
                     {{ error.messageKey|trans(error.messageData, 'security') }}
                 </div>
             {% endif %}
