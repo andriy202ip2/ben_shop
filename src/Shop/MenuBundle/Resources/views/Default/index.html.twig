@@ -342,10 +342,12 @@
                                         грн за шт.</span>
                                 {% endif %}
 
-                                {% if Item.itemIs == 0 %}
+                                {% if Item.itemIs <= 0 %}
                                     <br/>Під замовлення
+                                {% elseif Item.itemIs == 1 %}
+                                    <br/><span style="color: #902b2b">Закінчуються</span>
                                 {% else %}
-                                    <br/>В наявності
+                                    <br/><span style="color: green">В наявності</span>
                                 {% endif %}
 
                                 <br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold"
@@ -397,10 +399,12 @@
                                         </span>
                                     {% endif %}
 
-                                    {% if Item.acsesoriIs == 0 %}
+                                    {% if Item.acsesoriIs <= 0 %}
                                         <br/>Під замовлення
+                                    {% elseif Item.acsesoriIs == 1 %}
+                                        <br/><span style="color: #902b2b">Закінчуються</span>
                                     {% else %}
-                                        <br/>В наявності
+                                        <br/><span style="color: green">В наявності</span>
                                     {% endif %}
 
                                     <br/>

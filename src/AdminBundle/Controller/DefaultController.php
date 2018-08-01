@@ -42,9 +42,9 @@ class DefaultController extends Controller {
 
                     $prise = preg_replace('/\s+/', '', $arr3[0]);
                     $is = preg_replace('/\s+/', '', $arr3[1]);
-                    if($is > 0){
+/*                    if($is > 0){
                         $is = 1;
-                    }
+                    }*/
 
                     $prise = str_replace(array(","), array("."), $prise);
 
@@ -117,9 +117,9 @@ class DefaultController extends Controller {
 
                     $prise = preg_replace('/\s+/', '', $arr3[0]);
                     $is = preg_replace('/\s+/', '', $arr3[1]);
-                    if($is > 0){
+/*                    if($is > 0){
                         $is = 1;
-                    }
+                    }*/
 
                     $prise = str_replace(array(","), array("."), $prise);
 
