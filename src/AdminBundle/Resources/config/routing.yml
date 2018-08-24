@@ -26,6 +26,10 @@ admin_about:
     resource: "@AdminBundle/Resources/config/routing/about.yml"
     prefix:   /about
 
+admin_partnertxt:
+    resource: "@AdminBundle/Resources/config/routing/partnertxt.yml"
+    prefix:   /partnertxt
+
 admin_guarantee:
     resource: "@AdminBundle/Resources/config/routing/guarantee.yml"
     prefix:   /guarantee

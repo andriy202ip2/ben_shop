@@ -13,11 +13,14 @@ class LoginController extends Controller
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
-        
-        
+
+        $em = $this->getDoctrine()->getManager();
+        $Partnertxt = $em->getRepository('AdminBundle:Partnertxt')->findOneBy([]);
+
         return $this->render('SecurityUserBundle:Login:login.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
+            'Partnertxt'         => $Partnertxt,
         ));
         
     }
