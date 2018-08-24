@@ -165,7 +165,7 @@ class DefaultController extends Controller
         $user = $this->getUser();
 
         return new Response(
-            (float) ($user != null && $user->getRole() == 'ROLE_USER' ? $percent->getPercentWholesaler() : $percent->getPercent())
+            (float) ($user != null && $user->getRole() == 'ROLE_USER' ? $percent->getPercentWholesaler() : ($user != null && $user->getRole() == 'ROLE_TEAM' ? $percent->getPercentDropshipper() : $percent->getPercent()))
         );
     }
 

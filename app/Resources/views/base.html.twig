@@ -159,7 +159,7 @@
             <div class="user-info">
                 <b>
                     {{ app.user.username }}:
-                    {{ app.user.roles|join(',')|replace({'ROLE_USER': 'Оптовик', 'ROLE_ADMIN': 'Адміністратор', 'ROLE_ROOT': 'Супер Адміністратор'}) }}
+                    {{ app.user.roles|join(',')|replace({'ROLE_USER': 'Оптовик', 'ROLE_TEAM': 'ДРОПШИПЕР', 'ROLE_ADMIN': 'Адміністратор', 'ROLE_ROOT': 'Супер Адміністратор'}) }}
                 </b>
             </div>
         </div>
