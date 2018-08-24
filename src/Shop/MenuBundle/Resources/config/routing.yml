@@ -10,7 +10,11 @@ shop_сontact:
 shop_about:
     path:     /about
     defaults: { _controller: ShopMenuBundle:Default:about }
-    
+
+shop_guarantee:
+    path:     /guarantee
+    defaults: { _controller: ShopMenuBundle:Default:guarantee }
+
 products:
     resource: "@ShopMenuBundle/Resources/config/routing/products.yml"
     prefix:   /products

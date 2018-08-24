@@ -181,6 +181,18 @@ class DefaultController extends Controller
         ));
     }
 
+    public function guaranteeAction(Request $request)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $abouts = $em->getRepository('AdminBundle:Guarantee')->findOneBy([]);
+
+        return $this->render('ShopMenuBundle:Default:guarantee.html.twig', array(
+            'abouts' => $abouts,
+        ));
+    }
+
     public function сontactAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();

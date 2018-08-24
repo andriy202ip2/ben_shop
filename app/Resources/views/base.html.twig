@@ -220,6 +220,12 @@
                 </div>
             </a></li>
 
+        <li><a href="{{ path('shop_guarantee') }}">
+                <div class="menu">
+                    <div class="menu-text">Гарантія</div>
+                </div>
+            </a></li>
+
         {% if app.user and (app.user.role == 'ROLE_ADMIN' or app.user.role == 'ROLE_ROOT') %}
             <li><a href="{{ path('admin_homepage') }}">
                     <div class="menu">
