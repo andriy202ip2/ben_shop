@@ -13,7 +13,7 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Username</th>
+                <th>Логін</th>
                 <td>{{ user.username }}</td>
             </tr>
             <tr>
@@ -29,7 +29,7 @@
                 <td>{{ user.name }}</td>
             </tr>
             <tr>
-                <th>Фамілія</th>
+                <th>Прізвище</th>
                 <td>{{ user.surname }}</td>
             </tr>
             <tr>
@@ -38,10 +38,10 @@
             </tr>
             <tr>
                 <th>Роль</th>
-                <td>{{ user.roles|join(',')|replace({'ROLE_USER': 'ОПТОВИК', 'ROLE_TEAM': 'ДРОПШИПЕР', 'ROLE_ADMIN': 'АДМІНІСТРАТОР', 'ROLE_ROOT': 'СУПЕР АДМІНІСТРАТОР'}) }}</td>
+                <td>{{ user.roles|join(',')|replace({'ROLE_USER': 'ОПТОВИК', 'ROLE_TEAM': 'ДРОПШИППЕР', 'ROLE_ADMIN': 'АДМІНІСТРАТОР', 'ROLE_ROOT': 'СУПЕР АДМІНІСТРАТОР'}) }}</td>
             </tr>
             <tr>
-                <th>адреса магазину, СТО</th>
+                <th>Aдреса магазину, СТО, сайту</th>
                 <td>{{ user.storeAddress |raw }}</td>
             </tr>
         </tbody>

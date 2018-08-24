@@ -24,7 +24,7 @@ class UserType extends AbstractType
             'attr' => array(
                 'class' => 'admin-input'
             ),
-            'label' => 'username: '
+            'label' => 'Логін: '
         ))
             ->add('password', PasswordType::class, array(
                 'attr' => array(
@@ -36,7 +36,7 @@ class UserType extends AbstractType
                 'attr' => array(
                     'class' => 'admin-input color_text'
                 ),
-                'label' => 'email: '
+                'label' => 'Email: '
             ))
             ->add('name', TextType::class, array(
                 'attr' => array(
@@ -48,7 +48,7 @@ class UserType extends AbstractType
                 'attr' => array(
                     'class' => 'admin-input'
                 ),
-                'label' => 'Фамілія: '
+                'label' => 'Прізвище: '
             ))
 /*            ->add('isActive', CheckboxType::class, array(
                 'attr' => array(
@@ -68,10 +68,10 @@ class UserType extends AbstractType
                 'attr' => array(
                     'class' => 'admin-selekt cat'
                 ),
-                'label' => 'Роль: ',
+                'label' => 'Співпраця: ',
                 'choices' => array(
                     'ОПТОВИК' => 'ROLE_USER',
-                    'ДРОПШИПЕР' => 'ROLE_TEAM',
+                    'ДРОПШИППЕР' => 'ROLE_TEAM',
                     /*'ROLE_OPERATOR' => 'ROLE_OPERATOR',
                     'АДМІНІСТРАТОР' => 'ROLE_ADMIN',
                     'СУПЕР АДМІНІСТРАТОР' => 'ROLE_ROOT',*/
@@ -82,7 +82,7 @@ class UserType extends AbstractType
                 'attr' => array(
                     'class' => 'admin-textrea'
                 ),
-                'label' => 'адреса магазину, СТО: ',
+                'label' => 'Aдреса магазину, СТО, сайту: ',
                 'label_attr' => array('class' => 'admin-text-lebel')
             ));
 

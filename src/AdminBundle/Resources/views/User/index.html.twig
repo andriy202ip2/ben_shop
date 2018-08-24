@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Username</th>
+                    <th>Логін</th>
                     <th>Email</th>
                     <th>Імя</th>
                     <th>Прізвище</th>
@@ -28,7 +28,7 @@
                         <td>{{ user.email }}</td>
                         <td>{{ user.name }}</td>
                         <td>{{ user.surname }}</td>
-                        <td>{{ user.roles|join(',')|replace({'ROLE_USER': 'ОПТОВИК', 'ROLE_TEAM': 'ДРОПШИПЕР', 'ROLE_ADMIN': 'АДМІНІСТРАТОР', 'ROLE_ROOT': 'СУПЕР АДМІНІСТРАТОР'}) }}</td>
+                        <td>{{ user.roles|join(',')|replace({'ROLE_USER': 'ОПТОВИК', 'ROLE_TEAM': 'ДРОПШИППЕР', 'ROLE_ADMIN': 'АДМІНІСТРАТОР', 'ROLE_ROOT': 'СУПЕР АДМІНІСТРАТОР'}) }}</td>
                         <td>
                             <br/>
                             <a href="{{ path('user_show', { 'id': user.id }) }}">Показати</a>

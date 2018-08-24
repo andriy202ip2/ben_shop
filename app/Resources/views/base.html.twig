@@ -159,7 +159,7 @@
             <div class="user-info">
                 <b>
                     {{ app.user.username }}:
-                    {{ app.user.roles|join(',')|replace({'ROLE_USER': 'Оптовик', 'ROLE_TEAM': 'ДРОПШИПЕР', 'ROLE_ADMIN': 'Адміністратор', 'ROLE_ROOT': 'Супер Адміністратор'}) }}
+                    {{ app.user.roles|join(',')|replace({'ROLE_USER': 'Оптовик', 'ROLE_TEAM': 'ДРОПШИППЕР', 'ROLE_ADMIN': 'Адміністратор', 'ROLE_ROOT': 'Супер Адміністратор'}) }}
                 </b>
             </div>
         </div>
@@ -202,15 +202,10 @@
                 </div>
             </a></li>
 
-        <li><a href="{{ path('shop_сontact') }}">
-                <div class="menu">
-                    <div class="menu-text">Контакти</div>
-                </div>
-            </a></li>
 
-        <li><a href="{{ path('shop_delivery') }}">
+        <li><a href="{{ path('shop_guarantee') }}">
                 <div class="menu">
-                    <div class="menu-text">Доставка</div>
+                    <div class="menu-text">Гарантія</div>
                 </div>
             </a></li>
 
@@ -220,9 +215,15 @@
                 </div>
             </a></li>
 
-        <li><a href="{{ path('shop_guarantee') }}">
+        <li><a href="{{ path('shop_delivery') }}">
                 <div class="menu">
-                    <div class="menu-text">Гарантія</div>
+                    <div class="menu-text">Доставка</div>
+                </div>
+            </a></li>
+
+        <li><a href="{{ path('shop_сontact') }}">
+                <div class="menu">
+                    <div class="menu-text">Контакти</div>
                 </div>
             </a></li>
 
