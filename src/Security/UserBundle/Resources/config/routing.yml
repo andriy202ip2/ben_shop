@@ -9,3 +9,8 @@ security_user_login_check:
 security_user_logout:
     path:     /logout
     defaults: { _controller: SecurityUserBundle:Login:logout }
+
+security_user_new:
+    path:     /new
+    defaults: { _controller: "SecurityUserBundle:Login:new" }
+    methods:  [GET, POST]
