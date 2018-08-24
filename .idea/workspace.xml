@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="22b915af-95c0-46d3-b2f8-ce53e53e5145" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Form/AddPricesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Form/AddPricesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,24 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/DefaultController.php">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="77" column="2" selection-start-line="77" selection-end-line="146" selection-end-column="7" />
-              <folding>
-                <element signature="e#4624#5171#0#PHP" />
-                <element signature="e#5432#5971#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddPricesType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AdminBundle/Form/AddPricesType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="20" column="18" selection-start-line="20" selection-start-column="16" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="250">
+              <caret line="154" column="73" selection-start-line="154" selection-start-column="73" selection-end-line="154" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -116,7 +100,6 @@
         <option value="$PROJECT_DIR$/src/Security/UserBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/ProductsController.php" />
         <option value="$PROJECT_DIR$/src/Shop/MenuBundle/Controller/DefaultController.php" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/web/css/ben.css" />
         <option value="$PROJECT_DIR$/src/Security/UserBundle/Resources/views/Login/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Security/UserBundle/Controller/LoginController.php" />
@@ -127,6 +110,7 @@
         <option value="$PROJECT_DIR$/src/AdminBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Form/AddPricesType.php" />
         <option value="$PROJECT_DIR$/src/AdminBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -185,7 +169,7 @@
       <path value="$PROJECT_DIR$/vendor/moneyphp/money" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1260" />
@@ -238,39 +222,41 @@
               <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Shop" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Shop" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="MenuBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Form" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="AdminBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Shop" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="MenuBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Shop" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="MenuBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="ben-shop2.com" type="b2602c69:ProjectViewProjectNode" />
               <item name="ben-shop2.com" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Shop" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="MenuBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Default" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -337,12 +323,12 @@
       <workItem from="1532642969541" duration="126000" />
       <workItem from="1532771741389" duration="12000" />
       <workItem from="1533140653327" duration="1963000" />
-      <workItem from="1535122800115" duration="2437000" />
+      <workItem from="1535122800115" duration="2844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113158000" />
+    <option name="totallyTimeSpent" value="113565000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -624,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="116" column="31" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Security/UserBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -715,6 +694,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="133" column="11" selection-start-line="133" selection-start-column="11" selection-end-line="133" selection-end-column="11" />
+          <folding>
+            <element signature="e#4624#5171#0#PHP" />
+            <element signature="e#5432#5971#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AdminBundle/Form/AddPricesType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
@@ -722,14 +712,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AdminBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="77" column="2" selection-start-line="77" selection-end-line="146" selection-end-column="7" />
-          <folding>
-            <element signature="e#4624#5171#0#PHP" />
-            <element signature="e#5432#5971#0#PHP" />
-          </folding>
+        <state relative-caret-position="250">
+          <caret line="154" column="73" selection-start-line="154" selection-start-column="73" selection-end-line="154" selection-end-column="73" />
         </state>
       </provider>
     </entry>
