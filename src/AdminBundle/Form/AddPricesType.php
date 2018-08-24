@@ -18,12 +18,12 @@ class AddPricesType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
         $builder
-                ->add('curling', NumberType::class, array(
+                /*->add('curling', NumberType::class, array(
                     'attr' => array(
                         'class' => 'admin-input-smoll'
                     ),
                     'label' => 'Накрутка в процентах: '                    
-                ))
+                ))*/
                 ->add('list', TextareaType::class, array(                    
                     'attr' => array(
                         'class' => 'admin-textrea'

@@ -16,7 +16,7 @@ class DefaultController extends Controller {
 
     public function add_pricesAction(Request $request) {
 
-        $noteFonde = "";
+        $noteFonde = array();
         $isSave = 0;
         
         $editForm = $this->createForm('AdminBundle\Form\AddPricesType');
@@ -42,36 +42,22 @@ class DefaultController extends Controller {
 
                     $prise = preg_replace('/\s+/', '', $arr3[0]);
                     $is = preg_replace('/\s+/', '', $arr3[1]);
-/*                    if($is > 0){
-                        $is = 1;
-                    }*/
 
                     $prise = str_replace(array(","), array("."), $prise);
 
-                    $prise = $prise * ($data['curling'] / 100 + 1);
+                    //$prise = $prise * ($data['curling'] / 100 + 1);
                     $prise = round($prise, 2) * 100;     
                     
                     //echo $id . '<br>';
                     //echo $prise . '<br>';
-                    
-                    $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');;
-                    $dql = $dql->where('a.itemId = :id')
-                                ->setParameter('id', $id)
-                                ->getQuery();
-                    
-                    $items = $dql->getResult();
-                    $i = 0;
-                    foreach ($items as $item) {
-                        $i++;
-                        
-                        $money = Money::UAH($prise);
-                        $item->setPrice($money);
-                        $item->setItemIs($is);
 
-                        //exit();
-                    }
-                    if ($i == 0) {
-                        $noteFonde .= " , ".$id;                        
+                    $IsnoteFonde = $this->SetItemsPrice($em, $id, $prise, $is);
+
+                    if ($IsnoteFonde){
+                        $IsnoteFonde = $this->SetAcsesoryPrice($em, $id, $prise, $is);
+                        if ($IsnoteFonde){
+                            $noteFonde[] = $id;
+                        }
                     }
 
                 }
@@ -84,12 +70,12 @@ class DefaultController extends Controller {
 
         return $this->render('AdminBundle:Default:addprices.html.twig', array(
                     'edit_form' => $editForm->createView(),
-                    "noteFonde" => $noteFonde,
+                    "noteFonde" => implode(", ", $noteFonde),
                     "isSave" => $isSave
         ));
     }
 
-    public function add_prices_acsesoryAction(Request $request) {
+/*    public function add_prices_acsesoryAction(Request $request) {
 
         $noteFonde = "";
         $isSave = 0;
@@ -117,13 +103,10 @@ class DefaultController extends Controller {
 
                     $prise = preg_replace('/\s+/', '', $arr3[0]);
                     $is = preg_replace('/\s+/', '', $arr3[1]);
-/*                    if($is > 0){
-                        $is = 1;
-                    }*/
 
                     $prise = str_replace(array(","), array("."), $prise);
 
-                    $prise = $prise * ($data['curling'] / 100 + 1);
+                    //$prise = $prise * ($data['curling'] / 100 + 1);
                     $prise = round($prise, 2) * 100;
 
                     //echo $id . '<br>';
@@ -161,5 +144,67 @@ class DefaultController extends Controller {
             "noteFonde" => $noteFonde,
             "isSave" => $isSave
         ));
+    }*/
+
+    /**
+     * @param $em
+     * @param $id
+     * @param $prise
+     * @param $is
+     * @param $noteFonde
+     * @return array
+     */
+    private function SetItemsPrice($em, $id, $prise, $is)
+    {
+        $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');;
+        $dql = $dql->where('a.itemId = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        $items = $dql->getResult();
+        $i = 0;
+        foreach ($items as $item) {
+            $i++;
+
+            $money = Money::UAH($prise);
+            $item->setPrice($money);
+            $item->setItemIs($is);
+
+            //exit();
+        }
+
+        return $i == 0;
+
+    }
+
+    /**
+     * @param $em
+     * @param $id
+     * @param $prise
+     * @param $is
+     * @param $noteFonde
+     * @return array
+     */
+    private function SetAcsesoryPrice($em, $id, $prise, $is)
+    {
+        $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');;
+        $dql = $dql->where('a.acsesorisId = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        $items = $dql->getResult();
+        $i = 0;
+        foreach ($items as $item) {
+            $i++;
+
+            $money = Money::UAH($prise);
+            $item->setAcsesorisPrice($money);
+            $item->setAcsesoriIs($is);
+
+            //exit();
+        }
+
+        return $i == 0;
+
     }
 }
