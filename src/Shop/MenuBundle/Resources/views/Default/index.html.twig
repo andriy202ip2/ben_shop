@@ -331,8 +331,8 @@
                                     <span class="item{{ Item.id }}price pricef">0 грн</span>
                                 {% else %}
 
-                                    {% set price = ((Item.price | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : percent.cheat))/100)) %}
-                                    {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : percent.percent) %}
+                                    {% set price = ((Item.price | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : (app.user and app.user.role == 'ROLE_TEAM' ? percent.cheatDropshipper : percent.cheat)))/100)) %}
+                                    {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : (app.user and app.user.role == 'ROLE_TEAM' ? percent.percentDropshipper :  percent.percent)) %}
 
                                     <span class="price-percent">
                                         {{ (price / ((100 - banerPersent)/100))|round(0, 'common')|replace({'.': ","}) }}
@@ -386,8 +386,8 @@
                                         <span class="item{{ Item.id }}price2 pricef">0 грн</span>
                                     {% else %}
 
-                                        {% set price = ((Item.acsesorisPrice | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : percent.cheat))/100)) %}
-                                        {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : percent.percent) %}
+                                        {% set price = ((Item.acsesorisPrice | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : (app.user and app.user.role == 'ROLE_TEAM' ? percent.cheatDropshipper : percent.cheat)))/100)) %}
+                                        {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : (app.user and app.user.role == 'ROLE_TEAM' ? percent.percentDropshipper : percent.percent)) %}
 
                                         <span class="price-percent">
                                             {{ (price / ((100 - banerPersent)/100))|round(0, 'common')|replace({'.': ","}) }}
