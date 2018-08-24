@@ -21,4 +21,37 @@ class User extends BaseUser
         return $this->getUsername();
     }
     // * @ORM\Table(name="user",indexes={@ORM\Index(name="name_email_idx", columns={"name", "email"})})
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="store_address", type="text", nullable=true)
+     */
+    private $storeAddress;
+
+    /**
+     * Set about
+     *
+     * @param string $storeAddress
+     *
+     * @return About
+     */
+    public function setStoreAddress($storeAddress)
+    {
+        $this->storeAddress = $storeAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get about
+     *
+     * @return string
+     */
+    public function getStoreAddress()
+    {
+        return $this->storeAddress;
+    }
+
 }
