@@ -38,6 +38,13 @@ class Percent
     /**
      * @var string
      *
+     * @ORM\Column(name="percent_dropshipper", type="decimal", precision=5, scale=2)
+     */
+    private $percentDropshipper;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="cheat", type="decimal", precision=5, scale=2)
      */
     private $cheat;
@@ -48,6 +55,14 @@ class Percent
      * @ORM\Column(name="cheat_wholesaler", type="decimal", precision=5, scale=2)
      */
     private $cheatWholesaler;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cheat_dropshipper", type="decimal", precision=5, scale=2)
+     */
+    private $cheatDropshipper;
 
     /**
      * Get id
@@ -82,5 +97,76 @@ class Percent
     {
         return $this->percent;
     }
-}
 
+    /**
+     * Set percentWholesaler
+     *
+     * @param string $percentWholesaler
+     *
+     * @return Percent
+     */
+    public function setPercentWholesaler($percentWholesaler)
+    {
+        $this->percentWholesaler = $percentWholesaler;
+
+        return $this;
+    }
+
+    /**
+     * Get percentWholesaler
+     *
+     * @return string
+     */
+    public function getPercentWholesaler()
+    {
+        return $this->percentWholesaler;
+    }
+
+    /**
+     * Set cheat
+     *
+     * @param string $cheat
+     *
+     * @return Percent
+     */
+    public function setCheat($cheat)
+    {
+        $this->cheat = $cheat;
+
+        return $this;
+    }
+
+    /**
+     * Get cheat
+     *
+     * @return string
+     */
+    public function getCheat()
+    {
+        return $this->cheat;
+    }
+
+    /**
+     * Set cheatWholesaler
+     *
+     * @param string $cheatWholesaler
+     *
+     * @return Percent
+     */
+    public function setCheatWholesaler($cheatWholesaler)
+    {
+        $this->cheatWholesaler = $cheatWholesaler;
+
+        return $this;
+    }
+
+    /**
+     * Get cheatWholesaler
+     *
+     * @return string
+     */
+    public function getCheatWholesaler()
+    {
+        return $this->cheatWholesaler;
+    }
+}

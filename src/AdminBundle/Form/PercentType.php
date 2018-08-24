@@ -46,6 +46,22 @@ class PercentType extends AbstractType {
                 ),
                 'label' => 'Знижка для оптовика (банер знижки) %: ',
                 'label_attr' => array('class' => 'admin-text-lebel')
+            ))
+            ->add('cheatDropshipper', NumberType::class, array(
+                'scale' => 2,
+                'attr' => array(
+                    'class' => 'admin-input'
+                ),
+                'label' => 'Накрутка для Дропшиперa: %: ',
+                'label_attr' => array('class' => 'admin-text-lebel')
+            ))
+            ->add('percentDropshipper', NumberType::class, array(
+                'scale' => 2,
+                'attr' => array(
+                    'class' => 'admin-input'
+                ),
+                'label' => 'Знижка для Дропшиперa (банер знижки) %: ',
+                'label_attr' => array('class' => 'admin-text-lebel')
             ));
         
     }

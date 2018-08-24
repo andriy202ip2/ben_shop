@@ -38,6 +38,13 @@ class Percent
     /**
      * @var string
      *
+     * @ORM\Column(name="percent_dropshipper", type="decimal", precision=5, scale=2)
+     */
+    private $percentDropshipper;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="cheat", type="decimal", precision=5, scale=2)
      */
     private $cheat;
@@ -48,6 +55,14 @@ class Percent
      * @ORM\Column(name="cheat_wholesaler", type="decimal", precision=5, scale=2)
      */
     private $cheatWholesaler;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cheat_dropshipper", type="decimal", precision=5, scale=2)
+     */
+    private $cheatDropshipper;
 
     /**
      * Get id
@@ -153,5 +168,53 @@ class Percent
     public function getCheatWholesaler()
     {
         return $this->cheatWholesaler;
+    }
+
+    /**
+     * Set percentDropshipper
+     *
+     * @param string $percentDropshipper
+     *
+     * @return Percent
+     */
+    public function setPercentDropshipper($percentDropshipper)
+    {
+        $this->percentDropshipper = $percentDropshipper;
+
+        return $this;
+    }
+
+    /**
+     * Get percentDropshipper
+     *
+     * @return string
+     */
+    public function getPercentDropshipper()
+    {
+        return $this->percentDropshipper;
+    }
+
+    /**
+     * Set cheatDropshipper
+     *
+     * @param string $cheatDropshipper
+     *
+     * @return Percent
+     */
+    public function setCheatDropshipper($cheatDropshipper)
+    {
+        $this->cheatDropshipper = $cheatDropshipper;
+
+        return $this;
+    }
+
+    /**
+     * Get cheatDropshipper
+     *
+     * @return string
+     */
+    public function getCheatDropshipper()
+    {
+        return $this->cheatDropshipper;
     }
 }
