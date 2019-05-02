@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Моделі {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% endif %}{% endblock %}
+{% block title %}{% if model_id == 0 %}Офіційний представник GH-Parts в Україні. Найнижчі ціни!{% elseif model_id and auto_id == 0 %}Моделі {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Офіційний представник GH-Parts в Україні. Найнижчі ціни!{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}{% endif %}{% endblock %}
 
-{% block description %}{% if model_id == 0 %}Каталог продукції Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id == 0 %}Моделі {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Амортизатори, Пружини, Поперечниі важілья{% endif %}{% endblock %}
+{% block description %}{% if model_id == 0 %}Офіційний представник GH-Parts в Україні. Найнижчі ціни!{% elseif model_id and auto_id == 0 %}Моделі {% if I != null %}{{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} Офіційний представник GH-Parts в Україні. Найнижчі ціни!{% elseif model_id and auto_id and data_id == 0 %}Роки авто {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Офіційний представник GH-Parts в Україні. Найнижчі ціни!{% elseif model_id and auto_id and data_id %}Запчастини {% if I != null %}{% if I.model != null %}{{ I.model.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {% if I.auto != null %}{{ I.auto.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %} {{ I.name|replace({"\n": " ", "\r\n": " ", "\t": " ", "\n\r": " "}) }}{% endif %}  Офіційний представник GH-Parts в Україні. Найнижчі ціни!{% endif %}{% endblock %}
 
 {% block body %}
 
@@ -326,18 +326,18 @@
                             <td>
 
                                 {% if Item.price == null %}
-                                    <span class="item{{ Item.id }}price pricef">0 грн</span>
+                                    <span class="item{{ Item.id }}price pricef" style="font-size: 13pt">0 грн</span>
                                 {% elseif Item.price | money_as_float == 0 %}
-                                    <span class="item{{ Item.id }}price pricef">0 грн</span>
+                                    <span class="item{{ Item.id }}price pricef" style="font-size: 13pt">0 грн</span>
                                 {% else %}
 
                                     {% set price = ((Item.price | money_convert("UAH") | money_as_float) * ((100 + (app.user and app.user.role == 'ROLE_USER' ? percent.cheatWholesaler : (app.user and app.user.role == 'ROLE_TEAM' ? percent.cheatDropshipper : percent.cheat)))/100)) %}
                                     {% set banerPersent = (app.user and app.user.role == 'ROLE_USER' ? percent.percentWholesaler : (app.user and app.user.role == 'ROLE_TEAM' ? percent.percentDropshipper :  percent.percent)) %}
 
-                                    <span class="price-percent">
+                                    <span class="price-percent" style="font-size: 13pt">
                                         {{ (price / ((100 - banerPersent)/100))|round(0, 'common')|replace({'.': ","}) }}
                                         грн</span><br/>
-                                    <span class="item{{ Item.id }}price pricef">
+                                    <span class="item{{ Item.id }}price pricef" style="font-size: 13pt">
                                         {{ price |round(0, 'common')|replace({'.': ","}) }}
                                         грн за шт.</span>
                                 {% endif %}
@@ -352,6 +352,7 @@
 
                                 <br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold"
                                            val="item{{ Item.id }}">ЗАМОВИТИ</span>
+
                             </td>
                             <td>
 
