@@ -248,6 +248,33 @@ class DefaultController extends Controller
         $call_time_b = strip_tags($request->query->get('call_time_b', ""), '<p><br>');
         $call_time_e = strip_tags($request->query->get('call_time_e', ""), '<p><br>');
 
+        $s1i = strip_tags($request->query->get('s1i', ""), '<p><br>');
+        settype($s1i, "integer");
+        $s2i = strip_tags($request->query->get('s2i', ""), '<p><br>');
+        settype($s2i, "integer");
+
+        $t1i = strip_tags($request->query->get('t1i', ""), '<p><br>');
+        settype($t1i, "integer");
+        $t2i = strip_tags($request->query->get('t2i', ""), '<p><br>');
+        settype($t2i, "integer");
+        $t3i = strip_tags($request->query->get('t3i', ""), '<p><br>');
+        settype($t3i, "integer");
+
+        $storona = "";
+        $zapcastina = "";
+
+        if(($s1i && $s2i) || (!$s1i && !$s2i)){
+            $storona = "Всі";
+        } else {
+            $storona = ($s1i ? 'Передня' : '').($s2i ? 'Задня' : '');
+        }
+
+        if(($t1i && $t2i && $t3i) || (!$t1i && !$t2i && !$t3i)){
+            $zapcastina = "Всі";
+        } else {
+            $zapcastina = ($t1i ? ' Амортизатор, ' : '').($t2i ? ' Пружина, ' : '').($t3i ? ' Ричаг, ' : '');
+        }
+
         //echo '<br/>'.$call_name.'<br/>'.$call_mob.'<br/>'.$call_time_b.'<br/>'.$call_time_e.'<br/>';
 
         if (mb_strlen($call_mob) >= 10) {
@@ -260,7 +287,11 @@ class DefaultController extends Controller
                 'call_mob' => $call_mob,
                 'call_vin' => $call_vin,
                 'call_time_b' => $call_time_b,
-                'call_time_e' => $call_time_e
+                'call_time_e' => $call_time_e,
+
+                'storona' => $storona,
+                'zapcastina' => $zapcastina
+
             ));
 
             $sendemale = new Sendemale();

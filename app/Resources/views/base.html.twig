@@ -47,6 +47,56 @@
     <script>
         $(document).ready(function () {
 
+            $("#s1i, #si1i").click(function () {
+                if($("#si1i").attr("src") == "/img/front_on.png"){
+                    $("#si1i").attr("src","/img/front_off.png");
+                    $('#s1i').prop('checked', false);
+                }else{
+                    $("#si1i").attr("src","/img/front_on.png");
+                    $('#s1i').prop('checked', true);
+                }
+            });
+
+            $("#s2i, #si2i").click(function () {
+                if($("#si2i").attr("src") == "/img/back_on.png"){
+                    $("#si2i").attr("src","/img/back_off.png");
+                    $('#s2i').prop('checked', false);
+                }else{
+                    $("#si2i").attr("src","/img/back_on.png");
+                    $('#s2i').prop('checked', true);
+                }
+            });
+
+            $("#t1i, #ti1i").click(function () {
+                if($("#ti1i").attr("src") == "/img/shock_on.png"){
+                    $("#ti1i").attr("src","/img/shock_off.png");
+                    $('#t1i').prop('checked', false);
+                }else{
+                    $("#ti1i").attr("src","/img/shock_on.png");
+                    $('#t1i').prop('checked', true);
+                }
+            });
+
+            $("#t2i, #ti2i").click(function () {
+                if($("#ti2i").attr("src") == "/img/coil_on.png"){
+                    $("#ti2i").attr("src","/img/coil_off.png");
+                    $('#t2i').prop('checked', false);
+                }else{
+                    $("#ti2i").attr("src","/img/coil_on.png");
+                    $('#t2i').prop('checked', true);
+                }
+            });
+
+            $("#t3i, #ti3i").click(function () {
+                if($("#ti3i").attr("src") == "/img/arm_on.png"){
+                    $("#ti3i").attr("src","/img/arm_off.png");
+                    $('#t3i').prop('checked', false);
+                }else{
+                    $("#ti3i").attr("src","/img/arm_on.png");
+                    $('#t3i').prop('checked', true);
+                }
+            });
+
             $("#registerForm").validate();
 
             $("#dialog_contakt").dialog({
@@ -54,6 +104,15 @@
                 width: 400,
                 buttons: {
                     "Відправити": function () {
+
+                        if((!$("#s1i").prop('checked') && !$("#s2i").prop('checked'))
+                            || !$("#t1i").prop('checked') && !$("#t2i").prop('checked') && !$("#t3i").prop('checked')){
+                            $("#e_vini").css("display", "block");
+                            return;
+                        } else {
+                            $("#e_vini").css("display", "none");
+                        }
+
                         if ($("#registerForm").valid()) {
 
                             $("#dialog_contakt").dialog("close");
@@ -65,7 +124,12 @@
                                     call_mob: $("#call_mob").val(),
                                     call_vin: $("#call_vin").val(),
                                     call_time_b: $("#call_time_b").val(),
-                                    call_time_e: $("#call_time_e").val()
+                                    call_time_e: $("#call_time_e").val(),
+                                    s1i: ($("#s1i").prop('checked') ? 1 : 0),
+                                    s2i: ($("#s2i").prop('checked') ? 1 : 0),
+                                    t1i: ($("#t1i").prop('checked') ? 1 : 0),
+                                    t2i: ($("#t2i").prop('checked') ? 1 : 0),
+                                    t3i: ($("#t3i").prop('checked') ? 1 : 0)
                                 }
                             })
                                 .done(function (msg) {
@@ -77,6 +141,7 @@
                                     }
                                 });
                         }
+
                     }
                 }
             });
@@ -96,28 +161,11 @@
         });
     </script>
 
-    <!-- Start SiteHeart code -->
-    <script>
-        (function(){
-            var widget_id = 898366;
-            _shcp =[{widget_id : widget_id}];
-            var lang =(navigator.language || navigator.systemLanguage
-                || navigator.userLanguage ||"en")
-                .substr(0,2).toLowerCase();
-            var url ="widget.siteheart.com/widget/sh/"+ widget_id +"/"+ lang +"/widget.js";
-            var hcc = document.createElement("script");
-            hcc.type ="text/javascript";
-            hcc.async =true;
-            hcc.src =("https:"== document.location.protocol ?"https":"http")
-                +"://"+ url;
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hcc, s.nextSibling);
-        })();
-    </script>
-    <!-- End SiteHeart code -->
 
 </head>
 <body>
+
+
 
 <!-- ui-dialog contakt -->
 <div id="dialog_contakt" title="Підбір по VIN-коду автомобіля" style="display: none">
@@ -139,6 +187,45 @@
                type="text"/> -
         <input id="call_time_e" maxlength="5" name="call_time_e" class="call-smoll-input" value="" placeholder="20:00"
                type="text"/><br/>
+
+        <table border="0" style="text-align:center" align="center">
+            <tbody>
+            <tr>
+                <td><img style="cursor:pointer;width: 53px" src="/img/front_off.png"
+                         id="si1i"></td>
+                <td><img style="cursor:pointer; border-left: solid;width: 53px"
+                         src="/img/back_off.png" id="si2i"></td>
+
+                <td><img align="center" src="/img/shock_off.png"
+                         style="cursor:pointer; width: 53px;" id="ti1i"></td>
+                <td><img align="center"
+                                              src="/img/coil_off.png"
+                                              style="cursor:pointer; border-left: solid;width: 53px" id="ti2i"></td>
+                <td><img align="center" src="/img/arm_off.png"
+                         style="cursor:pointer; border-left: solid;width: 53px;" id="ti3i"></td>
+            </tr>
+
+            <tr>
+                <td style="font-size:12px;text-align: center;">
+                    <b>Передня </b><br/><input type="checkbox" name="s1i" id="s1i" value="1">
+                </td>
+                <td style="font-size:12px;text-align: center;width: 10px;">
+                    <b>Задня </b><br/><input type="checkbox" name="s2i" id="s2i" value="1">
+                </td>
+
+                <td style="font-size:12px;text-align: center;"><b>Амортизатор</b><br/>
+                    <input type="checkbox" name="t1i" id="t1i" value="1">
+                </td>
+                <td style="font-size:12px;text-align: center;"><b>Пружина</b><br/>
+                    <input type="checkbox" name="t2i" id="t2i" value="1">
+                </td>
+                <td style="font-size:12px;text-align: center;"><b>Ричаг</b><br/>
+                    <input type="checkbox" name="t3i" id="t3i" value="1">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <b style="color: red;display: none" id="e_vini">Виберіть сторону і запчастину...</b>
 
     </form>
 </div>
@@ -278,6 +365,53 @@
     {% endif %}
 
 </div>
+
+<!--lesik chat-->
+<script type="text/javascript">
+    (function(d, w, s) {
+        var widgetHash = 'enndtnznh52iluxxaclw', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+        gcw.src = '//widgets.binotel.com/getcall/widgets/'+ widgetHash +'.js';
+        var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+    })(document, window, 'script');
+</script>
+
+<style type="text/css">
+    /*Для изменения цвета кнопки:*/
+
+    #bingc-phone-button svg.bingc-phone-button-circle
+    circle.bingc-phone-button-circle-inside {
+        fill: #ff0000 !important;
+    }
+    #bingc-phone-button:hover svg.bingc-phone-button-circle
+    circle.bingc-phone-button-circle-inside {
+        fill: #ff0000 !important;
+    }
+    #bingc-phone-button div.bingc-phone-button-tooltip {
+        background: #ff0000 !important;
+    }
+    #bingc-phone-button div.bingc-phone-button-tooltip svg.bingc-phone-button-arrow
+    polyline {
+        fill: #ff0000 !important;
+    }
+
+    /*Для изменения цвета фона пасивной формы:*/
+    /*
+    #bingc-passive > div.bingc-passive-overlay {
+        background: #47a447 !important;
+    }
+    */
+
+    /*Для изменения цвета фона активной формы:*/
+    /*
+    #bingc-active {
+        background: #47a447 !important;
+    }
+    */
+
+</style>
+
+<!--lesik chat end-->
+
 
 </body>
 </html>
