@@ -89,12 +89,38 @@ class ItemsController extends Controller {
         $IsSerch = strlen($serch) > 1;
         if ($IsSerch) {
 
+            $dql2 = $em
+                ->getRepository('ShopMenuBundle:Ghcode')
+                ->createQueryBuilder('i');
+
+            $dql2 = $dql2->where('i.code = :serch')
+                ->setParameter('serch', $serch)
+                ->getQuery();
+            $items = $dql2->getResult();
+            $array_gh = array();
+            foreach ($items as $item) {
+                $array_gh[] = $item->getItemId();
+            }
+            $array_gh = array_unique($array_gh);
+
             $em = $this->getDoctrine()->getManager();
             $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('i');
 
-            $dql = $dql->andwhere('i.itemId LIKE :serch')
-                        ->orWhere('i.acsesorisId LIKE :serch')
-                        ->setParameter('serch', '%' . $serch . '%');
+            if (count($array_gh) != 0){
+
+                $query = $dql
+                    ->andWhere('i.itemId IN (:ids)')
+                    ->setParameter('ids', $array_gh, \Doctrine\DBAL\Connection::PARAM_STR_ARRAY);
+
+                $dql = $query->orderBy('i.id', 'ASC');
+
+            } else {
+
+                $dql = $dql->andwhere('i.itemId LIKE :serch')
+                            ->orWhere('i.acsesorisId LIKE :serch')
+                            ->setParameter('serch', '%' . $serch . '%');
+
+            }
 
         } else {
 

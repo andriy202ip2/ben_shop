@@ -5,8 +5,10 @@ namespace AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Shop\MenuBundle\Entity\Items;
+use Shop\MenuBundle\Entity\Ghcode;
 use Tbbc\MoneyBundle\Form\Type\MoneyType;
 use Money\Money;
+
 
 class DefaultController extends Controller {
 
@@ -72,6 +74,68 @@ class DefaultController extends Controller {
                     'edit_form' => $editForm->createView(),
                     "noteFonde" => implode(", ", $noteFonde),
                     "isSave" => $isSave
+        ));
+    }
+
+    public function ghcodeAction(Request $request) {
+
+        $noteFonde = array();
+        $isSave = 0;
+
+        $editForm = $this->createForm('AdminBundle\Form\AddGhcodeType');
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $connection = $em->getConnection();
+            $platform   = $connection->getDatabasePlatform();
+            $connection->executeUpdate($platform->getTruncateTableSQL('ghcode', true /* whether to cascade */));
+
+            $isSave = 1;
+
+            $em = $this->getDoctrine()->getManager();
+
+            $data = $editForm->getData();
+            $arr = explode("}|", $data["list"]);
+            foreach ($arr as $val) {
+                $arr2 = explode("{", $val);
+
+                if (count($arr2) == 2) {
+
+                    $id = preg_replace('/\s+/', '', $arr2[0]);
+
+                    $arr3 = explode(",", $arr2[1]);
+                    foreach ($arr3 as $val2) {
+
+                        $code = preg_replace('/\s+/', '', $val2);
+                        if(mb_strlen($code) > 2){
+
+                            $Ghcode = new Ghcode();
+                            $Ghcode = $Ghcode->setItemId($id);
+                            $Ghcode = $Ghcode->setCode($code);
+                            $em->persist($Ghcode);
+
+                            //echo $code.'<br>';
+                        }
+                    }
+
+
+                }
+            }
+
+            $em->flush();
+            //$this->getDoctrine()->getManager()->flush();
+            //
+            //return $this->redirectToRoute('admin_add_prices');
+        }
+
+        return $this->render('AdminBundle:Default:ghcode.html.twig', array(
+            'edit_form' => $editForm->createView(),
+            "noteFonde" => implode(", ", $noteFonde),
+            "isSave" => $isSave
         ));
     }
 
@@ -156,7 +220,7 @@ class DefaultController extends Controller {
      */
     private function SetItemsPrice($em, $id, $prise, $is)
     {
-        $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');;
+        $dql = $em->getRepository('ShopMenuBundle:Items')->createQueryBuilder('a');
         $dql = $dql->where('a.itemId = :id')
             ->setParameter('id', $id)
             ->getQuery();

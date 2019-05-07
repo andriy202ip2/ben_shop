@@ -13,16 +13,48 @@ use Doctrine\ORM\EntityRepository;
 class ItemsRepository extends EntityRepository {
 
     public function findBySerchCodeOrderedById($serch) {
-                  
-        //echo $serch;
-        $query = $this->createQueryBuilder('i')
-            ->andwhere('i.itemId LIKE :serch')
-            ->orWhere('i.acsesorisId LIKE :serch')
-            ->setParameter('serch', '%'.$serch.'%');
-                
-        $query = $query->orderBy('i.id', 'ASC')
-                 ->getQuery();
-        
+
+        $dql = $this->getEntityManager()
+            ->getRepository('ShopMenuBundle:Ghcode')
+            ->createQueryBuilder('i');
+
+        $dql = $dql->where('i.code = :serch')
+            ->setParameter('serch', $serch)
+            ->getQuery();
+        $items = $dql->getResult();
+        $array_gh = array();
+        foreach ($items as $item) {
+            $array_gh[] = $item->getItemId();
+        }
+        $array_gh = array_unique($array_gh);
+        //var_dump($array_gh);
+
+        if (count($array_gh) != 0){
+
+            //$array_gh = implode(",", $array_gh);
+            //var_dump($array_gh);
+
+            //echo $serch;
+            $query = $this->createQueryBuilder('i')
+                ->andWhere('i.itemId IN (:ids)')
+                ->setParameter('ids', $array_gh, \Doctrine\DBAL\Connection::PARAM_STR_ARRAY);
+
+            $query = $query->orderBy('i.id', 'ASC')
+                ->getQuery();
+
+        }else{
+
+            //echo $serch;
+            $query = $this->createQueryBuilder('i')
+                ->andwhere('i.itemId LIKE :serch')
+                ->orWhere('i.acsesorisId LIKE :serch')
+                ->setParameter('serch', '%'.$serch.'%');
+
+            $query = $query->orderBy('i.id', 'ASC')
+                ->getQuery();
+        }
+
+
        // echo $query->getSQL();
         
         return $query;
