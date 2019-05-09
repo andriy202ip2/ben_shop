@@ -15,12 +15,12 @@
             <h1>Каталог продукції</h1>
 
             <form id="form_serch" method="GET">
-                <h3 style="font-size: 17px">Пошук по артикулу GH: <input type="text" name="serch" id="datepicker" class="cat"/> <samp
-                            class="ui-icon ui-icon-search" style="cursor:pointer;" id="serch_btn"></samp></h3>
+                <h3 style="font-size: 17px">Пошук по артикулу GH-Parts, Kayaba і Kamoka: <input type="text" name="serch" id="datepicker" class="cat cat-size"  /> <samp
+                            class="ui-icon ui-icon-search icon-zize" style="cursor:pointer;" id="serch_btn"></samp></h3>
             </form>
 
             <form id="form_item" method="GET">
-                <select name="mid" id="mid" class="cat">
+                <select name="mid" id="mid" class="cat icon-zize2">
                     <option value="0" {{ model_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
                     {% for modelMenu in modelMenus %}
                         <option value="{{ modelMenu.id }}" {{ model_id == modelMenu.id  ? 'selected=""' : '' }}>
@@ -30,7 +30,7 @@
                 </select>
 
                 <select name="aid" id="aid"
-                        class="cat" {{ model_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
+                        class="cat icon-zize2" {{ model_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
                     <option value="0" {{ auto_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
                     {% for auto in autoMenu %}
                         <option value="{{ auto.id }}" {{ auto_id == auto.id  ? 'selected=""' : '' }}>
@@ -40,7 +40,7 @@
                 </select>
 
                 <select name="did" id="did"
-                        class="cat" {{ auto_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
+                        class="cat icon-zize2" {{ auto_id == 0  ? 'disabled="" style="background: transparent;"' : '' }}>
                     <option value="0" {{ data_id == 0  ? 'selected=""' : '' }}>Вибрати</option>
                     {% for data in dataMenu %}
                         <option value="{{ data.id }}" {{ data_id == data.id  ? 'selected=""' : '' }}>
@@ -306,12 +306,12 @@
                 <table border="0" class="catalog">
                     <tbody>
                     <tr>
-                        <td><b>Код GH</b></td>
-                        <td><b>Сторона</b></td>
-                        <td><b>Застосування</b></td>
-                        <td><b>Ціна</b></td>
-                        <td><b>Фото</b></td>
-                        <td><b>Аксесуари</b></td>
+                        <td class="my-font"><b>Код GH</b></td>
+                        <td class="my-font"><b>Сторона</b></td>
+                        <td class="my-font"><b>Застосування</b></td>
+                        <td class="my-font"><b>Ціна</b></td>
+                        <td class="my-font"><b>Фото</b></td>
+                        <td class="my-font"><b>Аксесуари</b></td>
                     </tr>
                     <tr>
                         <td colspan="6">
@@ -322,14 +322,14 @@
                     {% for Item in ItemsArray %}
 
                         <tr>
-                            <td>
+                            <td class="my-font2">
                                 <span class="item{{ Item.id }}code">{{ Item.name | raw }}</span>
                                 <a href="#" class="item_dialog" val="item{{ Item.id }}">
                                     <img src="/img/info-small.png" style="border:0"></a>
                             </td>
-                            <td>{{ Item.side | raw }}</td>
-                            <td>{{ Item.fit | raw }}</td>
-                            <td>
+                            <td class="my-font2">{{ Item.side | raw }}</td>
+                            <td class="my-font2">{{ Item.fit | raw }}</td>
+                            <td class="my-font2">
 
                                 {% if Item.price == null %}
                                     <span class="item{{ Item.id }}price pricef" style="font-size: 13pt">0 грн</span>
@@ -364,7 +364,7 @@
                                 </div>
 
                             </td>
-                            <td>
+                            <td class="my-font2">
 
                                 <a href="#" class="item_dialog" val="item{{ Item.id }}"
                                    title="&lt;img src=&#39;/img/upload/{{ Item.img }}&#39; class=&#39;img_big&#39;&gt;{{ Item.imgData }}">
@@ -383,7 +383,7 @@
 
                             </td>
 
-                            <td>
+                            <td class="my-font2">
                                 {% if Item.acsesorisId != null and  Item.acsesorisId|length > 0 %}
 
                                     <span class="item{{ Item.id }}code2"><b>{{ Item.acsesorisId | raw }}</b></span>
@@ -431,10 +431,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="6" class="item_element">
+                            <td colspan="6" class="item_element my-font3">
                                 <div class="showApplication item_on txt-otstup3" style="display:none;">Дисплей додаткових додатків</div>
                                 <div class="showApplication item_off txt-otstup3">Приховати</div>
-                                <div class="item_info item{{ Item.id }}">
+                                <div class="item_info item{{ Item.id }} txt-otstup4">
                                     {{ Item.details | raw }}
                                 </div>
                                 <hr>

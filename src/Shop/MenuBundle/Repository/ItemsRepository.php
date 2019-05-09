@@ -29,12 +29,8 @@ class ItemsRepository extends EntityRepository {
         $array_gh = array_unique($array_gh);
         //var_dump($array_gh);
 
-        if (count($array_gh) != 0){
+/*        if (count($array_gh) != 0){
 
-            //$array_gh = implode(",", $array_gh);
-            //var_dump($array_gh);
-
-            //echo $serch;
             $query = $this->createQueryBuilder('i')
                 ->andWhere('i.itemId IN (:ids)')
                 ->setParameter('ids', $array_gh, \Doctrine\DBAL\Connection::PARAM_STR_ARRAY)
@@ -43,18 +39,24 @@ class ItemsRepository extends EntityRepository {
             $query = $query->orderBy('i.id', 'ASC')
                 ->getQuery();
 
-        }else{
+        }else{*/
 
             //echo $serch;
             $query = $this->createQueryBuilder('i')
                 ->andwhere('i.itemId LIKE :serch')
-                ->orWhere('i.acsesorisId LIKE :serch')
-                ->setParameter('serch', '%'.$serch.'%')
+                ->orWhere('i.acsesorisId LIKE :serch');
+
+            if (count($array_gh) != 0){
+                $query = $query->orWhere('i.itemId IN (:ids)')
+                                ->setParameter('ids', $array_gh, \Doctrine\DBAL\Connection::PARAM_STR_ARRAY);
+            }
+
+            $query = $query->setParameter('serch', '%'.$serch.'%')
                 ->groupby('i.itemId');
 
             $query = $query->orderBy('i.id', 'ASC')
                 ->getQuery();
-        }
+        //}
 
 
        // echo $query->getSQL();

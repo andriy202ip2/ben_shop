@@ -195,13 +195,15 @@ class DefaultController extends Controller
 
     public function сontactAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        return $this->redirectToRoute('shop_menu_homepage', []);
+
+/*        $em = $this->getDoctrine()->getManager();
 
         $contacts = $em->getRepository('AdminBundle:Contact')->findOneBy([]);
 
         return $this->render('ShopMenuBundle:Default:contact.html.twig', array(
             'contacts' => $contacts,
-        ));
+        ));*/
     }
 
     public function mobileAction(Request $request)
@@ -218,13 +220,15 @@ class DefaultController extends Controller
     public function deliveryAction(Request $request)
     {
 
-        $em = $this->getDoctrine()->getManager();
+        return $this->redirectToRoute('shop_menu_homepage', []);
+
+/*        $em = $this->getDoctrine()->getManager();
 
         $delivery = $em->getRepository('AdminBundle:Delivery')->findOneBy([]);
 
         return $this->render('ShopMenuBundle:Default:delivery.html.twig', array(
             'delivery' => $delivery,
-        ));
+        ));*/
     }
 
     public function paymentAction(Request $request)
@@ -242,11 +246,17 @@ class DefaultController extends Controller
     public function sendemaleAction(Request $request)
     {
 
-        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
-        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
-        $call_vin = strip_tags($request->query->get('call_vin', ""), '<p><br>');
-        $call_time_b = strip_tags($request->query->get('call_time_b', ""), '<p><br>');
-        $call_time_e = strip_tags($request->query->get('call_time_e', ""), '<p><br>');
+        $call_name = strip_tags($request->query->get('call_name', ""));
+        $call_mob = strip_tags($request->query->get('call_mob', ""));
+        $call_vin = strip_tags($request->query->get('call_vin', ""));
+        $call_time_b = strip_tags($request->query->get('call_time_b', ""));
+        $call_time_e = strip_tags($request->query->get('call_time_e', ""));
+
+        $call_name = preg_replace('/\s+/', ' ', $call_name);
+        $call_mob = preg_replace('/\s+/', ' ', $call_mob);
+        $call_vin = preg_replace('/\s+/', ' ', $call_vin);
+        $call_time_b = preg_replace('/\s+/', ' ', $call_time_b);
+        $call_time_e = preg_replace('/\s+/', ' ', $call_time_e);
 
         $s1i = strip_tags($request->query->get('s1i', ""), '<p><br>');
         settype($s1i, "integer");
@@ -328,10 +338,15 @@ class DefaultController extends Controller
     public function oderemaleAction(Request $request)
     {
 
-        $call_name = strip_tags($request->query->get('call_name', ""), '<p><br>');
-        $call_mob = strip_tags($request->query->get('call_mob', ""), '<p><br>');
-        $oder_code = strip_tags($request->query->get('oder_code', ""), '<p><br>');
-        $oder_price = strip_tags($request->query->get('oder_price', ""), '<p><br>');
+        $call_name = strip_tags($request->query->get('call_name', ""));
+        $call_mob = strip_tags($request->query->get('call_mob', ""));
+        $oder_code = strip_tags($request->query->get('oder_code', ""));
+        $oder_price = strip_tags($request->query->get('oder_price', ""));
+
+        $call_name = preg_replace('/\s+/', ' ', $call_name);
+        $call_mob = preg_replace('/\s+/', ' ', $call_mob);
+        $oder_code = preg_replace('/\s+/', ' ', $oder_code);
+        $oder_price = preg_replace('/\s+/', ' ', $oder_price);
 
         if (mb_strlen($call_mob) >= 10) {
 

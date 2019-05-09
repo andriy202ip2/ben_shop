@@ -58,12 +58,10 @@ table.catalog{
     border: 1;
 }
 
-table.catalog tr td{
-    min-width: 100px;
-    padding: 2px 5px 3px 5px;
-    text-align: center;
-    font-size: 17px;
-
+.icon-zize{
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
 }
 
 div.showApplication{
@@ -273,33 +271,37 @@ div.menu {
     z-index: 3;
     top: 0px;
     left: 0px;
-    width: 100px;
-    height: 50px;
+    width: 130px;
+    height: 70px;
 }
 
 div.menu-text {
     position: absolute;
     z-index: 4;
     top: 18px;
-    width: 100px;
+    width: 130px;
     font-family: sans-serif;
 
 }
+
+
+
 #nav {
     margin: 0px;
     padding: 0px;
+    height: 50px;
     list-style-image: none;
     list-style-type: none;
 }
 #nav li {
     position: relative;
     float:left;
-    top: 66px;
+    top: 60px;
     left: 370px;
     margin: 0px;
     height: 50px;
-    width: 100px;
-    font-size: 12px;
+    width: 130px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: bold;
     font-style: italic;
@@ -311,7 +313,7 @@ div.menu-text {
     text-align: center;
 }
 #nav li a:hover div.menu{
-    background-image: url("../img/menu-active.png");
+    background-image: url("../img/menu-active.png?i=3");
     background-repeat: no-repeat;
 }
 #desc_out {
@@ -876,7 +878,7 @@ div.telefone {
 }
 
 .pricef{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -907,4 +909,34 @@ div.telefone {
 
 .gold {
     color: #0000F0;
+}
+
+.cat-size{
+    /*width: 370px;*/
+    /*height: 22px;*/
+
+}
+
+.icon-zize2{
+    /*height: 25px;*/
+}
+
+table.catalog tr td{
+    min-width: 100px;
+    padding: 2px 5px 3px 5px;
+    text-align: center;
+    /*font-size: 12px;*/
+
+}
+
+.my-font {
+    font-size: 17px;
+}
+
+.my-font2 {
+    font-size: 17px;
+}
+
+.my-font3 {
+    font-size: 13px;
 }

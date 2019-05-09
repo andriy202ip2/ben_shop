@@ -10,7 +10,7 @@
 
     <meta property="og:image" content="/img/viber_logo.jpg"/>
 
-    <link type="text/css" rel="stylesheet" href="/css/ben.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/ben.css?i=9"/>
     <link href="/css/jquery-ui.css" rel="stylesheet"/>
 
     <title>{% block title %}Найкраща якість автозапчастин!{% endblock %}</title>
@@ -298,11 +298,11 @@
 
         <li><a href="{{ path('shop_payment') }}">
                 <div class="menu">
-                    <div class="menu-text">Оплата</div>
+                    <div class="menu-text">Доставка і Оплата</div>
                 </div>
             </a></li>
 
-        <li><a href="{{ path('shop_delivery') }}">
+{#        <li><a href="{{ path('shop_delivery') }}">
                 <div class="menu">
                     <div class="menu-text">Доставка</div>
                 </div>
@@ -312,7 +312,7 @@
                 <div class="menu">
                     <div class="menu-text">Контакти</div>
                 </div>
-            </a></li>
+            </a></li>#}
 
         {% if app.user and (app.user.role == 'ROLE_ADMIN' or app.user.role == 'ROLE_ROOT') %}
             <li><a href="{{ path('admin_homepage') }}">
