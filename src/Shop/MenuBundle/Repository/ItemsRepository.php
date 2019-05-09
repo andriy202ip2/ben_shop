@@ -37,7 +37,8 @@ class ItemsRepository extends EntityRepository {
             //echo $serch;
             $query = $this->createQueryBuilder('i')
                 ->andWhere('i.itemId IN (:ids)')
-                ->setParameter('ids', $array_gh, \Doctrine\DBAL\Connection::PARAM_STR_ARRAY);
+                ->setParameter('ids', $array_gh, \Doctrine\DBAL\Connection::PARAM_STR_ARRAY)
+                ->groupby('i.itemId');
 
             $query = $query->orderBy('i.id', 'ASC')
                 ->getQuery();
@@ -48,7 +49,8 @@ class ItemsRepository extends EntityRepository {
             $query = $this->createQueryBuilder('i')
                 ->andwhere('i.itemId LIKE :serch')
                 ->orWhere('i.acsesorisId LIKE :serch')
-                ->setParameter('serch', '%'.$serch.'%');
+                ->setParameter('serch', '%'.$serch.'%')
+                ->groupby('i.itemId');
 
             $query = $query->orderBy('i.id', 'ASC')
                 ->getQuery();

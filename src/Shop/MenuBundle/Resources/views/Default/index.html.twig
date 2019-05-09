@@ -15,7 +15,7 @@
             <h1>Каталог продукції</h1>
 
             <form id="form_serch" method="GET">
-                <h3>Пошук по артикулу GH: <input type="text" name="serch" id="datepicker" class="cat"/> <samp
+                <h3 style="font-size: 17px">Пошук по артикулу GH: <input type="text" name="serch" id="datepicker" class="cat"/> <samp
                             class="ui-icon ui-icon-search" style="cursor:pointer;" id="serch_btn"></samp></h3>
             </form>
 
@@ -56,33 +56,35 @@
                     <tr>
                         <td><img style="cursor:pointer;" src="{{ s1  ? '/img/front_on.png' : '/img/front_off.png' }}"
                                  id="si1"></td>
-                        <td><img style="cursor:pointer; border-left: solid"
+                        <td width="1px" style="border-left: solid"></td>
+                        <td><img style="cursor:pointer;"
                                  src="{{ s2  ? '/img/back_on.png' : '/img/back_off.png' }}" id="si2"></td>
-                        <td width="30"></td>
-                        <td><img align="left" src="{{ t1  ? '/img/shock_on.png' : '/img/shock_off.png' }}"
+                        <td width="60px;"></td>
+                        <td style="width: 140px;"><img align="left" src="{{ t1  ? '/img/shock_on.png' : '/img/shock_off.png' }}"
                                  style="cursor:pointer;" id="ti1"></td>
-                        <td style="width: 90px;"><img align="left"
+                        <td style="width: 115px;"><img align="left"
                                                       src="{{ t2  ? '/img/coil_on.png' : '/img/coil_off.png' }}"
                                                       style="cursor:pointer; border-left: solid;" id="ti2"></td>
-                        <td><img align="left" src="{{ t3  ? '/img/arm_on.png' : '/img/arm_off.png' }}"
+                        <td style="width: 97px;"><img align="left" src="{{ t3  ? '/img/arm_on.png' : '/img/arm_off.png' }}"
                                  style="cursor:pointer; border-left: solid;" id="ti3"></td>
                     </tr>
 
                     <tr>
-                        <td style="font-size:11px">
+                        <td class="items-select">
                             передня <input type="checkbox" name="s1" id="s1" value="1" {{ s1  ? 'checked=""' : '' }}>
                         </td>
-                        <td style="font-size:11px">
+                        <td></td>
+                        <td class="items-select">
                             задня <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>
                         </td>
                         <td></td>
-                        <td>Амортизатор
+                        <td class="items-select">Амортизатор
                             <input type="checkbox" name="t1" id="t1" value="1" {{ t1  ? 'checked=""' : '' }}>
                         </td>
-                        <td>Пружина
+                        <td class="items-select">Пружина
                             <input type="checkbox" name="t2" id="t2" value="2" {{ t2  ? 'checked=""' : '' }}>
                         </td>
-                        <td>Ричаг
+                        <td class="items-select">Ричаг
                             <input type="checkbox" name="t3" id="t3" value="4" {{ t3  ? 'checked=""' : '' }}>
                         </td>
                     </tr>
@@ -97,7 +99,7 @@
             {% if IsSerch == 0 and model_id == 0 %}
 
                 <div class="text-center">
-                    <h1>Марки</h1>
+                    <h1 class="txt-font-title">Марки</h1>
                 </div>
                 <br/>
 
@@ -161,7 +163,7 @@
             {% elseif IsSerch == 0 and model_id != 0 and auto_id == 0 %}
 
                 <div class="text-center">
-                    <h1>Моделі</h1>
+                    <h1 class="txt-font-title">Моделі</h1>
                 </div>
                 <br/>
 
@@ -227,7 +229,7 @@
             {% elseif IsSerch == 0 and model_id != 0 and auto_id != 0 and data_id == 0 %}
 
                 <div class="text-center">
-                    <h1>Роки авто</h1>
+                    <h1 class="txt-font-title">Роки авто</h1>
                 </div>
 
                 <div class="text-marning new-font">
@@ -293,9 +295,13 @@
 
             {% elseif IsSerch or model_id and auto_id and data_id %}
 
-                <div class="navigation">
+                {#<div class="oll-items">Запчастин: {{ ItemsArray.getTotalItemCount }}</div>#}
+
+{#                <div class="navigation3">
                     {{ knp_pagination_render(ItemsArray) }}
-                </div><br/>
+                </div>#}
+
+                <br/>
 
                 <table border="0" class="catalog">
                     <tbody>
@@ -342,25 +348,31 @@
                                         грн за шт.</span>
                                 {% endif %}
 
+                                <div class="txt-otstup">
                                 {% if Item.itemIs <= 0 %}
-                                    <br/>Під замовлення
+                                    Під замовлення
                                 {% elseif Item.itemIs == 1 %}
-                                    <br/><span style="color: #902b2b">Закінчуються</span>
+                                    <span style="color: #902b2b">Закінчуються</span>
                                 {% else %}
-                                    <br/><span style="color: green">В наявності</span>
+                                    <span style="color: green">В наявності</span>
                                 {% endif %}
+                                </div>
 
-                                <br/><span style="font-size: 8pt;cursor:pointer;" class="to_order_a gold"
+                                <div class="txt-otstup">
+                                <span style="font-size: 11pt;cursor:pointer;" class="to_order_a gold"
                                            val="item{{ Item.id }}">ЗАМОВИТИ</span>
+                                </div>
 
                             </td>
                             <td>
 
                                 <a href="#" class="item_dialog" val="item{{ Item.id }}"
                                    title="&lt;img src=&#39;/img/upload/{{ Item.img }}&#39; class=&#39;img_big&#39;&gt;{{ Item.imgData }}">
-                                    <img src="/img/camera.png"></a>
-                                <br/><span style="font-size: 8pt;cursor:pointer;" class="to_3D gold"
+                                    <img src="/img/upload/{{ Item.img }}" class="img-foto"></a>
+                                <div class="txt-otstup2">
+                                <span style="font-size: 11pt;cursor:pointer;" class="to_3D gold"
                                            val="{{ Item.itemId }}">Переглянути 3-D фото</span>
+                                </div>
                                 <div class="item{{ Item.id }}i" style="display:none;">
                                     <img src="/img/upload/{{ Item.img }}" class="img_big">
                                     {{ Item.imgData | raw }}
@@ -374,12 +386,12 @@
                             <td>
                                 {% if Item.acsesorisId != null and  Item.acsesorisId|length > 0 %}
 
-                                    <span class="item{{ Item.id }}code2">{{ Item.acsesorisId | raw }}</span>
-                                    <br/>
-                                    <a href="#"
+                                    <span class="item{{ Item.id }}code2"><b>{{ Item.acsesorisId | raw }}</b></span>
+
+                                    <div class="img-foto-smoll-spase"><a href="#"
                                        title="&lt;img src=&#39;/img/upload/{{ Item.acsesorisImg }}&#39; class=&#39;img_big&#39;&gt;{{ Item.acsesorisImgData }}">
-                                        <img src="/img/camera.png" style="width: 30px"></a>
-                                    <br/>
+                                        <img src="/img/upload/{{ Item.acsesorisImg }}" class="img-foto-smoll"></a>
+                                    </div>
 
                                     {% if Item.acsesorisPrice == null %}
                                         <span class="item{{ Item.id }}price2 pricef">0 грн</span>
@@ -400,26 +412,29 @@
                                         </span>
                                     {% endif %}
 
+                                    <div class="txt-otstup">
                                     {% if Item.acsesoriIs <= 0 %}
-                                        <br/>Під замовлення
+                                        Під замовлення
                                     {% elseif Item.acsesoriIs == 1 %}
-                                        <br/><span style="color: #902b2b">Закінчуються</span>
+                                        <span style="color: #902b2b">Закінчуються</span>
                                     {% else %}
-                                        <br/><span style="color: green">В наявності</span>
+                                        <span style="color: green">В наявності</span>
                                     {% endif %}
+                                    </div>
 
-                                    <br/>
-                                    <span style="font-size: 8pt;cursor:pointer;" class="to_order_a2 gold"
+                                    <div class="txt-otstup">
+                                    <span style="font-size: 11pt;cursor:pointer;" class="to_order_a2 gold"
                                           val="item{{ Item.id }}">ЗАМОВИТИ</span>
+                                    </div>
 
                                 {% endif %}
                             </td>
                         </tr>
                         <tr>
                             <td colspan="6" class="item_element">
-                                <div class="showApplication item_on">Дисплей додаткових додатків</div>
-                                <div class="showApplication item_off" style="display:none;">Приховати</div>
-                                <div style="display:none;" class="item_info item{{ Item.id }}">
+                                <div class="showApplication item_on txt-otstup3" style="display:none;">Дисплей додаткових додатків</div>
+                                <div class="showApplication item_off txt-otstup3">Приховати</div>
+                                <div class="item_info item{{ Item.id }}">
                                     {{ Item.details | raw }}
                                 </div>
                                 <hr>
@@ -432,9 +447,9 @@
                 </table>
 
                 <br/>
-                <div class="navigation">
+{#                <div class="navigation3">
                     {{ knp_pagination_render(ItemsArray) }}
-                </div><br/>
+                </div><br/>#}
 
             {% endif %}
 

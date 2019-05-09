@@ -88,7 +88,7 @@ class DefaultController extends Controller
         $serch = $request->query->get("serch", "");
         $serch = strip_tags($serch);
         $serch = strtr($serch, array('<' => " ", '>' => " ", ' ' => ""));
-        $IsSerch = strlen($serch) > 1;
+        $IsSerch = strlen($serch) > 5;
         if ($IsSerch) {
             $em = $this->getDoctrine()->getManager();
             $ItemsArray = $em->getRepository('ShopMenuBundle:Items')
@@ -111,7 +111,7 @@ class DefaultController extends Controller
             $paginator = $this->get('knp_paginator');
             $ItemsArray = $paginator->paginate(
                 $ItemsArray, /* query NOT result */
-                $request->query->getInt('page', 1)/* page number */, 15/* limit per page */
+                $request->query->getInt('page', 1)/* page number */, 33/* limit per page */
             );
         }
 
