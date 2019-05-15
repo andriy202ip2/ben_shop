@@ -109,7 +109,14 @@ div.showApplication{
 }
 
 .items-select{
-    font-size:17px;
+    font-size:19px;
+}
+
+.img-size-katalog{
+    width: 83px;
+}
+.img-size-katalog2{
+    width: 90px;
 }
 
 .navigation3{
@@ -212,7 +219,7 @@ img.logo-base {
 
     position: absolute;
     z-index: 3;
-    top: 132px;
+    top: 136px;
     left: 65px;
 
     width: 270px;
@@ -259,12 +266,13 @@ img.logo {
 div.slog {
     position: absolute;
     z-index: 3;
-    top: 110px;
-    left: 65px;
+    top: 117px;
+    left: 12px;
     color: #ffffff;
     font-weight: bold;
     font-size: 16px;
-    font-family: garamond;
+    font-style: normal;
+    font-family: sans-serif;
 }
 div.menu {
     position: absolute;
@@ -281,9 +289,14 @@ div.menu-text {
     top: 18px;
     width: 130px;
     font-family: sans-serif;
+    font-style: normal;
 
 }
 
+.menu-text2 {
+    font-family: sans-serif;
+
+}
 
 
 #nav {
@@ -313,7 +326,7 @@ div.menu-text {
     text-align: center;
 }
 #nav li a:hover div.menu{
-    background-image: url("../img/menu-active.png?i=3");
+    background-image: url("../img/menu-active.png?i=7");
     background-repeat: no-repeat;
 }
 #desc_out {
@@ -888,7 +901,10 @@ div.telefone {
 
 .contact_as {
     color: #f19c05;
-    font-size: 12px;
+    font-size: 19px;
+    font-weight: bold;
+    font-family: garamond;
+    margin-top: 5px;
 }
 
 .call-input {
@@ -913,12 +929,11 @@ div.telefone {
 
 .cat-size{
     width: 110px;
-    /*height: 22px;*/
-
+    height: 17px;
 }
 
 .icon-zize2{
-    /*height: 25px;*/
+    height: 22px;
 }
 
 table.catalog tr td{

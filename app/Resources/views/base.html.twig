@@ -10,7 +10,7 @@
 
     <meta property="og:image" content="/img/viber_logo.jpg"/>
 
-    <link type="text/css" rel="stylesheet" href="/css/ben.css?i=10"/>
+    <link type="text/css" rel="stylesheet" href="/css/ben.css?i=13"/>
     <link href="/css/jquery-ui.css" rel="stylesheet"/>
 
     <title>{% block title %}Найкраща якість автозапчастин!{% endblock %}</title>
@@ -46,6 +46,18 @@
 
     <script>
         $(document).ready(function () {
+
+            var timeI3 = 0;
+            function flashing_vin() {
+                if ($('.contact_as').is(':hover')) {
+                    $(".contact_as").css("color", "#fff");
+                    timeI3 = 1;
+                } else {
+                    $(".contact_as").css("color", timeI3 % 2 ? "#f19c05" : "#fff");
+                }
+                timeI3++;
+            }
+            setInterval(flashing_vin, 1000);
 
             $("#s1i, #si1i").click(function () {
                 if($("#si1i").attr("src") == "/img/front_on.png"){
@@ -261,12 +273,12 @@
     <a href="{{ path('shop_menu_homepage') }}">
         <img src="/img/gh_logo.png" class="logo-base">
     </a>
-    <div class="slog">Ваш постачальник елементів підвіски</div>
+    <div class="slog"><b>Ваш постачальник елементів підвіски</b></div>
 
     <div class="telefone">
         <center>
             {{ render(url('shop_mobil')) }}
-            <br/><span style="cursor:pointer;" class="contact_as">ПІДБІР ПО VIN-КОДУ АВТОМОБІЛЯ</span>
+            <br/><div style="cursor:pointer;" class="contact_as">ПІДБІР ПО VIN-КОДУ</div>
         </center>
     </div>
 
@@ -285,7 +297,7 @@
                     </a></li>#}
         <li><a href="{{ path('shop_menu_homepage') }}">
                 <div class="menu">
-                    <div class="menu-text">КАТАЛОГИ <br/>GH-PARTS</div>
+                    <div class="menu-text">КАТАЛОГИ <div class="menu-text2">GH-PARTS</div></div>
                 </div>
             </a></li>
 

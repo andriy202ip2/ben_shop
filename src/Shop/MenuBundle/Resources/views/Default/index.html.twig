@@ -12,10 +12,10 @@
 
         <center>
 
-            <h1>Каталог продукції</h1>
+            <h1>КАТАЛОГ ПРОДУКЦІЇ</h1>
 
             <form id="form_serch" method="GET">
-                <h3 style="font-size: 17px">Пошук по артикулу GH-Parts, Kayaba і Kamoka: <input type="text" name="serch" id="datepicker" class="cat cat-size" maxlength="15" /> <samp
+                <h3 style="font-size: 19px">Пошук по артикулу GH-Parts, Kayaba і Kamoka: <input type="text" name="serch" id="datepicker" class="cat cat-size" maxlength="15" /> <samp
                             class="ui-icon ui-icon-search icon-zize" style="cursor:pointer;" id="serch_btn"></samp></h3>
             </form>
 
@@ -55,27 +55,27 @@
                     <tbody>
                     <tr>
                         <td><img style="cursor:pointer;" src="{{ s1  ? '/img/front_on.png' : '/img/front_off.png' }}"
-                                 id="si1"></td>
+                                 id="si1" class="img-size-katalog" /></td>
                         <td width="1px" style="border-left: solid"></td>
-                        <td><img style="cursor:pointer;"
-                                 src="{{ s2  ? '/img/back_on.png' : '/img/back_off.png' }}" id="si2"></td>
-                        <td width="60px;"></td>
-                        <td style="width: 140px;"><img align="left" src="{{ t1  ? '/img/shock_on.png' : '/img/shock_off.png' }}"
-                                 style="cursor:pointer;" id="ti1"></td>
-                        <td style="width: 115px;"><img align="left"
+                        <td style="width: 78px;"><img style="cursor:pointer;"
+                                 src="{{ s2  ? '/img/back_on.png' : '/img/back_off.png' }}" id="si2" class="img-size-katalog" /></td>
+                        <td width="70px;"></td>
+                        <td style="width: 150px;"><img align="left" src="{{ t1  ? '/img/shock_on.png' : '/img/shock_off.png' }}"
+                                 style="cursor:pointer;" id="ti1" class="img-size-katalog" /></td>
+                        <td style="width: 125px;"><img align="left"
                                                       src="{{ t2  ? '/img/coil_on.png' : '/img/coil_off.png' }}"
-                                                      style="cursor:pointer; border-left: solid;" id="ti2"></td>
-                        <td style="width: 97px;"><img align="left" src="{{ t3  ? '/img/arm_on.png' : '/img/arm_off.png' }}"
-                                 style="cursor:pointer; border-left: solid;" id="ti3"></td>
+                                                      style="cursor:pointer; border-left: solid;" id="ti2" class="img-size-katalog2" /></td>
+                        <td style="width: 107px;"><img align="left" src="{{ t3  ? '/img/arm_on.png' : '/img/arm_off.png' }}"
+                                 style="cursor:pointer; border-left: solid;" id="ti3" class="img-size-katalog" /></td>
                     </tr>
 
                     <tr>
                         <td class="items-select">
-                            передня <input type="checkbox" name="s1" id="s1" value="1" {{ s1  ? 'checked=""' : '' }}>
+                            Передня <input type="checkbox" name="s1" id="s1" value="1" {{ s1  ? 'checked=""' : '' }}>
                         </td>
                         <td></td>
                         <td class="items-select">
-                            задня <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>
+                            Задня <input type="checkbox" name="s2" id="s2" value="2" {{ s2  ? 'checked=""' : '' }}>
                         </td>
                         <td></td>
                         <td class="items-select">Амортизатор
@@ -99,7 +99,7 @@
             {% if IsSerch == 0 and model_id == 0 %}
 
                 <div class="text-center">
-                    <h1 class="txt-font-title">Марки</h1>
+                    <h1 class="txt-font-title">МАРКИ</h1>
                 </div>
                 <br/>
 
@@ -163,7 +163,7 @@
             {% elseif IsSerch == 0 and model_id != 0 and auto_id == 0 %}
 
                 <div class="text-center">
-                    <h1 class="txt-font-title">Моделі</h1>
+                    <h1 class="txt-font-title">МОДЕЛІ</h1>
                 </div>
                 <br/>
 
@@ -229,7 +229,7 @@
             {% elseif IsSerch == 0 and model_id != 0 and auto_id != 0 and data_id == 0 %}
 
                 <div class="text-center">
-                    <h1 class="txt-font-title">Роки авто</h1>
+                    <h1 class="txt-font-title">РОКИ АВТО</h1>
                 </div>
 
                 <div class="text-marning new-font">
@@ -512,7 +512,7 @@
         $(document).ready(function () {
 
             var timeI = 0;
-
+            var timeI3 = 0;
             function flashing() {
 
                 if ($("#mid").val() == 0) {
