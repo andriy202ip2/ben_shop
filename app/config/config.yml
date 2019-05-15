@@ -77,8 +77,8 @@ swiftmailer:
     transport:  smtp
     encryption: ssl
     auth_mode:  login
-    host:       mail.gh-parts.com.ua
-    username:   zakaz@gh-parts.com.ua
+    host:       mail.gaznaauto.com.ua
+    username:   zakaz@gaznaauto.com.ua
     password:   7qOA2#BK,Ci]I!
     #transport: '%mailer_transport%'
     #host: '%mailer_host%'
