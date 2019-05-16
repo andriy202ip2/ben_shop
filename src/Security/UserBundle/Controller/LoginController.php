@@ -5,6 +5,8 @@ namespace Security\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use \Symfony\Component\HttpFoundation\Request;
 use Security\UserBundle\Entity\User;
+use AdminBundle\Entity\Oderemale;
+use AdminBundle\Entity\Sendemale;
 
 class LoginController extends Controller
 {
@@ -50,6 +52,27 @@ class LoginController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $user_post = $request->request->get('security_userbundle_user', "");
+            $password = $user_post['password'];
+
+            $view = $this->renderView('SecurityUserBundle:Login:new.user.txt.twig', array(
+                'email' => $user->getEmail(),
+                'password' => $password,
+
+            ));
+
+            $sendemale = new Sendemale();
+            $sendemale->setSendemale($view);
+            $sendemale->setData(new \DateTime());
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Ви успішно зареєструвалися на gh-parts.com.ua')
+                ->setFrom('send@example.com')
+                ->setTo($user->getEmail())
+                ->setBody(strip_tags($view));
+
+            $this->get('mailer')->send($message);
 
             return $this->redirectToRoute('security_user_login');
         }

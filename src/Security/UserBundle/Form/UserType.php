@@ -70,8 +70,8 @@ class UserType extends AbstractType
                 ),
                 'label' => 'Співпраця: ',
                 'choices' => array(
-                    'ОПТОВИК' => 'ROLE_USER',
                     'ДРОПШИППЕР' => 'ROLE_TEAM',
+                    'ОПТОВИК' => 'ROLE_USER',
                     /*'ROLE_OPERATOR' => 'ROLE_OPERATOR',
                     'АДМІНІСТРАТОР' => 'ROLE_ADMIN',
                     'СУПЕР АДМІНІСТРАТОР' => 'ROLE_ROOT',*/
