@@ -479,10 +479,11 @@
                        type="text"/><br/>
 
                 Телефон:<br/>
-                <input id="call_mob_oder" maxlength="14" name="call_mob_oder" class="call-input required" value=""
-                       type="text" data-msg="Поле Телефон обов'язкове."/><br/>
+                <input id="call_mob_oder" maxlength="18" name="call_mob_oder" class="call-input required" value=""
+                       type="text" data-msg=""/><br/>
+                <b style="color: red;display: none" id="e_erore7">Введіть номер повністю !</b>
 
-                <br/>Товар: <span id="diloge_oder_code"></span>
+                <br/>Артикул: <span id="diloge_oder_code"></span>
 
                 <br/>Ціна: <span id="diloge_oder_price"></span><br/>
 
@@ -559,11 +560,31 @@
 
             $("#registerOrderForm").validate();
 
+            var telefon_ei7 = 0;
             $("#dialog_to_order").dialog({
                 autoOpen: false,
                 width: 400,
                 buttons: {
                     "Відправити": function () {
+
+                        var str = $("#call_mob_oder").val();
+                        var str_arr = str.split('_');
+
+                        if(str.length != 18){
+                            $("#e_erore7").css("display", "block");
+                            $("#e_erore7").css("color", "#f00");
+                            telefon_ei7 = 1;
+                            return;
+                        }else if(str_arr.length != 1){
+                            $("#e_erore7").css("display", "block");
+                            $("#e_erore7").css("color", "#f00");
+                            telefon_ei7 = 1;
+                            return;
+                        } else {
+                            telefon_ei7 = 0;
+                            $("#e_erore7").css("display", "none");
+                        }
+
                         if ($("#registerOrderForm").valid()) {
 
                             $("#dialog_to_order").dialog("close");
@@ -662,7 +683,22 @@
                 return false;
             });
 
-            $("#call_mob_oder").mask("(999) 999-9999");
+            $("#call_mob_oder").mask("+(380) 19-999-9999", {autoclear: false});
+
+            var timeI77 = 0;
+            function flashing_erore77() {
+                if(telefon_ei7 == 1){
+                    $("#e_erore7").css("color", timeI77 % 2 ? "#f00" : "#000");
+                    timeI77++;
+                } else{
+                    timeI77 = 0;
+                }
+            }
+            setInterval(flashing_erore77, 1000);
+
+            $("#call_mob_oder").on("click", function() {
+                $("#call_mob_oder").focus();
+            });
 
             //=====================================================
 

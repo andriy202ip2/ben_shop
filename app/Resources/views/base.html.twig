@@ -24,7 +24,7 @@
 
     <script language="JavaScript" src="/js/jquery.mockjax.js" type="text/JavaScript"></script>
     <script language="JavaScript" src="/js/jquery.validate.js" type="text/JavaScript"></script>
-    <script language="JavaScript" src="/js/jquery.maskedinput.js" type="text/JavaScript"></script>
+    <script language="JavaScript" src="/js/jquery.maskedinput.js?i=3" type="text/JavaScript"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93485038-2"></script>
@@ -111,11 +111,30 @@
 
             $("#registerForm").validate();
 
+            var telefon_ei3 = 0;
             $("#dialog_contakt").dialog({
                 autoOpen: false,
                 width: 400,
                 buttons: {
                     "Відправити": function () {
+
+                        var str = $("#call_mob").val();
+                        var str_arr = str.split('_');
+
+                        if(str.length != 18){
+                            $("#e_erore3").css("display", "block");
+                            $("#e_erore3").css("color", "#f00");
+                            telefon_ei3 = 1;
+                            return;
+                        }else if(str_arr.length != 1){
+                            $("#e_erore3").css("display", "block");
+                            $("#e_erore3").css("color", "#f00");
+                            telefon_ei3 = 1;
+                            return;
+                        } else {
+                            telefon_ei3 = 0;
+                            $("#e_erore3").css("display", "none");
+                        }
 
                         if((!$("#s1i").prop('checked') && !$("#s2i").prop('checked'))
                             || !$("#t1i").prop('checked') && !$("#t2i").prop('checked') && !$("#t3i").prop('checked')){
@@ -153,7 +172,6 @@
                                     }
                                 });
                         }
-
                     }
                 }
             });
@@ -164,9 +182,24 @@
                 return false;
             });
 
-            $("#call_mob").mask("(999) 999-9999");
+            $("#call_mob").mask("+(380) 19-999-9999", {autoclear: false});//, { reverse: true }//blur
             $("#call_time_b").mask("99:99");
             $("#call_time_e").mask("99:99");
+
+            var timeI12 = 0;
+            function flashing_erore3() {
+                if(telefon_ei3 == 1){
+                    $("#e_erore3").css("color", timeI12 % 2 ? "#f00" : "#000");
+                    timeI12++;
+                } else{
+                    timeI12 = 0;
+                }
+            }
+            setInterval(flashing_erore3, 1000);
+
+            $("#call_mob").on("click", function() {
+                $("#call_mob").focus();
+            });
 
             $("#container").height($(document).height());
 
@@ -188,8 +221,9 @@
         <input id="call_name" maxlength="30" name="call_name" class="call-input" value="" type="text"/><br/>
 
         Телефон:<br/>
-        <input id="call_mob" maxlength="14" name="call_mob" class="call-input required" value="" type="text"
-               data-msg="Поле Телефон обов'язкове."/><br/>
+        <input id="call_mob" maxlength="18" name="call_mob" class="call-input required" value="" type="text"
+               data-msg="" /><br/>
+        <b style="color: red;display: none" id="e_erore3">Введіть номер повністю !</b>
 
         VIN-код автомобіля:<br/>
         <input id="call_vin" maxlength="33" name="call_vin" class="call-input" value="" type="text"/><br/>
