@@ -19,7 +19,20 @@ class EmaleType extends AbstractType {
             'attr' => array(
                 'class' => 'admin-input color_text'
             ),
-            'label' => 'email: '
+            'label' => 'email1: '
+        ))->add('emale2', EmailType::class, array(
+            'attr' => array(
+                'class' => 'admin-input color_text'
+            ),
+            'label' => 'email2: ',
+            'required' => false
+
+        ))->add('emale3', EmailType::class, array(
+            'attr' => array(
+                'class' => 'admin-input color_text'
+            ),
+            'label' => 'email3: ',
+            'required' => false
         ));
     }
 

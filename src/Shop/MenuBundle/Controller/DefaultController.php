@@ -312,11 +312,20 @@ class DefaultController extends Controller
             $em->persist($sendemale);
             $em->flush();
 
+            $emailArr = array();
+            $emailArr[] = $emales->getEmale();
+            if($emales->getEmale2() != null){
+                $emailArr[] = $emales->getEmale2();
+            }
+            if($emales->getEmale3() != null){
+                $emailArr[] = $emales->getEmale3();
+            }
+
             //meler
             $message = \Swift_Message::newInstance()
                 ->setSubject('Перезвоніть мені !')
                 ->setFrom('send@example.com')
-                ->setTo($emales->getEmale())
+                ->setTo($emailArr)
                 ->setBody(strip_tags($view));
 
             $this->get('mailer')->send($message);
@@ -369,11 +378,20 @@ class DefaultController extends Controller
             $em->persist($oderemale);
             $em->flush();
 
+            $emailArr = array();
+            $emailArr[] = $emales->getEmale();
+            if($emales->getEmale2() != null){
+                $emailArr[] = $emales->getEmale2();
+            }
+            if($emales->getEmale3() != null){
+                $emailArr[] = $emales->getEmale3();
+            }
+
             //meler
             $message = \Swift_Message::newInstance()
                 ->setSubject('Прийшов Заказ !')
                 ->setFrom('send@example.com')
-                ->setTo($emales->getEmale())
+                ->setTo($emailArr)
                 ->setBody(strip_tags($view));
 
             $this->get('mailer')->send($message);
