@@ -348,7 +348,7 @@
                                         грн за шт.</span>
                                 {% endif %}
 
-                                <div class="txt-otstup">
+                                <div class="txt-otstup item{{ Item.id }}statys">
                                 {% if Item.itemIs <= 0 %}
                                     Під замовлення
                                 {% elseif Item.itemIs == 1 %}
@@ -412,7 +412,7 @@
                                         </span>
                                     {% endif %}
 
-                                    <div class="txt-otstup">
+                                    <div class="txt-otstup item{{ Item.id }}statys2">
                                     {% if Item.acsesoriIs <= 0 %}
                                         Під замовлення
                                     {% elseif Item.acsesoriIs == 1 %}
@@ -485,7 +485,8 @@
 
                 <br/>Артикул: <span id="diloge_oder_code"></span>
 
-                <br/>Ціна: <span id="diloge_oder_price"></span><br/>
+                <br/>Ціна: <span id="diloge_oder_price"></span>
+                <br/>Cтатус: <span id="diloge_oder_statys"></span><br/>
 
             </form>
         </div>
@@ -596,7 +597,8 @@
                                     call_name: $("#call_name_oder").val(),
                                     call_mob: $("#call_mob_oder").val(),
                                     oder_code: $("#diloge_oder_code").html(),
-                                    oder_price: $("#diloge_oder_price").html()
+                                    oder_price: $("#diloge_oder_price").html(),
+                                    oder_statys: $("#diloge_oder_statys").html()
                                 }
                             })
                                 .done(function (msg) {
@@ -659,10 +661,13 @@
 
                 var html2 = $("." + id + "code").html();
                 var html3 = $("." + id + "price").html();
+                var html4 = $("." + id + "statys").html();
 
                 $(".ui-dialog-title").html("ЗАМОВИТИ ТОВАР");
                 $("#diloge_oder_code").html(html2);
                 $("#diloge_oder_price").html(html3);
+                $("#diloge_oder_statys").html(html4);
+
 
                 $("#dialog_to_order").dialog("open");
                 return false;
@@ -674,10 +679,12 @@
 
                 var html2 = $("." + id + "code2").html();
                 var html3 = $("." + id + "price2").html();
+                var html4 = $("." + id + "statys2").html();
 
                 $(".ui-dialog-title").html("ЗАМОВИТИ ТОВАР");
                 $("#diloge_oder_code").html(html2);
                 $("#diloge_oder_price").html(html3);
+                $("#diloge_oder_statys").html(html4);
 
                 $("#dialog_to_order").dialog("open");
                 return false;

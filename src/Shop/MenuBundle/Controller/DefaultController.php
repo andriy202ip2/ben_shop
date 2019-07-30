@@ -351,11 +351,13 @@ class DefaultController extends Controller
         $call_mob = strip_tags($request->query->get('call_mob', ""));
         $oder_code = strip_tags($request->query->get('oder_code', ""));
         $oder_price = strip_tags($request->query->get('oder_price', ""));
+        $oder_statys = strip_tags($request->query->get('oder_statys', ""));
 
         $call_name = preg_replace('/\s+/', ' ', $call_name);
         $call_mob = preg_replace('/\s+/', ' ', $call_mob);
         $oder_code = preg_replace('/\s+/', ' ', $oder_code);
         $oder_price = preg_replace('/\s+/', ' ', $oder_price);
+        $oder_statys = preg_replace('/\s+/', ' ', $oder_statys);
 
         if (mb_strlen($call_mob) >= 10) {
 
@@ -367,7 +369,8 @@ class DefaultController extends Controller
                 'call_name' => $call_name,
                 'call_mob' => $call_mob,
                 'oder_code' => $oder_code,
-                'oder_price' => $oder_price
+                'oder_price' => $oder_price,
+                'oder_statys' => $oder_statys
             ));
 
             $oderemale = new Oderemale();
